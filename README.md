@@ -1,36 +1,152 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🖥️ DevPortfolio - Terminal + Landing
 
-## Getting Started
+> یک پورتفولیوی تعاملی برای برنامه‌نویسان فرانت‌اند با ترکیب لندینگ پیج مدرن و ترمینال واقعی داخل مرورگر
 
-First, run the development server:
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-10-0055FF?logo=framer)](https://www.framer.com/motion/)
+[![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite)](https://vitejs.dev/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 📑 فهرست مطالب
+
+- 🎯 هدف پروژه
+- 🧠 ایده و کانسپت
+- 🏗️ معماری سیستم
+- 💻 سیستم ترمینال
+- 📋 دستورات (Commands)
+- 🎨 طراحی UI / Theme System
+- 📂 ساختار پروژه
+- 🛠️ تکنولوژی‌ها
+- 🚀 Roadmap توسعه
+- 🐣 Easter Eggs
+- 📱 ریسپانسیو
+- 🔮 ایده‌های آینده
+
+---
+
+## 🎯 هدف پروژه
+
+این پروژه برای نمایش مهارت‌های واقعی فرانت‌اند طراحی شده:
+
+- ارائه تجربه تعاملی به‌جای UI ثابت
+- شبیه‌سازی محیط توسعه (Terminal + IDE vibe)
+- ایجاد تجربه‌ی ماندگار برای کارفرما یا مصاحبه‌کننده
+- ترکیب طراحی مدرن با تعاملات CLI محور
+
+---
+
+## 🧠 ایده و کانسپت
+
+| بخش | توضیح |
+|-----|------|
+| Landing Page | صفحه اصلی مدرن با طراحی مینیمال و انیمیشن |
+| Terminal Overlay | ترمینال واقعی داخل مرورگر با قابلیت اجرای دستور |
+| Vibe کلی | ترکیب VS Code + Terminal + Cyberpunk aesthetic |
+
+---
+
+## 🏗️ معماری سیستم
+
+```
+Landing Page
+│
+├── Hero / About / Projects / Skills / Contact
+│
+└── Floating Terminal Button
+        │
+        ▼
+Terminal Overlay
+├── Command Parser
+├── History Manager
+├── Output Renderer
+├── Theme System
+└── Command Registry
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💻 سیستم ترمینال
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### ویژگی‌های Core
 
-## Learn More
+- Parser پیشرفته CLI
+- پشتیبانی از flag ها:
+  - `--filter`
+  - `--sort`
+  - `--detailed`
+- History (↑ ↓)
+- Tab Completion
+- localStorage persistence
 
-To learn more about Next.js, take a look at the following resources:
+### انواع خروجی
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Text
+- Table
+- JSON
+- Markdown
+- ASCII Art
+- Interactive UI
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### UX Features
 
-## Deploy on Vercel
+- Auto-scroll
+- Syntax highlighting
+- Loading states (async commands)
+- Typewriter effect (optional)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Theme System
+
+```text
+dark   → VSCode Dark
+matrix → Green terminal
+amber  → Retro CRT
+light  → Minimal light mode
+custom → User defined
+```
+
+---
+
+## 📋 دستورات (Commands)
+
+### General
+
+- whoami
+- about
+- contact
+- cv
+- social
+
+### Projects
+
+- projects
+- projects --filter=react
+- project <name>
+
+### Skills
+
+- skills
+- skills --category=frontend
+
+### Fun
+
+- matrix
+- hack
+- neofetch
+- joke
+- game
+
+### System
+
+- help
+- clear
+- history
+- exit
+
+
+https://www.figma.com/design/AHcrEg45ACtJEm4L9IQcre/Portfolio--Community-?node-id=45-1388&t=MS07l1AGb2rZ9H3Q-1
+https://www.shellself.com/
