@@ -10,9 +10,9 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
+    <header className="w-full max-w-6xl p-6 mx-auto">
       {!isOpen && (
-        <header className="w-full flex justify-between items-center">
+        <div className="w-full flex justify-between items-center">
           <ImageLogo />
           <section>
             <ul className="md:flex hidden items-center gap-6">
@@ -27,10 +27,10 @@ export default function Header() {
               onClick={() => setIsOpen(!isOpen)}
             />
           </section>
-        </header>
+        </div>
       )}
       {isOpen && (
-        <header>
+        <div>
           <div className="w-full flex justify-between items-center">
             <ImageLogo />
             <section>
@@ -73,8 +73,8 @@ export default function Header() {
               />
             </Link>
           </div>
-        </header>
+        </div>
       )}
-    </>
+    </header>
   );
 }
