@@ -30,21 +30,19 @@ export default function Header() {
         </div>
       )}
       {isOpen && (
-        <div>
+        <div className="fixed inset-0 z-50 bg-(--color-bg) p-6">
           <div className="w-full flex justify-between items-center">
             <ImageLogo />
-            <section>
-              <Image
-                src="/CloseIcon.png"
-                alt="Close Icon"
-                width={25}
-                height={25}
-                className="md:hidden cursor-pointer"
-                onClick={() => setIsOpen(!isOpen)}
-              />
-            </section>
+            <Image
+              src="/CloseIcon.png"
+              alt="Close Icon"
+              width={25}
+              height={25}
+              className="cursor-pointer"
+              onClick={() => setIsOpen(false)}
+            />
           </div>
-          <ul className="absolute bg-(--color-bg) rounded-md pt-20 flex flex-col items-start gap-8">
+          <ul className="mt-20 text-3xl flex flex-col items-start gap-8">
             <NavItem />
           </ul>
           <div className="absolute flex justify-center items-center gap-4 bottom-10 right-0 left-0 mx-auto w-max">
