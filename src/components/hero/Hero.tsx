@@ -5,17 +5,13 @@ export default function Hero() {
   return (
     <section className="flex md:flex-row flex-col gap-10 items-center justify-between max-w-6xl p-6 mx-auto pt-12">
       <div className="max-w-lg space-y-6">
-        <div className="font-semibold text-[34px] text-white">
-          <div className="md:flex gap-2 md:gap-5">
-            <p>Cipher Unit is a </p>
-            <div className="flex items-center gap-2">
-              <span className="text-(--color-primery)">developers</span>
-              <p>and</p>
-            </div>
-          </div>
-          <span className="text-(--color-primery) [word-spacing:10px]">
-            Full-Stack developers
-          </span>
+        <div className="font-semibold text-[34px] text-white leading-tight">
+          <p>
+            Building{" "}
+            <span className="text-(--color-primery)">open-source tools</span>{" "}
+            for developers by{" "}
+            <span className="text-(--color-primery)">developers</span> .
+          </p>
         </div>
         <p className="text-(--color-stroke) font-base [word-spacing:2px] md:[word-spacing:6px]">
           He crafts responsive websites where technologies meet creativity and

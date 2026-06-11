@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="flex flex-col md:flex-row items-center md:gap-4 gap-6">
               <ImageLogo />
               <p className="text-base text-(--color-stroke)">
-                {process.env.EMAIL}
+                {process.env.CONTACT_EMAIL}
               </p>
             </div>
             <p className="text-base text-(--color-stroke) md:text-start text-center">
