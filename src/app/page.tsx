@@ -4,6 +4,7 @@ import Footer from "@/components/shared/footer/Footer";
 import Header from "@/components/shared/header/Header";
 import Co1ntact from "@/components/contacts/Contact";
 import Overview from "@/components/overview/Overview";
+import Skils from "@/components/skils/Skils";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Overview />
+      <Skils />
       <AboutMe />
       <Co1ntact />
       <Footer />

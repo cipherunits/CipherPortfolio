@@ -12,13 +12,13 @@ export default function Contact() {
                 <h2 className="text-white font-semibold">Message me here</h2>
                 <div className="flex justify-start items-center gap-2 text-(--color-stroke)">
                     <Image src="/GithubLogo.png" alt="Github Logo" width={24} height={24} />
-                    <Link href="https://github.com/cipherunits" target="_blank">
+                    <Link className="hover:underline duration-300" href="https://github.com/cipherunits" target="_blank">
                         cipherunits
                     </Link>
                 </div>
                 <div className="flex justify-start items-center gap-2 text-(--color-stroke)">
                     <Image src="/EmailLogo.png" alt="Email Logo" width={24} height={24} />
-                    <Link href="mailto:cipherunit.dev@gmail.com" target="_blank">
+                    <Link className="hover:underline duration-300" href="mailto:cipherunit.dev@gmail.com" target="_blank">
                         {process.env.CONTACT_EMAIL}
                     </Link>
                 </div>
