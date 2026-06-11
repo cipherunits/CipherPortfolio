@@ -7,7 +7,7 @@ export default function Contact() {
     <div className="max-w-6xl mx-auto p-6 mt-12">
         <Fields text="contacts" />
         <div className="flex md:flex-row flex-col gap-10 items-center justify-between ">
-            <p className="w-md font-medium [word-spacing:6px] px-8 text-center text-(--color-stroke)">I’m interested in freelance opportunities. However, if you have other request or question, don’t hesitate to contact me .</p>
+            <p className="w-md font-medium [word-spacing:6px] md:px-0 px-8 md:text-start text-center text-(--color-stroke)">I’m interested in freelance opportunities. However, if you have other request or question, don’t hesitate to contact me .</p>
             <div className="border border-(--color-stroke) p-4 space-y-4">
                 <h2 className="text-white font-semibold">Message me here</h2>
                 <div className="flex justify-start items-center gap-2 text-(--color-stroke)">
