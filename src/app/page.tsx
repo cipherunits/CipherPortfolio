@@ -1,3 +1,4 @@
+import AboutMe from "@/components/about-me/AboutMe";
 import Hero from "@/components/hero/Hero";
 import Footer from "@/components/shared/footer/Footer";
 import Header from "@/components/shared/header/Header";
@@ -7,6 +8,7 @@ export default function Home() {
     <>
       <Header />
       <Hero />
+      <AboutMe />
       <Footer />
     </>
   );

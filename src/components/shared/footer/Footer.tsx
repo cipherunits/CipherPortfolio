@@ -15,7 +15,7 @@ export default function Footer() {
               </p>
             </div>
             <p className="text-base text-(--color-stroke) md:text-start text-center">
-              software development company focused on building modern
+              Building open-source tools for developers by developers .
             </p>
           </div>
           <div>

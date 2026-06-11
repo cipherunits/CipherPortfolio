@@ -3,7 +3,7 @@ import "./styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Cipher Unit",
-  description: "The portfolio of cipherunits, a software development company specializing in web and mobile applications.",
+  description: "Cipher Unit is a software development company focused on building modern open-source tools for developers by developers.",
   icons: {
     icon: "/CipherUnit.png",
     shortcut: "/CipherUnit.png",
