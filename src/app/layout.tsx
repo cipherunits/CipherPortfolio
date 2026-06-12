@@ -3,68 +3,113 @@ import "./styles/globals.css";
 
 const baseUrl = "https://cipherunit.xvz";
 
+const cloudImages = {
+  main: "https://res.cloudinary.com/djc6gxgjc/image/upload/q_auto/f_auto/v1781272726/SharpCipherUnit_krk0zv.png",
+  logo: "https://res.cloudinary.com/djc6gxgjc/image/upload/q_auto/f_auto/v1781272725/CipherUnit_gkjt2m.jpg",
+  alt: "https://res.cloudinary.com/djc6gxgjc/image/upload/q_auto/f_auto/v1781272726/CipherUnitWithoutBG_zbbq4w.png",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
+
   title: {
-    default: "Cipher Unit | Modern Open-Source Tools for Developers",
-    template: "%s | Cipher Unit"
+    default: "Cipher Unit (CipherUnit) | Open-Source Developer Tools & Engineering Collective",
+    template: "%s | Cipher Unit",
   },
-  description: "Cipher Unit builds modern open-source developer tools, libraries, and frameworks. Join our community of developers building the future of software development.",
-  
+
+  description:
+    "Cipher Unit is an open-source engineering collective building modern developer tools, scalable software systems, and clean architecture frameworks. Discover high-performance tools for developers and software engineers.",
+
   keywords: [
-    "open source",
-    "developer tools", 
-    "software development",
-    "dev tools",
-    "programming",
     "Cipher Unit",
-    "developer community",
-    "modern software"
+    "CipherUnit",
+    "cipher unit github",
+    "open source developer tools",
+    "developer tools",
+    "software engineering",
+    "modern frameworks",
+    "backend tools",
+    "dev infrastructure",
+    "clean architecture",
+    "scalable systems",
+    "programming tools",
+    "engineering collective",
   ],
-  
-  authors: [{ name: "Cipher Unit Team", url: "https://github.com/cipherunit" }],
+
+  authors: [
+    {
+      name: "Cipher Unit Engineering Team",
+      url: "https://github.com/cipherunit",
+    },
+  ],
+
   creator: "Cipher Unit",
   publisher: "Cipher Unit",
-  
+
+  applicationName: "Cipher Unit",
+
+  category: "technology",
+
+  classification: "Software Development / Open Source",
+
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/CipherUnit.png", type: "image/png" }
+      { url: cloudImages.logo, sizes: "any" },
+      { url: cloudImages.main, type: "image/png" },
     ],
-    shortcut: "/CipherUnit.png",
+    shortcut: cloudImages.logo,
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+      {
+        url: cloudImages.logo,
+        sizes: "180x180",
+        type: "image/jpeg",
+      },
     ],
   },
-  
+
   openGraph: {
-    title: "Cipher Unit - Modern Open-Source Tools for Developers",
-    description: "Build better software faster with Cipher Unit's open-source developer tools. Join thousands of developers using our modern toolchain.",
+    type: "website",
     url: baseUrl,
+
+    title: "Cipher Unit — Open-Source Developer Tools & Engineering Systems",
+
+    description:
+      "Build modern software with Cipher Unit. Open-source developer tools, scalable backend systems, and engineering frameworks designed for performance and clean architecture.",
+
     siteName: "Cipher Unit",
+
     images: [
       {
-        url: `${baseUrl}/CipherUnit.png`,
+        url: cloudImages.main,
         width: 1200,
         height: 630,
-        alt: "Cipher Unit - Open Source Developer Tools",
-        type: "image/jpeg",
-      }
+        alt: "Cipher Unit Open Source Engineering Collective",
+        type: "image/png",
+      },
+      {
+        url: cloudImages.alt,
+        width: 1200,
+        height: 630,
+        alt: "CipherUnit Developer Tools and Systems",
+        type: "image/png",
+      },
     ],
+
     locale: "en_US",
-    type: "website",
-    emails: ["cipherunit.dev@gmail.com"],
   },
-  
+
   twitter: {
     card: "summary_large_image",
-    title: "Cipher Unit - Modern Open-Source Tools for Developers",
-    description: "Build better software faster with Cipher Unit's open-source developer tools.",
-    images: [`${baseUrl}/CipherUnit.png`],
+    title: "Cipher Unit— Open Source Developer Tools",
+    description:
+      "Open-source engineering collective building modern developer tools and scalable software systems.",
+    images: [cloudImages.main],
   },
-  
+
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
@@ -73,40 +118,35 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  
+
   alternates: {
     canonical: "/",
     languages: {
       "en-US": baseUrl,
     },
   },
-  
-  applicationName: "Cipher Unit",
+
   appleWebApp: {
     capable: true,
     title: "Cipher Unit",
     statusBarStyle: "black-translucent",
   },
+
   formatDetection: {
-    telephone: true,
-    date: false,
-    address: false,
+    telephone: false,
     email: true,
+    address: false,
+    date: false,
     url: true,
   },
-  
-  category: "technology",
-  classification: "Software Development",
-  
+
   other: {
     "contact:email": "cipherunit.dev@gmail.com",
-    "contact:github": "https://github.com/cipherunit",
-    "google-site-verification": "your-verification-code",
-    "msvalidate.01": "your-bing-verification-code",
-    "facebook-domain-verification": "your-facebook-code",
+    "contact:github": "https://github.com/cipherunits",
+
+    "google-site-verification": "google-site-verification=JAqVoZOf1UANedsrHM9nVT00TPrWuA8na9tIGSticg4",
   },
 };
-
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -116,14 +156,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
