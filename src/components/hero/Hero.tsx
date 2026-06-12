@@ -14,12 +14,13 @@ export default function Hero() {
           </p>
         </div>
         <p className="text-(--color-stroke) font-base [word-spacing:2px] md:[word-spacing:6px]">
-          He crafts responsive websites where technologies meet creativity and
-          user experience. With a keen eye for design and a passion for coding,
-          he transforms ideas into seamless digital experiences that captivate
-          and engage users.
+          CipherUnit is a collective of developers
+          crafting open-source systems, developer
+          tools, and infrastructure with a focus on
+          security, performance, and minimal design.
+          Built for engineers who care about how things really work.
         </p>
-        <Button>Contact me!!</Button>
+        <Button>Contact us!</Button>
       </div>
       <div className="flex flex-col justify-center items-center">
         <Image src="/Hero.png" alt="Hero Image" width={500} height={300} />
