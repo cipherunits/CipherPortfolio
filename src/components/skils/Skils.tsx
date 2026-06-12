@@ -16,7 +16,7 @@ export default function Skils() {
             />
             <SkilBox
               title="Databases"
-              subTitle="SQLite PostgreSQL MongoDB SQLServer"
+              subTitle="SQLite PostgreSQL MongoDB SQLServer MySQL"
             />
             <SkilBox
               title="Frameworks"
@@ -24,7 +24,7 @@ export default function Skils() {
             />
           </div>
           <div className="flex justify-end gap-2">
-            <SkilBox title="Tools" subTitle="VScode Neovim Linux Git Manjaro" />
+            <SkilBox title="Tools" subTitle="VScode Neovim Linux Git" />
             <SkilBox
               title="Other"
               subTitle="NextJs JWT Tailwind pip pnpm uv cargo"
