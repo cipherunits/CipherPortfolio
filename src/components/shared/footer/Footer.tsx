@@ -48,7 +48,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <p className="text-center text-base [word-spacing:5px] text-(--color-stroke)">
+        <p className="text-center text-base [word-spacing:2px] text-(--color-stroke)">
           © Copyright {new Date().getFullYear()}. Made by CipherUnit
         </p>
       </div>
