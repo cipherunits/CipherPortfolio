@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./styles/globals.css";
+import Header from "@/components/shared/header/Header";
+import Footer from "@/components/shared/footer/Footer";
 
 const baseUrl = "https://cipherunit.xvz";
 
@@ -13,7 +15,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
 
   title: {
-    default: "Cipher Unit (CipherUnit) | Open-Source Developer Tools & Engineering Collective",
+    default:
+      "Cipher Unit (CipherUnit) | Open-Source Developer Tools & Engineering Collective",
     template: "%s | Cipher Unit",
   },
 
@@ -161,7 +164,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Header />
+          {children}
+        <Footer />
+      </body>
     </html>
   );
 }
