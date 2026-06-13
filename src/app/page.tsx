@@ -5,7 +5,7 @@ import Header from "@/components/shared/header/Header";
 import Co1ntact from "@/components/contacts/Contact";
 import Overview from "@/components/overview/Overview";
 import Skils from "@/components/skils/Skils";
-import Projects from "@/components/projects/Projects";
+import Projects from "@/components/projects/components/Projects";
 
 export default function Home() {
   return (

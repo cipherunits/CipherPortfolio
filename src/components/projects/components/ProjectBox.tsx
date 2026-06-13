@@ -1,23 +1,17 @@
 import Image from "next/image";
-import Button from "../shared/Button";
+import Button from "../../shared/Button";
 import Link from "next/link";
-
-type Project = {
-  imageUrl: string;
-  teck: string;
-  title: string;
-  diceription: string;
-  button: string;
-  link: string;
-};
+import type { Project } from "../types/projects.type"
 
 export default function Project({
   imageUrl,
   teck,
   title,
   diceription,
-  button,
-  link,
+  buttonLive,
+  buttonDocs,
+  linkLive,
+  linkDocs,
 }: Project) {
   return (
     <div className="border border-(--color-stroke) w-82.5">
@@ -29,9 +23,14 @@ export default function Project({
         <h3 className="text-white font-medium text-2xl">{title}</h3>
         <p className="text-(--color-stroke)">{diceription}</p>
         <div className="flex justify-between items-center">
-          <Link target="_blank" href={link}>
-            <Button>{button}</Button>
-          </Link>
+          <div className="flex justify-between gap-2 items-center">
+            <Link target="_blank" href={linkLive}>
+              <Button Theme="primary">{buttonLive}</Button>
+            </Link>
+            <Link target="_blank" href={linkDocs}>
+              <Button Theme="stroke">{buttonDocs}</Button>
+            </Link>
+          </div>
           ⭐⭐⭐⭐
         </div>
       </div>

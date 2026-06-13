@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Fields from "../shared/Fields";
-import Project from "./Project";
+import Fields from "../../shared/Fields";
+import Project from "./ProjectBox";
 
 export default function Projects() {
   return (
@@ -19,8 +19,10 @@ export default function Projects() {
           teck="Rust Python JWT-Token PyO3"
           title="CipherToken"
           diceription="High-performance token and crypto utilities written in Rust with PyO3"
-          link="https://github.com/cipherunits/CipherToken"
-          button="Live <~>"
+          linkLive="https://github.com/cipherunits/CipherToken"
+          buttonLive="Live <~>"
+          buttonDocs="Docs <~>"
+          linkDocs="https://cipherunits.github.io/CipherToken/getting-started"
         />
       </div>
     </div>
