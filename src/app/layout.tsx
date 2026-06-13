@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Cipher Unit Engineering Team",
-      url: "https://github.com/cipherunit",
+      url: "https://github.com/cipherunits",
     },
   ],
 
@@ -144,7 +144,7 @@ export const metadata: Metadata = {
     "contact:email": "cipherunit.dev@gmail.com",
     "contact:github": "https://github.com/cipherunits",
 
-    "google-site-verification": "google-site-verification=JAqVoZOf1UANedsrHM9nVT00TPrWuA8na9tIGSticg4",
+    "google-site-verification": "JAqVoZOf1UANedsrHM9nVT00TPrWuA8na9tIGSticg4",
   },
 };
 
