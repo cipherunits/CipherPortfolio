@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Button from "../shared/Button";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -14,13 +15,14 @@ export default function Hero() {
           </p>
         </div>
         <p className="text-(--color-stroke) font-base [word-spacing:2px] md:[word-spacing:6px]">
-          CipherUnit is a collective of developers
-          crafting open-source systems, developer
-          tools, and infrastructure with a focus on
-          security, performance, and minimal design.
-          Built for engineers who care about how things really work.
+          CipherUnit is a collective of developers crafting open-source systems,
+          developer tools, and infrastructure with a focus on security,
+          performance, and minimal design. Built for engineers who care about
+          how things really work.
         </p>
-        <Button>Contact us!</Button>
+        <Link href="/contact">
+          <Button>Contact us !</Button>
+        </Link>   
       </div>
       <div className="flex flex-col justify-center items-center">
         <Image src="/Hero.png" alt="Hero Image" width={500} height={300} />

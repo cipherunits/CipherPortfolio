@@ -6,9 +6,10 @@ export default function ImageLogo() {
     <Link className="flex items-center gap-2" href="/">
       <Image
         src="/CipherUnit.png"
-        alt="Chipher Unit Logo"
+        alt="Cipher Unit Logo"
         width={25}
         height={25}
+        className="w-6 h-auto"
       />
       <p className="font-bold text-xl text-white">Cipher Unit</p>
     </Link>
