@@ -1,4 +1,4 @@
-# 04 — Component Guide
+# Component Guide
 
 ## Section Components
 

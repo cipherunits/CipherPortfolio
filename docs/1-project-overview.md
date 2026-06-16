@@ -1,4 +1,4 @@
-# 01 — Project Overview
+# Project Overview
 
 ## Purpose
 

@@ -1,4 +1,4 @@
-# 08 — Known Issues and Notes
+# Known Issues and Notes
 
 ## Content Typos
 

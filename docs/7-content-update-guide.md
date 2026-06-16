@@ -1,4 +1,4 @@
-# 07 — Content Update Guide
+# Content Update Guide
 
 ## Change Hero Text
 

@@ -1,4 +1,4 @@
-# 06 — SEO and Metadata
+# SEO and Metadata
 
 ## Global Metadata
 

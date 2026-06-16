@@ -1,4 +1,4 @@
-# 02 — Architecture
+# Architecture
 
 ## Rendering Model
 
