@@ -2,7 +2,11 @@
 
 Official portfolio website for **Cipher Unit**, built with **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
 
-For structured internal documentation, see [`docs/README.md`](docs/README.md).
+## Documentation
+
+📖 **Official Documentation:** [https://cipherunits.github.io/CipherPortfolio/](https://cipherunits.github.io/CipherPortfolio/)
+
+---
 
 This project presents Cipher Unit’s brand, featured work, technical skills, contact channels, and SEO-ready public pages in a clean and responsive interface.
 
