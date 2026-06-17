@@ -18,7 +18,7 @@ export default function AboutMe() {
         </div>
         <Button>Read more {"->"}</Button>
       </div>
-      <Image src="/AboutMe.png" alt="about me" width={300} height={300} />
+      <Image src="/AboutMe.png" alt="CipherUnit Cipher Unit Open Source Engineering Collective — about us" width={300} height={300} />
     </div>
   );
 }

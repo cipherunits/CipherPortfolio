@@ -8,7 +8,7 @@ These are currently documented as-is and can be corrected in a dedicated content
 ## GitHub URL Inconsistency
 
 - Several places use `https://github.com/cipherunits/`
-- Redirect route currently points to `https://github.com/cipherunit`
+- Redirect route currently points to `https://github.com/cipherunits`
 
 Unifying this value in one config source can reduce drift.
 

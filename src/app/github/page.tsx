@@ -1,11 +1,23 @@
 import { redirect } from 'next/navigation';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 
 export const metadata: Metadata = {
-  title: "Cipher Unit on GitHub",
-  description: "Explore Cipher Unit's open-source projects and repositories on GitHub.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+  title: "Cipher Unit on GitHub — CipherUnit Open Source Developer Tools",
+  description: "Explore Cipher Unit's (CipherUnit) open-source projects and repositories on GitHub.",
+  alternates: {
+    canonical: '/github',
+  },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function GithubPage() {
-  redirect("https://github.com/cipherunit");
+  redirect('https://github.com/cipherunits');
 }

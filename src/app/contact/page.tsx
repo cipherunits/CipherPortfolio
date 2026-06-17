@@ -2,10 +2,21 @@ import ContactBox from "@/components/contacts/ContactBox";
 import ContactMedia from "@/components/contacts/ContactMedia";
 import ContactText from "@/components/contacts/ContactText";
 import NamePage from "@/components/shared/NamePage";
+import { Metadata } from "next";
+import { JsonLd, BreadcrumbJsonLdContact } from "@/components/shared/JsonLd";
 
-function page() {
+export const metadata: Metadata = {
+  title: "Contact CipherUnit — Cipher Unit Open Source Developer Tools",
+  description: "Contact CipherUnit — Cipher Unit open-source engineering collective for collaborations, contributions, and technical inquiries.",
+  alternates: {
+    canonical: '/contact',
+  },
+};
+
+export default function page() {
   return (
     <div className="max-w-6xl mx-auto p-6 my-8 md:my-22">
+      <JsonLd data={BreadcrumbJsonLdContact} />
       <div className="space-y-3">
         <NamePage />
         <p className="text-white [word-spacing:6px] my-4">Who am i?</p>
@@ -18,4 +29,3 @@ function page() {
     </div>
   );
 }
-export default page;

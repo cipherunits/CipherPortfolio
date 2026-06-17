@@ -22,9 +22,9 @@ export default function Footer() {
             <p className="text-2xl text-white font-semibold md:text-start text-center">Media</p>
             <div className="flex items-center gap-4 mt-4">
               <Link href="https://github.com/cipherunits/" target="_blank">
-                <Image
+              <Image
                   src="/CipherUnit.png"
-                  alt="Cipher Unit Logo"
+                  alt="CipherUnit Logo — Cipher Unit Open Source Developer Tools and Engineering Collective"
                   width={28}
                   height={28}
                 />

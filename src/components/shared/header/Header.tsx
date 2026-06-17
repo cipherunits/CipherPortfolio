@@ -48,11 +48,11 @@ export default function Header() {
           <div className="absolute flex justify-center items-center gap-4 bottom-10 right-0 left-0 mx-auto w-max">
             <Link href="https://github.com/cipherunits/" target="_blank">
               <Image
-                src="/CipherUnit.png"
-                alt="Cipher Unit Logo"
-                width={38}
-                height={38}
-              />
+                  src="/CipherUnit.png"
+                  alt="CipherUnit Logo — Cipher Unit Open Source Developer Tools and Engineering Collective"
+                  width={38}
+                  height={38}
+                />
             </Link>
             <Link href="https://github.com/cipherunits/" target="_blank">
               <Image

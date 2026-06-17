@@ -114,7 +114,7 @@ SEO configuration is already integrated through:
 - Sitemap generation in `src/app/sitemap.ts`
 - Crawler directives in `public/robots.txt`
 
-The project base URL is currently configured as: `https://cipherunit.xvz`.
+The project base URL is currently configured as: `https://cipherunit.xyz`.
 
 ## Content Customization Guide
 
