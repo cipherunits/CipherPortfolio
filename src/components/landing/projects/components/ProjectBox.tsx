@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Button from "../../shared/Button";
+import Button from "@/components/shared/Button";
 import Link from "next/link";
 import type { Project } from "../types/projects.type"
 

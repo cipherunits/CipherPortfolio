@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Fields from "../shared/Fields";
-import Button from "../shared/Button";
+import Fields from "@/components/shared/Fields";
+import Button from "@/components/shared/Button";
 
 export default function AboutMe() {
   return (

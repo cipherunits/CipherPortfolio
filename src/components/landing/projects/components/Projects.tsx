@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Fields from "../../shared/Fields";
+import Fields from "@/components/shared/Fields";
 import Project from "./ProjectBox";
 
 export default function Projects() {

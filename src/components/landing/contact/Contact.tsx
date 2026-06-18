@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Fields from "../shared/Fields";
+import Fields from "@/components/shared/Fields";
 import Link from "next/dist/client/link";
 
 export default function Contact() {

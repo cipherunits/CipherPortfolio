@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Fields from "../shared/Fields";
+import Fields from "@/components/shared/Fields";
 import SkilBox from "./SkilBox";
 
 export default function Skils() {
