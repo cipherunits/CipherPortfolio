@@ -2,7 +2,7 @@ FROM node:20 As builder
 
 # set name of the working directory
 
-LABEL cipherUnit.author="amigolli"
+LABEL cipherUnit.author="cipherunits"
 LABEL type="production"
 
 

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-   <footer className="w-full border-t border-(--color-stroke) py-6 mt-auto">
+    <footer className="w-full border-t border-(--color-stroke) pt-6 mt-auto">
       <div className="w-full max-w-6xl p-6 mx-auto">
         <div className="md:mb-18 mb-12 flex flex-col md:flex-row items-center justify-between md:gap-0 gap-12">
           <div className="space-y-2">
@@ -19,10 +19,12 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <p className="text-2xl text-white font-semibold md:text-start text-center">Media</p>
+            <p className="text-2xl text-white font-semibold md:text-start text-center">
+              Media
+            </p>
             <div className="flex items-center gap-4 mt-4">
               <Link href="https://github.com/cipherunits/" target="_blank">
-              <Image
+                <Image
                   src="/CipherUnit.png"
                   alt="CipherUnit Logo — Cipher Unit Open Source Developer Tools and Engineering Collective"
                   width={28}
@@ -49,7 +51,10 @@ export default function Footer() {
           </div>
         </div>
         <p className="text-center text-base [word-spacing:2px] text-(--color-stroke)">
-          © Copyright {new Date().getFullYear()}. Made by CipherUnit
+          Made with ❤️ for developers by{" "}
+          <Link className="hover:underline" href="https://github.com/cipherunits" target="_blank">
+            CipherUnit
+          </Link>
         </p>
       </div>
     </footer>
