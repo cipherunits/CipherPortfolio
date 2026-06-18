@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { commands } from "./Commands";
-import { HistoryItem } from "./Type"
+import { HistoryItem } from "./Type";
 
 function Terminal() {
   const [input, setInput] = useState<string>("");
@@ -19,7 +19,12 @@ function Terminal() {
       return;
     }
 
-    const output: string = commands[cmd] ?? `command not found: ${cmd}`;
+    type CommandKey = keyof typeof commands;
+
+    const output =
+      cmd in commands
+        ? commands[cmd as CommandKey]
+        : `command not found: ${cmd}`;
 
     setHistory((prev) => [
       ...prev,
@@ -64,7 +69,7 @@ function Terminal() {
 
           <input
             autoFocus
-            value={input}       
+            value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={runCommand}
             className="bg-transparent outline-none flex-1 text-white/90"
