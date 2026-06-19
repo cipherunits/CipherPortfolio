@@ -5,9 +5,41 @@ import { useState } from "react";
 import { commands } from "./Commands";
 import { HistoryItem } from "./Type";
 
-function Terminal() {
+export interface TerminalProps {
+  onClose: () => void;
+}
+
+function Terminal({ onClose }: TerminalProps) {
   const [input, setInput] = useState<string>("");
   const [history, setHistory] = useState<HistoryItem[]>([]);
+  const [size, setSize] = useState({
+    full: false,
+    close: false,
+    min: true,
+  });
+
+  const getSizeClass = () => {
+    if (size.full) return "h-screen w-screen";
+    if (size.close) return "w-0 h-0 overflow-hidden";
+    if (size.min) return "w-[600px] h-[400px]";
+    return "w-[600px] h-[400px]";
+  };
+
+  const StyleSixe = `${getSizeClass()} border border-(--color-stroke) bg-(--color-bg)`;
+
+  const toggleSize = (key: "full" | "close" | "min") => {
+    setSize((prev) => {
+      if (prev[key]) {
+        return { full: false, close: true, min: false };
+      }
+      return {
+        full: key === "full",
+        close: key === "close",
+        min: key === "min",
+      };
+    });
+  };
+
   const runCommand = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== "Enter") return;
 
@@ -36,28 +68,41 @@ function Terminal() {
 
     setInput("");
   };
+
   return (
-    <div className="w-150 h-100 border border-(--color-stroke)">
-      <div className="flex justify-between items-center border-b border-(--color-stroke) px-2 py-2">
+    <div className={StyleSixe}>
+      <div className="flex gap-2 justify-start items-center border-b border-(--color-stroke) px-2 py-2 cursor-grab">
+        <div className="flex gap-2">
+          <span
+            onClick={onClose}
+            className="w-3 h-3 bg-[#FF5F57] rounded-full cursor-pointer hover:opacity-80 transition-opacity"
+            title="Close"
+          />
+          <span
+            onClick={() => toggleSize("min")}
+            className="w-3 h-3 bg-[#FFBD2E] rounded-full cursor-pointer hover:opacity-80 transition-opacity"
+            title="Minimize"
+          />
+          <span
+            onClick={() => toggleSize("full")}
+            className="w-3 h-3 bg-[#28C840] rounded-full cursor-pointer hover:opacity-80 transition-opacity"
+            title="Maximize"
+          />
+        </div>
+
         <Link
           href="/"
-          className="text-(--color-stroke)/80 text-sm hover:underline"
+          className="text-(--color-stroke)/70 text-sm hover:underline"
         >
           cipherunit.xyz/shell
         </Link>
-
-        <div className="flex gap-2">
-          <span className="w-3 h-3 bg-[#FF5F57] rounded-full" />
-          <span className="w-3 h-3 bg-[#FFBD2E] rounded-full" />
-          <span className="w-3 h-3 bg-[#28C840] rounded-full" />
-        </div>
       </div>
 
       <div className="p-4 font-mono text-sm overflow-y-auto h-[calc(100%-48px)]">
         {history.map((item, index) => (
           <div key={index} className="mb-2">
             <p className="text-(--color-secondary)">
-              cipherunit@root:~${" "}
+              cipherunit@root:~#{" "}
               <span className="text-white/90">{item.command}</span>
             </p>
             <p className="text-(--color-stroke) mt-2">{item.output}</p>
@@ -65,14 +110,14 @@ function Terminal() {
         ))}
 
         <div className="flex items-center gap-2">
-          <span className="text-(--color-secondary)">cipherunit@root:~$</span>
+          <span className="text-(--color-secondary)">cipherunit@root:~#</span>
 
           <input
             autoFocus
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={runCommand}
-            className="bg-transparent outline-none flex-1 text-white/90"
+            className="bg-transparent outline-none flex-1 text-white/90 caret-(--color-primery) caret-w-4"
             spellCheck={false}
           />
         </div>

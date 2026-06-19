@@ -2,7 +2,14 @@ import type { Metadata, Viewport } from "next";
 import "./styles/globals.css";
 import Header from "@/components/shared/header/Header";
 import Footer from "@/components/shared/footer/Footer";
-import { JsonLd, OrganizationJsonLd, WebSiteJsonLd, FAQJsonLd, BreadcrumbJsonLdHome } from "@/components/shared/JsonLd";
+import {
+  JsonLd,
+  OrganizationJsonLd,
+  WebSiteJsonLd,
+  FAQJsonLd,
+  BreadcrumbJsonLdHome,
+} from "@/components/shared/JsonLd";
+import TerminalManager from "@/components/terminal/TerminalManager";
 
 const baseUrl = "https://cipherunit.xyz";
 
@@ -92,7 +99,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cipher Unit — CipherUnit Open Source Developer Tools and Engineering Collective",
+    title:
+      "Cipher Unit — CipherUnit Open Source Developer Tools and Engineering Collective",
     description:
       "CipherUnit (Cipher Unit) is an open-source engineering collective building modern developer tools, scalable systems, and clean architecture frameworks.",
     images: [cloudImages.main],
@@ -111,8 +119,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
     languages: {
-      "en": baseUrl,
-      "fa": `${baseUrl}/?lang=fa`,
+      en: baseUrl,
+      fa: `${baseUrl}/?lang=fa`,
     },
   },
   appleWebApp: {
@@ -130,7 +138,8 @@ export const metadata: Metadata = {
   other: {
     "contact:email": "cipherunit.dev@gmail.com",
     "contact:github": "https://github.com/cipherunits",
-    "google-site-verification": "google-site-verification=JAqVoZOf1UANedsrHM9nVT00TPrWuA8na9tIGSticg4",
+    "google-site-verification":
+      "google-site-verification=JAqVoZOf1UANedsrHM9nVT00TPrWuA8na9tIGSticg4",
   },
 };
 
@@ -157,6 +166,7 @@ export default function RootLayout({
         <JsonLd data={BreadcrumbJsonLdHome} />
         <Header />
         {children}
+        <TerminalManager />
         <Footer />
       </body>
     </html>
