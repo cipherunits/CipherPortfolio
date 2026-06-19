@@ -20,7 +20,7 @@ function OpenTerminal({ onClick }: OpenTerminalProps) {
         alt="Terminal Logo"
         width={48}
         height={48}
-        className="hover:scale-110 transition-transform drop-shadow-[0_0_12px_rgba(199,120,221,0.3)]"
+        className="hover:scale-110 transition-transform drop-shadow-[0_0_12px_var(--color-shadow-primery)]"
       />
     </div>
   );

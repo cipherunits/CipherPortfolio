@@ -9,6 +9,14 @@
   --color-primery: #C778DD;
   --color-secondary: #55B6C2;
   --color-stroke: #ABB2BF;
+  --color-terminal: #00ff00;
+  --color-red-terminal: #FF5F57;
+  --color-yellow-terminal: #FFBD2E;
+  --color-green-terminal: #28C840;
+  --color-bg-terminal: #1e1e1e;
+  --color-command-terminal: #f0f0f0;
+  --color-output-terminal: #d4d4d4;
+  --color-shadow-primery: rgba(199,120,221,0.6);
 }
 
 body {

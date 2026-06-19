@@ -1,23 +1,24 @@
 export const commands = {
   help: `
-Available commands:
-help      Show available commands
-ls        List files
-pwd       Show current directory
-whoami    Display user
-about     About me
-skills    Technical skills
-projects  Featured projects
-contact   Contact information
-social    Social links
-github    GitHub profile
-blog      Latest articles
-date      Current date
-uptime    System uptime
-neofetch  System information
-cat       Read files
-clear     Clear terminal
+     
+whoami  
+about     
+skills   
+projects  
+contact 
+social  
+github   
+date     
+neofetch 
+
 `,
+
+// cat       
+// clear  
+// ls       
+// pwd     
+// uptime    
+
 
   ls: "projects  blog  contact  skills.md  about.txt  README.md",
 
