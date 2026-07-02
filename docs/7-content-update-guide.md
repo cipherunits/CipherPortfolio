@@ -1,39 +1,101 @@
 # Content Update Guide
 
-## Change Hero Text
+This is the quick-reference map for updating static content in the portfolio. All paths are relative to the repository root.
 
-Edit: `src/components/hero/Hero.tsx`
+## Hero Section
 
-## Change Overview Metrics
+File: `src/components/landing/hero/Hero.tsx`
 
-Edit: `src/components/overview/Overview.tsx`
+- Headline, intro paragraph, CTA label
+- Status strip text ("Currently working on Cipher Unit")
+- Image: `/Hero.png` in `public/`
 
-## Add or Update Projects
+## Overview Stats
 
-Edit:
+File: `src/components/landing/overview/Overview.tsx`
 
-- `src/components/projects/components/Projects.tsx`
-- `src/components/projects/components/ProjectBox.tsx`
+- Edit the three stat numbers/labels directly in the component.
 
-## Update Skills
+## Projects
 
-Edit:
+Files:
+- `src/components/landing/projects/components/Projects.tsx` — section header and individual card props
+- `src/components/landing/projects/components/ProjectBox.tsx` — card layout
+- `src/components/landing/projects/types/projects.type.ts` — `Project` type definition
 
-- `src/components/skils/Skils.tsx`
-- `src/components/skils/SkilBox.tsx`
+To add a project, add another `<Project ... />` call with the required props in `Projects.tsx`.
 
-## Update Contact Data
+Project card props:
+- `imageUrl`, `teck`, `title`, `diceription`, `linkLive`, `linkDocs`, `buttonLive`, `buttonDocs`
 
-Edit:
+## Skills
 
-- `src/components/contacts/ContactBox.tsx`
-- `src/components/contacts/ContactMedia.tsx`
-- `.env.local` (`CONTACT_EMAIL`)
+Files:
+- `src/components/landing/skils/Skils.tsx` — category list and layout
+- `src/components/landing/skils/SkilBox.tsx` — single category box
 
-## Update Header Navigation
+Edit the five `SkilBox` instances to change categories and tool entries.
 
-Edit: `src/components/shared/header/Item.ts`
+## About Me
 
-## Update SEO Values
+File: `src/components/landing/about-me/AboutMe.tsx`
 
-Edit: `src/app/layout.tsx` and `src/app/sitemap.ts`
+- Brand description paragraph
+- CTA label
+
+Image: `/AboutMe.png`
+
+## Contact Sections
+
+### Landing contact teaser
+`src/components/landing/contact/Contact.tsx`
+
+- Description paragraph and message card on homepage.
+
+### Dedicated `/contact` page
+Files:
+- `src/components/contacts/ContactText.tsx` — intro paragraph
+- `src/components/contacts/ContactBox.tsx` — contact card (GitHub + email)
+- `src/components/contacts/ContactMedia.tsx` — social links row
+
+Email displayed is read from `process.env.CONTACT_EMAIL`.
+
+## Header Navigation
+
+File: `src/components/shared/header/Item.ts`
+
+Edit the `navItems` array to change labels and links. The array contains:
+
+```ts
+[
+  { name: "home", link: "/" },
+  { name: "contact", link: "/contact" },
+  { name: "docs", link: "https://cipherunits.github.io/CipherPortfolio/" },
+]
+```
+
+## Footer
+
+`src/components/shared/footer/Footer.tsx`
+
+- App name, `CONTACT_EMAIL`, and social media image links
+- Attribution text
+
+## Terminal Commands
+
+File: `src/components/terminal/Commands.ts`
+
+Edit or extend the `commands` object to add new terminal responses. Client-side only; no backend.
+
+## Global Theme
+
+File: `src/app/styles/globals.css`
+
+Edit CSS variables at the top of the file to change the color system. All components consume these via Tailwind arbitrary tokens.
+
+## SEO Values
+
+- Global / per-route: `src/app/layout.tsx`, `src/app/contact/page.tsx`, `src/app/github/page.tsx`
+- Sitemap: `src/app/sitemap.ts`
+- Robots: `public/robots.txt`
+- Manifest: `public/manifest.json`
