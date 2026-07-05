@@ -28,8 +28,8 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site
-          artifact-name: github-pages-${{ github.run_id }}
+          artifact_name: github-pages-${{ github.run_id }}
       - uses: actions/deploy-pages@v5
         with:
-          artifact-name: github-pages-${{ github.run_id }}
+          artifact_name: github-pages-${{ github.run_id }}
         id: deployment
