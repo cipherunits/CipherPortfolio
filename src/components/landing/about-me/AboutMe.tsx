@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Fields from "@/components/shared/Fields";
 import Button from "@/components/shared/Button";
+import Link from "next/link";
 
 export default function AboutMe() {
   return (
@@ -16,7 +17,9 @@ export default function AboutMe() {
             with a strong emphasis on performance, clean architecture, and reliability.
           </p>
         </div>
-        <Button>Read more {"->"}</Button>
+        <Link target="_blank" href="https://github.com/cipherunits/">
+          <Button>Read more {"->"}</Button>
+        </Link>
       </div>
       <Image src="/AboutMe.png" alt="CipherUnit Cipher Unit Open Source Engineering Collective — about us" width={300} height={300} />
     </div>

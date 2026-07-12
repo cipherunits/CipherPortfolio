@@ -1,7 +1,5 @@
 import AboutMe from "@/components/landing/about-me/AboutMe";
 import Hero from "@/components/landing/hero/Hero";
-import Footer from "@/components/shared/footer/Footer";
-import Header from "@/components/shared/header/Header";
 import Co1ntact from "@/components/landing/contact/Contact";
 import Overview from "@/components/landing/overview/Overview";
 import Skils from "@/components/landing/skils/Skils";
@@ -12,7 +10,7 @@ export default function Home() {
     <>
       <Hero />
       <Overview />
-      <Projects />
+      <Projects view={true} />
       <Skils />
       <AboutMe />
       <Co1ntact />

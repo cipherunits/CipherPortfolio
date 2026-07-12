@@ -4,6 +4,7 @@ import ContactText from "@/components/contacts/ContactText";
 import NamePage from "@/components/shared/NamePage";
 import { Metadata } from "next";
 import { JsonLd, BreadcrumbJsonLdContact } from "@/components/shared/JsonLd";
+import SubNamePage from "@/components/shared/SubNamePage";
 
 export const metadata: Metadata = {
   title: "Contact CipherUnit — Cipher Unit Open Source Developer Tools",
@@ -19,7 +20,7 @@ export default function page() {
       <JsonLd data={BreadcrumbJsonLdContact} />
       <div className="space-y-3">
         <NamePage />
-        <p className="text-white [word-spacing:6px] my-4">Who am i?</p>
+        <SubNamePage text="Who am i?" />
       </div>
       <div className="flex md:flex-row flex-col gap-10 justify-between items-center">
         <ContactText />
