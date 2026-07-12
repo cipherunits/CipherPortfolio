@@ -1,78 +1,137 @@
 # CipherPortfolio
 
-Official portfolio website for **Cipher Unit**, built with **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
+  <a href="https://cipherunit.xyz/">
+    <img src="/github-image-page.png" alt="Github Page Image" />
+  </a>
+
+
+Official portfolio website for **Cipher Unit**, built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
+
+<div align="center" style="margin-top: 30px; margin-bottom:30px;">
+  <a href="https://github.com/cipherunits/CipherPortfolio/releases">
+    <img src="https://img.shields.io/github/v/release/cipherunits/CipherPortfolio" alt="Latest Version" />
+  </a>
+  <a href="https://github.com/cipherunits/CipherPortfolio/stargazers">
+    <img src="https://img.shields.io/github/stars/cipherunits/CipherPortfolio" alt="GitHub Stars" />
+  </a>
+  <a href="https://github.com/cipherunits/CipherPortfolio/network/members">
+    <img src="https://img.shields.io/github/forks/cipherunits/CipherPortfolio" alt="GitHub Forks" />
+  </a>
+  <a href="https://github.com/cipherunits/CipherPortfolio/issues">
+    <img src="https://img.shields.io/github/issues/cipherunits/CipherPortfolio" alt="Issues" />
+  </a>
+  <a href="https://github.com/cipherunits/CipherPortfolio/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/cipherunits/CipherPortfolio" alt="License" />
+  </a>
+  <a href="https://github.com/cipherunits/CipherPortfolio/commits/main">
+    <img src="https://img.shields.io/github/last-commit/cipherunits/CipherPortfolio" alt="Last Commit" />
+  </a>
+</div>
+
+- **License:** MIT
+- **Author:** MohammadTahaBatoomi — [cipherunit.dev@gmail.com](mailto:cipherunit.dev@gmail.com)
+- **Site:** [https://cipherunit.xyz](https://cipherunit.xyz)
 
 ## Documentation
 
-📖 **Official Documentation:** [https://cipherunits.github.io/CipherPortfolio/](https://cipherunits.github.io/CipherPortfolio/)
+📖 **Full Documentation:** [https://cipherunits.github.io/CipherPortfolio/](https://cipherunits.github.io/CipherPortfolio/)
 
----
-
-This project presents Cipher Unit’s brand, featured work, technical skills, contact channels, and SEO-ready public pages in a clean and responsive interface.
-
-## Highlights
-
-- Responsive single-page portfolio layout with reusable UI components
-- Dedicated `/github` route that redirects visitors to the Cipher Unit GitHub profile
-- SEO-focused metadata configuration (Open Graph, Twitter cards, robots, canonical, sitemap)
-- Componentized architecture for quick content updates and future feature growth
-- Tailwind CSS v4 styling with a centralized custom color system
+The `docs/` directory contains implementation-first documentation covering architecture, routes, components, SEO, and troubleshooting.
 
 ## Tech Stack
 
-- **Framework:** Next.js 16 (App Router)
-- **UI:** React 19
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS v4 + global CSS variables
-- **Linting:** ESLint 9 + `eslint-config-next`
-- **Package Manager:** pnpm
+| Tool | Version |
+|------|---------|
+| Next.js | 16.2.7 |
+| React | 19.2.4 |
+| TypeScript | ^5 |
+| Tailwind CSS | ^4 |
+| ESLint | ^9 |
+| Package Manager | pnpm |
 
 ## Project Structure
 
 ```text
 CipherPortfolio/
-├── public/                         # Static assets (logos, images, robots.txt)
+├── .github/                   # GitHub workflows / CI
+├── docs/                      # Zensical-based documentation site
+├── public/                    # Static assets (images, robots.txt, manifest.json)
+├── site/                      # Built documentation output
 ├── src/
 │   ├── app/
-│   │   ├── github/page.tsx         # Redirect route to GitHub
-│   │   ├── layout.tsx              # Global layout + metadata + viewport
-│   │   ├── page.tsx                # Main homepage composition
-│   │   ├── sitemap.ts              # Dynamic sitemap entries
-│   │   └── styles/globals.css      # Global Tailwind + theme variables
+│   │   ├── contact/           # /contact page
+│   │   ├── github/            # /github redirect page
+│   │   ├── layout.tsx         # Root layout, metadata, viewport, security headers
+│   │   ├── not-found.tsx      # 404 page
+│   │   ├── page.tsx           # Homepage composition
+│   │   ├── projects/          # /projects page
+│   │   ├── sitemap.ts         # Dynamic sitemap
+│   │   └── styles/
+│   │       └── globals.css    # Global Tailwind + theme variables
 │   └── components/
-│       ├── about-me/
-│       ├── contacts/
-│       ├── hero/
-│       ├── overview/
-│       ├── projects/
-│       ├── skils/
-│       └── shared/
+│       ├── contacts/          # Contact section components
+│       ├── landing/           # Homepage sections
+│       │   ├── about-me/
+│       │   ├── contact/
+│       │   ├── hero/
+│       │   ├── overview/
+│       │   ├── projects/
+│       │   └── skils/
+│       ├── shared/            # Shared UI (header, footer, buttons, JsonLd)
+│       └── terminal/          # In-page terminal components
+├── Makefile                   # Task runner for install, dev, build, Docker
+├── next.config.ts             # Standalone output, security headers, image config
 ├── package.json
-└── README.md
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── tsconfig.json
+└── zensical.toml              # Documentation site config
 ```
+
+## Routes
+
+- `/` — Homepage (hero, overview, projects, skills, contact)
+- `/contact` — Contact page
+- `/projects` — Projects page
+- `/github` — Redirect to Cipher Unit GitHub profile
+
+
+### Base URL
+
+`https://cipherunit.xyz`
+
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js 20+
-- pnpm 9+
+- pnpm
 
-### Install Dependencies
-
-```bash
-pnpm install
-```
-
-### Run in Development
+### Using Makefile (Recommended)
 
 ```bash
-pnpm dev
+make install      # Install dependencies
+make dev          # Start development server
 ```
 
 Open: `http://localhost:3000`
 
-### Build for Production
+### Manual Commands
+
+```bash
+pnpm install
+pnpm dev
+```
+
+### Build & Start (Production)
+
+```bash
+make build-app    # Build Next.js app
+make run          # Run via Docker
+```
+
+Or manually:
 
 ```bash
 pnpm build
@@ -82,79 +141,38 @@ pnpm start
 ### Lint
 
 ```bash
+make lint         # If defined in Makefile
+# or
 pnpm lint
 ```
 
-## Environment Variables
+## Makefile Reference
 
-Create a `.env` (or preferably `.env.local`) file:
+A `Makefile` is included to simplify common development and deployment tasks:
 
-```env
-APP_NAME=CipherUnit
-APP_VERSION=1.2
-CONTACT_EMAIL=your-email@example.com
-GITHUB_API_BASE_URL=https://api.github.com/users
-GITHUB_ACCESS_TOKEN=replace-with-a-real-token
+```bash
+make help         # Show all available commands
+make install      # Install dependencies with pnpm
+make dev          # Run development server locally
+make build-app    # Build Next.js app locally
+make build        # Build Docker image
+make run          # Run Docker container on port 3000
+make stop         # Stop running container
+make restart      # Restart container
+make logs         # Show container logs
+make clean        # Remove container and image
 ```
-
-### Current Usage
-
-- `CONTACT_EMAIL` is used in:
-  - `src/components/shared/footer/Footer.tsx`
-  - `src/components/contacts/Contact.tsx`
-- `GITHUB_API_BASE_URL` and `GITHUB_ACCESS_TOKEN` are defined for future API integrations.
-
-> Do not commit real secrets/tokens to source control.
-
-## SEO Implementation
-
-SEO configuration is already integrated through:
-
-- Rich `metadata` and `viewport` in `src/app/layout.tsx`
-- Sitemap generation in `src/app/sitemap.ts`
-- Crawler directives in `public/robots.txt`
-
-The project base URL is currently configured as: `https://cipherunit.xyz`.
-
-## Content Customization Guide
-
-- **Header navigation items:** `src/components/shared/header/Item.ts`
-- **Homepage section assembly:** `src/app/page.tsx`
-- **Project cards:** `src/components/projects/Projects.tsx`
-- **Skills blocks:** `src/components/skils/Skils.tsx`
-- **Contact channels:** `src/components/contacts/Contact.tsx`
-- **Brand assets:** files inside `public/`
-
-## Available Scripts
-
-From `package.json`:
-
-- `pnpm dev` — Start development server
-- `pnpm build` — Create production build
-- `pnpm start` — Run production server
-- `pnpm lint` — Run ESLint checks
 
 ## Deployment
 
-This is a standard Next.js app and can be deployed on:
-
-- Vercel (recommended)
-- Any Node.js-compatible host supporting Next.js standalone/server mode
+This is a standard Next.js app and can be deployed on any platform that supports Node.js, including Vercel.
 
 Before deployment, verify:
+- Correct production domain in metadata (`src/app/layout.tsx`), sitemap (`src/app/sitemap.ts`), and `public/robots.txt`
+- Environment variables if you opted to use them
 
-- Correct environment variables
-- Correct production domain in metadata/sitemap/robots
 
-## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make focused, clean commits
-4. Run lint/build checks
-5. Open a pull request
-
-## Notes
-
-- `Dockerfile` currently exists but is empty.
-- Main branch recent tag lineage includes `v1.2`.
+<p align="center" style="margin-top: 100px;">
+  <b><i>Made with ❤️ for developers by CipherUnit</i></b>
+</p>
