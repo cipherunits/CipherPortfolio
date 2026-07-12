@@ -1,11 +1,12 @@
 # CipherPortfolio
 
-  <a href="https://cipherunit.xyz/">
-    <img src="/github-image-page.png" alt="Github Page Image" />
-  </a>
 
 
 Official portfolio website for **Cipher Unit**, built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
+
+<a href="https://cipherunit.xyz/" style="margin-bottom:30px;">
+  <img src="https://raw.githubusercontent.com/cipherunits/CipherPortfolio/main/public/github-image-page.png" alt="Github Page Image" />
+</a>
 
 <div align="center" style="margin-top: 30px; margin-bottom:30px;">
   <a href="https://github.com/cipherunits/CipherPortfolio/releases">
@@ -28,9 +29,9 @@ Official portfolio website for **Cipher Unit**, built with **Next.js 16**, **Rea
   </a>
 </div>
 
-- **License:** MIT
 - **Author:** MohammadTahaBatoomi — [cipherunit.dev@gmail.com](mailto:cipherunit.dev@gmail.com)
 - **Site:** [https://cipherunit.xyz](https://cipherunit.xyz)
+- **License:** MIT
 
 ## Documentation
 
