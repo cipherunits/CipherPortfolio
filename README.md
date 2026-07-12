@@ -8,6 +8,9 @@ Official portfolio website for **Cipher Unit**, built with **Next.js 16**, **Rea
   <img src="https://raw.githubusercontent.com/cipherunits/CipherPortfolio/main/public/github-image-page.png" alt="Github Page Image" />
 </a>
 
+<br>
+<br>
+
 <div align="center" style="margin-top: 30px; margin-bottom:30px;">
   <a href="https://github.com/cipherunits/CipherPortfolio/releases">
     <img src="https://img.shields.io/github/v/release/cipherunits/CipherPortfolio" alt="Latest Version" />
@@ -28,6 +31,7 @@ Official portfolio website for **Cipher Unit**, built with **Next.js 16**, **Rea
     <img src="https://img.shields.io/github/last-commit/cipherunits/CipherPortfolio" alt="Last Commit" />
   </a>
 </div>
+<br>
 
 - **Author:** MohammadTahaBatoomi — [cipherunit.dev@gmail.com](mailto:cipherunit.dev@gmail.com)
 - **Site:** [https://cipherunit.xyz](https://cipherunit.xyz)
@@ -172,8 +176,14 @@ Before deployment, verify:
 - Correct production domain in metadata (`src/app/layout.tsx`), sitemap (`src/app/sitemap.ts`), and `public/robots.txt`
 - Environment variables if you opted to use them
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 <p align="center" style="margin-top: 100px;">
-  <b><i>Made with ❤️ for developers by CipherUnit</i></b>
+  <b><i>Made with ❤️  for developers by CipherUnit</i></b>
 </p>
