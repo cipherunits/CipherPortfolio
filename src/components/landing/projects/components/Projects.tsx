@@ -20,16 +20,26 @@ export default function Projects({ view = false }: { view: boolean }) {
         }
 
       </div>
-      <div className="flex md:justify-start justify-center items-center mt-12">
+      <div className="flex md:justify-start justify-center items-center gap-6 mt-12">
         <Project
-          imageUrl="/image.png"
+          imageUrl="/cipher-token.png"
           teck="Rust Python JWT-Token PyO3"
-          title="CipherToken"
+          title="Cipher Token"
           diceription="High-performance token and crypto utilities written in Rust with PyO3"
           linkLive="https://github.com/cipherunits/CipherToken"
-          buttonLive="Live <~>"
+          buttonLive="Github <~>"
           buttonDocs="Docs <~>"
           linkDocs="https://cipherunits.github.io/CipherToken/getting-started"
+        />
+        <Project
+          imageUrl="/npm-mirrors.png"
+          teck="Docker Docker-Compose Makefile"
+          title="Npm Mirror"
+          diceription="Before the internet is cut off, save the npm packages you need."
+          linkLive="https://github.com/cipherunits/npm-mirror"
+          buttonLive="Github <~>"
+          buttonDocs="Docs <~>"
+          linkDocs="https://cipherunits.github.io/npm-mirror/"
         />
       </div>
     </div>

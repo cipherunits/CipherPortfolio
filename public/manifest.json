@@ -4,8 +4,8 @@
   "description": "CipherUnit — open-source engineering collective building modern developer tools, scalable systems, and clean architecture frameworks.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#22c55e",
+  "background_color": "#282c33",
+  "theme_color": "#f0f0f0",
   "icons": [
     {
       "src": "/CipherUnit.png",

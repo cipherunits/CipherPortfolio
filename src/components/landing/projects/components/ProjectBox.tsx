@@ -14,7 +14,7 @@ export default function Project({
   linkDocs,
 }: Project) {
   return (
-    <div className="border border-(--color-stroke) w-82.5">
+    <div className="border border-(--color-stroke) w-95">
       <Image src={imageUrl} alt={`${title} CipherUnit CipherUnit Cipher Unit Open Source Developer Tool — ${diceription}`} width={400} height={400} />
       <p className="text-(--color-stroke) py-2 px-4 border border-(--color-stroke) [word-spacing:6px] ">
         {teck}
