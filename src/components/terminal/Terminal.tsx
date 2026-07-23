@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { commands } from "./Commands";
-import { HistoryItem } from "./Type";
+import type { HistoryItem } from "./Type";
 
 export interface TerminalProps {
   onClose: () => void;
@@ -16,21 +16,21 @@ export interface TerminalProps {
   isMobile: boolean;
 }
 
-function Terminal({ onClose, size, toggleSize, isMobile }: TerminalProps) {
+function Terminal({ onClose, size, toggleSize }: TerminalProps) {
   const [input, setInput] = useState<string>("");
   const [history, setHistory] = useState<HistoryItem[]>([]);
 
   const getSizeClass = () => {
-    if (size.full) return "w-full h-full";
-    if (size.close) return "w-0 h-0 overflow-hidden";
-    if (size.min) return "w-[600px] h-[400px]";
+    if (size.full) {return "w-full h-full";}
+    if (size.close) {return "w-0 h-0 overflow-hidden";}
+    if (size.min) {return "w-[600px] h-[400px]";}
     return "w-[600px] h-[400px]";
   };
 
   const StyleSixe = `${getSizeClass()} border border-(--color-stroke)/20 bg-(--color-bg-terminal)`;
 
   const runCommand = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key !== "Enter") return;
+    if (e.key !== "Enter") {return;}
 
     const cmd = input.trim();
 

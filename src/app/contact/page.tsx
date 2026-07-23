@@ -2,8 +2,11 @@ import ContactBox from "@/components/contacts/ContactBox";
 import ContactMedia from "@/components/contacts/ContactMedia";
 import ContactText from "@/components/contacts/ContactText";
 import NamePage from "@/components/shared/NamePage";
-import { Metadata } from "next";
-import { JsonLd, BreadcrumbJsonLdContact } from "@/components/shared/JsonLd";
+import type { Metadata } from "next";
+import {
+  BreadcrumbJsonLdContact,
+  JsonLd
+} from "@/components/shared/JsonLd";
 import SubNamePage from "@/components/shared/SubNamePage";
 
 export const metadata: Metadata = {

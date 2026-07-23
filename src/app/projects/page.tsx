@@ -1,5 +1,5 @@
 import NamePage from "@/components/shared/NamePage";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import SubNamePage from "@/components/shared/SubNamePage";
 import Projects from "@/components/landing/projects/components/Projects";
 

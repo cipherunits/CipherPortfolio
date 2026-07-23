@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 const baseUrl = "https://cipherunit.xyz";
 const now = new Date("2025-01-01T00:00:00Z");

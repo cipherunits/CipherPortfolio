@@ -1,6 +1,11 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Terminal from "@/components/terminal/Terminal";
 
 export interface TerminalPageProps {
@@ -30,9 +35,21 @@ export default function TerminalPage({ isOpen, onClose }: TerminalPageProps) {
   }, []);
 
   useEffect(() => {
-    if (isMobile && size.min) {
-      setSize({ full: true, close: false, min: false });
+    if (!isMobile || !size.min) {
+      return;
     }
+
+    const id = requestAnimationFrame(() => {
+      setSize({
+        full: true,
+        close: false,
+        min: false,
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame(id);
+    };
   }, [isMobile, size.min]);
 
   const toggleSize = (key: "full" | "close" | "min") => {
@@ -54,7 +71,7 @@ export default function TerminalPage({ isOpen, onClose }: TerminalPageProps) {
 
   const onPointerDown = useCallback(
     (e: React.PointerEvent) => {
-      if (!isOpen || size.full) return;
+      if (!isOpen || size.full) { return; }
       dragging.current = true;
       (e.target as HTMLElement).setPointerCapture(e.pointerId);
       offset.current = {
@@ -67,7 +84,7 @@ export default function TerminalPage({ isOpen, onClose }: TerminalPageProps) {
 
   const onPointerMove = useCallback(
     (e: React.PointerEvent) => {
-      if (!dragging.current) return;
+      if (!dragging.current) { return; }
       setPosition({
         x: e.clientX - offset.current.x,
         y: e.clientY - offset.current.y,
@@ -80,23 +97,23 @@ export default function TerminalPage({ isOpen, onClose }: TerminalPageProps) {
     dragging.current = false;
   }, []);
 
-  if (!isOpen) return null;
+  if (!isOpen) { return null; }
 
   const wrapperStyle = size.full
     ? {
-        left: 0,
-        top: 0,
-        transform: "none",
-        width: "100%",
-        height: "100%",
-      }
+      left: 0,
+      top: 0,
+      transform: "none",
+      width: "100%",
+      height: "100%",
+    }
     : {
-        left: "50%",
-        top: "50%",
-        transform: `translate3d(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px), 0)`,
-        width: 600,
-        height: 400,
-      };
+      left: "50%",
+      top: "50%",
+      transform: `translate3d(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px), 0)`,
+      width: 600,
+      height: 400,
+    };
 
   return (
     <div className="fixed inset-0 z-50">

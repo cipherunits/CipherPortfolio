@@ -5,7 +5,7 @@ export default function Fields({ text }: { text: string }) {
         <span className="text-(--color-primery)">#</span>
         <p className="">{text}</p>
       </div>
-      <span className="border border-(--color-primery) w-[85%] md:w-50"></span>
+      <span className="border border-(--color-primery) w-[85%] md:w-50" />
     </div>
   );
 }

@@ -3,11 +3,11 @@ import "./styles/globals.css";
 import Header from "@/components/shared/header/Header";
 import Footer from "@/components/shared/footer/Footer";
 import {
+  BreadcrumbJsonLdHome,
+  FAQJsonLd,
   JsonLd,
   OrganizationJsonLd,
   WebSiteJsonLd,
-  FAQJsonLd,
-  BreadcrumbJsonLdHome,
 } from "@/components/shared/JsonLd";
 import TerminalManager from "@/components/terminal/TerminalManager";
 
