@@ -1,7 +1,8 @@
 import Image from "next/image";
-import Button from "@/components/shared/Button";
 import Link from "next/link";
-import type { Project } from "../types/projects.type"
+
+import Button from "@/components/shared/Button";
+import type { Project } from "../types/projects.type";
 
 export default function Project({
   imageUrl,
@@ -14,26 +15,106 @@ export default function Project({
   linkDocs,
 }: Project) {
   return (
-    <div className="border border-(--color-stroke) w-95">
-      <Image src={imageUrl} alt={`${title} CipherUnit CipherUnit Cipher Unit Open Source Developer Tool — ${diceription}`} width={400} height={400} />
-      <p className="text-(--color-stroke) py-2 px-4 border border-(--color-stroke) [word-spacing:6px] ">
-        {teck}
-      </p>
-      <div className="p-4 space-y-3">
-        <h3 className="text-white font-medium text-2xl">{title}</h3>
-        <p className="text-(--color-stroke)">{diceription}</p>
-        <div className="flex justify-between items-center">
-          <div className="flex justify-between gap-2 items-center">
-            <Link target="_blank" href={linkLive}>
-              <Button Theme="primary">{buttonLive}</Button>
-            </Link>
-            <Link target="_blank" href={linkDocs}>
-              <Button Theme="stroke">{buttonDocs}</Button>
-            </Link>
-          </div>
-          ⭐⭐⭐⭐
-        </div>
+    <article
+      itemScope
+      itemType="https://schema.org/SoftwareSourceCode"
+      className="
+        group
+        flex h-full w-full flex-col
+        overflow-hidden
+        border border-(--color-stroke)
+        bg-(--color-background-secondary)
+        transition-all duration-300
+        hover:-translate-y-1
+        hover:border-white/20
+        hover:shadow-2xl
+      "
+    >
+      <meta itemProp="codeRepository" content={linkLive} />
+      <meta itemProp="url" content={linkDocs} />
+      <meta itemProp="applicationCategory" content="Developer Tool" />
+      <meta itemProp="author" content="Cipher Unit" />
+      <meta itemProp="creator" content="Cipher Unit" />
+
+      <figure
+        className="relative aspect-video overflow-hidden"
+        itemProp="image"
+        itemScope
+        itemType="https://schema.org/ImageObject"
+      >
+        <Image
+          src={imageUrl}
+          alt={`${title} open source software developed by Cipher Unit. ${diceription}`}
+          fill
+          quality={90}
+          sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 380px"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+
+        <figcaption className="sr-only">
+          {title} open source developer tool screenshot.
+        </figcaption>
+      </figure>
+
+      <div className="border-y border-(--color-stroke) px-4 py-3">
+        <p
+          className="text-xs leading-6 text-(--color-stroke)"
+          itemProp="programmingLanguage"
+        >
+          {teck}
+        </p>
       </div>
-    </div>
+
+      <div className="flex flex-1 flex-col p-5">
+        <header>
+          <h2
+            itemProp="name"
+            className="text-2xl font-semibold text-white"
+          >
+            {title}
+          </h2>
+
+          <p
+            itemProp="description"
+            className="mt-3 text-sm leading-7 text-(--color-stroke)"
+          >
+            {diceription}
+          </p>
+        </header>
+
+        <footer className="mt-auto flex flex-col gap-4 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <nav
+            aria-label={`${title} project links`}
+            className="flex flex-wrap items-center gap-3"
+          >
+            <Link
+              href={linkLive}
+              target="_blank"
+              rel="noopener noreferrer external"
+              aria-label={`Open ${title} GitHub repository`}
+              title={`${title} GitHub Repository`}
+              itemProp="codeRepository"
+            >
+              <Button Theme="primary">
+                {buttonLive}
+              </Button>
+            </Link>
+
+            <Link
+              href={linkDocs}
+              target="_blank"
+              rel="noopener noreferrer external"
+              aria-label={`Read ${title} documentation`}
+              title={`${title} Documentation`}
+              itemProp="url"
+            >
+              <Button Theme="stroke">
+                {buttonDocs}
+              </Button>
+            </Link>
+          </nav>
+        </footer>
+      </div>
+    </article>
   );
 }

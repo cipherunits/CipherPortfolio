@@ -1,59 +1,51 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = "https://cipherunit.xyz";
-const now = new Date("2025-01-01T00:00:00Z");
+const SITE_URL = "https://cipherunit.xyz";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages: MetadataRoute.Sitemap = [
+  const lastModified = new Date();
+
+  return [
     {
-      url: baseUrl,
-      lastModified: now,
+      url: SITE_URL,
+      lastModified,
       changeFrequency: "daily",
-      priority: 1.0,
-      alternates: {
-        languages: {
-          en: baseUrl,
-          fa: `${baseUrl}/?lang=en`,
-        },
-      },
+      priority: 1,
     },
+
     {
-      url: `${baseUrl}/contact`,
-      lastModified: now,
+      url: `${SITE_URL}/projects`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+
+    {
+      url: `${SITE_URL}/contact`,
+      lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/contact`,
-          fa: `${baseUrl}/contact?lang=en`,
-        },
-      },
     },
+
     {
-      url: `${baseUrl}/projects`,
-      lastModified: now,
+      url: `${SITE_URL}/github`,
+      lastModified,
       changeFrequency: "weekly",
-      priority: 0.8,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/projects`,
-          fa: `${baseUrl}/projects?lang=en`,
-        },
-      },
+      priority: 0.7,
     },
+
     {
-      url: `${baseUrl}/github`,
-      lastModified: now,
-      changeFrequency: "weekly",
+      url: "https://github.com/cipherunits/CipherToken",
+      lastModified,
+      changeFrequency: "monthly",
       priority: 0.6,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/github`,
-          fa: `${baseUrl}/github?lang=en`,
-        },
-      },
+    },
+
+    {
+      url: "https://github.com/cipherunits/npm-mirror",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
     },
   ];
-
-  return pages;
 }

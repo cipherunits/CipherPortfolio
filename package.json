@@ -1,9 +1,9 @@
 {
   "name": "CipherPortfolio",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "private": true,
   "author": {
-    "name": "MohammadTahaBatoomi",
+    "name": "cipherunit",
     "email": "cipherunit.dev@gmail.com",
     "url": "https://cipherunit.xyz"
   },
