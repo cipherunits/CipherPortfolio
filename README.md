@@ -1,189 +1,118 @@
 # CipherPortfolio
 
-
-
 Official portfolio website for **Cipher Unit**, built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
 
-<a href="https://cipherunit.xyz/" style="margin-bottom:30px;">
-  <img src="https://raw.githubusercontent.com/cipherunits/CipherPortfolio/main/public/github-image-page.png" alt="Github Page Image" />
+<a href="https://cipherunit.xyz">
+  <img src="https://raw.githubusercontent.com/cipherunits/CipherPortfolio/main/public/github-image-page.png" alt="CipherPortfolio Preview" />
 </a>
 
-<br>
-<br>
 
-<div align="center" style="margin-top: 30px; margin-bottom:30px;">
-  <a href="https://github.com/cipherunits/CipherPortfolio/releases">
-    <img src="https://img.shields.io/github/v/release/cipherunits/CipherPortfolio" alt="Latest Version" />
-  </a>
-  <a href="https://github.com/cipherunits/CipherPortfolio/stargazers">
-    <img src="https://img.shields.io/github/stars/cipherunits/CipherPortfolio" alt="GitHub Stars" />
-  </a>
-  <a href="https://github.com/cipherunits/CipherPortfolio/network/members">
-    <img src="https://img.shields.io/github/forks/cipherunits/CipherPortfolio" alt="GitHub Forks" />
-  </a>
-  <a href="https://github.com/cipherunits/CipherPortfolio/issues">
-    <img src="https://img.shields.io/github/issues/cipherunits/CipherPortfolio" alt="Issues" />
-  </a>
-  <a href="https://github.com/cipherunits/CipherPortfolio/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/cipherunits/CipherPortfolio" alt="License" />
-  </a>
-  <a href="https://github.com/cipherunits/CipherPortfolio/commits/main">
-    <img src="https://img.shields.io/github/last-commit/cipherunits/CipherPortfolio" alt="Last Commit" />
-  </a>
-</div>
-<br>
+<br/>
 
-- **Author:** MohammadTahaBatoomi — [cipherunit.dev@gmail.com](mailto:cipherunit.dev@gmail.com)
-- **Site:** [https://cipherunit.xyz](https://cipherunit.xyz)
-- **License:** MIT
+---
 
-## Documentation
+## 📚 Documentation
 
-📖 **Full Documentation:** [https://cipherunits.github.io/CipherPortfolio/](https://cipherunits.github.io/CipherPortfolio/)
+Complete documentation, architecture, project structure, deployment guide, SEO, and development workflow are available here:
 
-The `docs/` directory contains implementation-first documentation covering architecture, routes, components, SEO, and troubleshooting.
+https://cipherunits.github.io/CipherPortfolio/
 
-## Tech Stack
+---
 
-| Tool | Version |
-|------|---------|
-| Next.js | 16.2.7 |
-| React | 19.2.4 |
-| TypeScript | ^5 |
-| Tailwind CSS | ^4 |
-| ESLint | ^9 |
-| Package Manager | pnpm |
+## ✨ Features
 
-## Project Structure
+- ⚡ Built with Next.js 16 + React 19
+- 🎨 Tailwind CSS v4
+- 📱 Responsive design
+- 🔍 SEO optimized
+- 🗺️ Automatic sitemap & robots
+- 📄 JSON-LD structured data
+- 🐳 Docker support
+- 📚 Comprehensive documentation
 
-```text
-CipherPortfolio/
-├── .github/                   # GitHub workflows / CI
-├── docs/                      # Zensical-based documentation site
-├── public/                    # Static assets (images, robots.txt, manifest.json)
-├── site/                      # Built documentation output
-├── src/
-│   ├── app/
-│   │   ├── contact/           # /contact page
-│   │   ├── github/            # /github redirect page
-│   │   ├── layout.tsx         # Root layout, metadata, viewport, security headers
-│   │   ├── not-found.tsx      # 404 page
-│   │   ├── page.tsx           # Homepage composition
-│   │   ├── projects/          # /projects page
-│   │   ├── sitemap.ts         # Dynamic sitemap
-│   │   └── styles/
-│   │       └── globals.css    # Global Tailwind + theme variables
-│   └── components/
-│       ├── contacts/          # Contact section components
-│       ├── landing/           # Homepage sections
-│       │   ├── about-me/
-│       │   ├── contact/
-│       │   ├── hero/
-│       │   ├── overview/
-│       │   ├── projects/
-│       │   └── skils/
-│       ├── shared/            # Shared UI (header, footer, buttons, JsonLd)
-│       └── terminal/          # In-page terminal components
-├── Makefile                   # Task runner for install, dev, build, Docker
-├── next.config.ts             # Standalone output, security headers, image config
-├── package.json
-├── pnpm-lock.yaml
-├── pnpm-workspace.yaml
-├── tsconfig.json
-└── zensical.toml              # Documentation site config
-```
+Built by **[Cipher-Unit](https://cipherunit.xyz/)**.
 
-## Routes
+---
 
-- `/` — Homepage (hero, overview, projects, skills, contact)
-- `/contact` — Contact page
-- `/projects` — Projects page
-- `/github` — Redirect to Cipher Unit GitHub profile
-
-
-### Base URL
-
-`https://cipherunit.xyz`
-
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 20+
-- pnpm
-
-### Using Makefile (Recommended)
+## 🚀 Quick Start
 
 ```bash
-make install      # Install dependencies
-make dev          # Start development server
+git clone https://github.com/cipherunits/CipherPortfolio.git
+
+cd CipherPortfolio
+
+make install
+make dev
 ```
 
-Open: `http://localhost:3000`
-
-### Manual Commands
+or
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-### Build & Start (Production)
+Open:
 
-```bash
-make build-app    # Build Next.js app
-make run          # Run via Docker
+```
+http://localhost:3000
 ```
 
-Or manually:
+---
+
+## 📦 Production
+
+```bash
+make build-app
+make run
+```
+
+or
 
 ```bash
 pnpm build
 pnpm start
 ```
 
-### Lint
+---
 
-```bash
-make lint         # If defined in Makefile
-# or
-pnpm lint
-```
+## 📖 Learn More
 
-## Makefile Reference
+The documentation includes everything about the project, including:
 
-A `Makefile` is included to simplify common development and deployment tasks:
-
-```bash
-make help         # Show all available commands
-make install      # Install dependencies with pnpm
-make dev          # Run development server locally
-make build-app    # Build Next.js app locally
-make build        # Build Docker image
-make run          # Run Docker container on port 3000
-make stop         # Stop running container
-make restart      # Restart container
-make logs         # Show container logs
-make clean        # Remove container and image
-```
-
-## Deployment
-
-This is a standard Next.js app and can be deployed on any platform that supports Node.js, including Vercel.
-
-Before deployment, verify:
-- Correct production domain in metadata (`src/app/layout.tsx`), sitemap (`src/app/sitemap.ts`), and `public/robots.txt`
-- Environment variables if you opted to use them
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+- Installation
+- Project architecture
+- Folder structure
+- Components
+- Routing
+- SEO
+- Docker
+- Deployment
+- Troubleshooting
+- Contribution guide
 
 
-<p align="center" style="margin-top: 100px;">
-  <b><i>Made with ❤️  for developers by CipherUnit</i></b>
+## Contribute
+
+Contributions are welcome! Whether it's bug fixes, new algorithms, documentation improvements, or feature suggestions — feel free to open an issue or pull request.
+
+- **Repository:** [https://github.com/cipherunits/CipherPortfolio](https://github.com/cipherunits/CipherPortfolio)
+- **Issues:** [https://github.com/cipherunits/CipherPortfolio/issues](https://github.com/cipherunits/CipherPortfolio/issues)
+
+Please read the code of conduct and contribution guidelines before submitting. All contributions must follow the MIT license.
+
+---
+
+## License
+
+**MIT** — see [LICENSE](LICENSE) for details.
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<p align="center">
+  <b><i>Made with ❤️ for developers by CipherUnit</i></b>
 </p>
