@@ -25,7 +25,7 @@ export default function Footer() {
             <div className="flex items-center gap-4 mt-4">
               <Link href="https://github.com/cipherunits/" target="_blank">
                 <Image
-                  src="/CipherUnit.png"
+                  src={process.env.NEXT_PUBLIC_BRAND_IMAGE_ALT as string}
                   alt="CipherUnit Logo — Cipher Unit Open Source Developer Tools and Engineering Collective"
                   width={28}
                   height={28}
@@ -33,7 +33,7 @@ export default function Footer() {
               </Link>
               <Link href="https://github.com/cipherunits/" target="_blank">
                 <Image
-                  src="/GithubLogo.png"
+                  src="/images/GithubLogo.png"
                   alt="Github Logo"
                   width={30}
                   height={30}
@@ -41,7 +41,7 @@ export default function Footer() {
               </Link>
               <Link href="https://github.com/cipherunits/" target="_blank">
                 <Image
-                  src="/LinuxLogoT.png"
+                  src="/images/LinuxLogoT.png"
                   alt="Linux Logo"
                   width={36}
                   height={36}

@@ -5,7 +5,7 @@ export default function ImageLogo() {
   return (
     <Link className="flex items-center gap-2" href="/">
       <Image
-        src="/CipherUnit.png"
+        src={process.env.NEXT_PUBLIC_BRAND_IMAGE_ALT as string}
         alt="CipherUnit Logo — Cipher Unit Open Source Developer Tools and Engineering Collective"
         width={25}
         height={25}

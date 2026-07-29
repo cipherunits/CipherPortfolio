@@ -138,7 +138,7 @@ Renders a bordered box with category title and skill list.
 `src/components/shared/ImageLogo.tsx`
 
 - Brand logo + "Cipher Unit" wordmark linking to `/`.
-- Renders `/CipherUnit.png` at `width={25}` / `height={25}`.
+- Renders `/images/CipherUnit.png` at `width={25}` / `height={25}`.
 
 ### `Header`
 `src/components/shared/header/Header.tsx`

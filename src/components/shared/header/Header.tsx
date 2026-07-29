@@ -19,7 +19,7 @@ export default function Header() {
               <NavItem />
             </ul>
             <Image
-              src="/MenuIcon.png"
+              src="/images/MenuIcon.png"
               alt="Menu Icon"
               width={25}
               height={25}
@@ -34,7 +34,7 @@ export default function Header() {
           <div className="w-full flex justify-between items-center">
             <ImageLogo />
             <Image
-              src="/CloseIcon.png"
+              src="/images/CloseIcon.png"
               alt="Close Icon"
               width={25}
               height={25}
@@ -48,7 +48,7 @@ export default function Header() {
           <div className="absolute flex justify-center items-center gap-4 bottom-10 right-0 left-0 mx-auto w-max">
             <Link href="https://github.com/cipherunits/" target="_blank">
               <Image
-                  src="/CipherUnit.png"
+                  src={process.env.NEXT_PUBLIC_BRAND_IMAGE_ALT as string}
                   alt="CipherUnit Logo — Cipher Unit Open Source Developer Tools and Engineering Collective"
                   width={38}
                   height={38}
@@ -56,7 +56,7 @@ export default function Header() {
             </Link>
             <Link href="https://github.com/cipherunits/" target="_blank">
               <Image
-                src="/GithubLogo.png"
+                src="/images/GithubLogo.png"
                 alt="Github Logo"
                 width={40}
                 height={40}
@@ -64,7 +64,7 @@ export default function Header() {
             </Link>
             <Link href="https://github.com/cipherunits/" target="_blank">
               <Image
-                src="/LinuxLogoT.png"
+                src="/images/LinuxLogoT.png"
                 alt="Linux Logo"
                 width={46}
                 height={46}

@@ -90,5 +90,5 @@ custom_checkbox = true
 [project.markdown_extensions.pymdownx.tilde]
 
 [project.extra]
-logo = "CipherUnit.png"
-favicon = "CipherUnit.png"
+logo = "/images/CipherUnit.png"
+favicon = "/images/CipherUnit.png"

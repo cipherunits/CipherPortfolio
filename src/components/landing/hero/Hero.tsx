@@ -25,7 +25,7 @@ export default function Hero() {
         </Link>   
       </div>
       <div className="flex flex-col justify-center items-center">
-        <Image src="/Hero.png" alt="CipherUnit Open Source Engineering Collective — Developer tools and scalable software systems" width={500} height={300} />
+        <Image src="/images/Hero.png" alt="CipherUnit Open Source Engineering Collective — Developer tools and scalable software systems" width={500} height={300} />
         <div className="border border-(--color-stroke) px-2 flex items-center gap-2 py-1 w-[80%]">
           <span className="bg-(--color-primery) p-1.5"/>
           <div>

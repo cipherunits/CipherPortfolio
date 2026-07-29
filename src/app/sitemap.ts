@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://cipherunit.xyz";
+const SITE_URL = process.env.SITE_NAME as string;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

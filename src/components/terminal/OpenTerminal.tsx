@@ -16,7 +16,7 @@ function OpenTerminal({ onClick }: OpenTerminalProps) {
         Open Terminal
       </div>
       <Image
-        src="/Terminalicon.png"
+        src="/images/Terminalicon.png"
         alt="Terminal Logo"
         width={48}
         height={48}

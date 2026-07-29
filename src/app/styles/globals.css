@@ -1,5 +1,38 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/InterRegular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/InterMedium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/InterSemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/InterBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 :root {
   --color-bg: #282c33;
   --color-pink: #E06B74;
@@ -16,17 +49,16 @@
   --color-bg-terminal: #1e1e1e;
   --color-command-terminal: #f0f0f0;
   --color-output-terminal: #d4d4d4;
-  --color-shadow-primery: rgba(199,120,221,0.6);
+  --color-shadow-primery: rgba(199, 120, 221, 0.6);
 }
 
+html,
 body {
+  font-family: "Inter", sans-serif;
   background-color: var(--color-bg);
-}
-
-html, body {
-  overflow-y: auto;   
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 html::-webkit-scrollbar,

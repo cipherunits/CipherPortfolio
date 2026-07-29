@@ -18,7 +18,7 @@ const projects = [
   },
   {
     imageUrl: "/npm-mirrors.png",
-    teck: "Docker • Docker Compose • Makefile • Offline Package Cache",
+    teck: "Npm • Docker Compose • Makefile • Offline Package Cache",
     title: "NPM Mirror",
     diceription:
       "Create a local offline mirror of npm packages before losing internet connectivity. Built with Docker, Docker Compose and Makefile for reliable package caching.",

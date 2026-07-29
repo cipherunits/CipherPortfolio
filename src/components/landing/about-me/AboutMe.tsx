@@ -21,7 +21,7 @@ export default function AboutMe() {
           <Button>Read more {"->"}</Button>
         </Link>
       </div>
-      <Image src="/AboutMe.png" alt="CipherUnit Cipher Unit Open Source Engineering Collective — about us" width={300} height={300} />
+      <Image src="/images/AboutMe.png" alt="CipherUnit Cipher Unit Open Source Engineering Collective — about us" width={300} height={300} />
     </div>
   );
 }

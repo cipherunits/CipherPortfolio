@@ -8,7 +8,7 @@ function ContactBox() {
         <h2 className="text-white font-semibold">Message us here</h2>
         <div className="flex justify-start items-center gap-2 text-(--color-stroke)">
           <Image
-            src="/GithubLogo.png"
+            src="/images/GithubLogo.png"
             alt="Github Logo"
             width={24}
             height={24}
@@ -22,7 +22,7 @@ function ContactBox() {
           </Link>
         </div>
         <div className="flex justify-start items-center gap-2 text-(--color-stroke)">
-          <Image src="/EmailLogo.png" alt="Email Logo" width={24} height={24} />
+          <Image src="/images/EmailLogo.png" alt="Email Logo" width={24} height={24} />
           <Link
             className="hover:underline duration-300"
             href="mailto:cipherunit.dev@gmail.com"

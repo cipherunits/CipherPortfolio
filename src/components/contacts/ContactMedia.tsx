@@ -14,7 +14,7 @@ function ContactMedia() {
           target="_blank"
         >
           <Image
-            src="/CipherUnit.png"
+            src={process.env.NEXT_PUBLIC_BRAND_IMAGE_ALT as string}
             alt="Cipher Unit Logo"
             width={20}
             height={20}
@@ -27,7 +27,7 @@ function ContactMedia() {
           target="_blank"
         >
           <Image  
-            src="/GithubLogo.png"
+            src="/images/GithubLogo.png"
             alt="Github Logo"
             width={20}
             height={20}

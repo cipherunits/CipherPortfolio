@@ -11,12 +11,12 @@ import {
 } from "@/components/shared/JsonLd";
 import TerminalManager from "@/components/terminal/TerminalManager";
 
-const baseUrl = "https://cipherunit.xyz";
+const baseUrl = process.env.SITE_NAME as string;
 
 const cloudImages = {
-  main: "https://res.cloudinary.com/djc6gxgjc/image/upload/q_auto/f_auto/v1781272726/SharpCipherUnit_krk0zv.png",
-  logo: "https://res.cloudinary.com/djc6gxgjc/image/upload/q_auto/f_auto/v1781272725/CipherUnit_gkjt2m.jpg",
-  alt: "https://res.cloudinary.com/djc6gxgjc/image/upload/q_auto/f_auto/v1781272726/CipherUnitWithoutBG_zbbq4w.png",
+  main: process.env.NEXT_PUBLIC_BRAND_IMAGE_MAIN as string,
+  logo: process.env.NEXT_PUBLIC_BRAND_IMAGE_LOGO as string,
+  alt: process.env.NEXT_PUBLIC_BRAND_IMAGE_ALT as string,
 };
 
 export const metadata: Metadata = {
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Cipher Unit Engineering Team",
-      url: "https://github.com/cipherunits",
+      url: process.env.GITHUB_PAGE as string,
     },
   ],
   creator: "Cipher Unit",
@@ -137,9 +137,9 @@ export const metadata: Metadata = {
   },
   other: {
     "contact:email": "cipherunit.dev@gmail.com",
-    "contact:github": "https://github.com/cipherunits",
+    "contact:github": process.env.GITHUB_PAGE as string,
     "google-site-verification":
-      "google-site-verification=JAqVoZOf1UANedsrHM9nVT00TPrWuA8na9tIGSticg4",
+      `google-site-verification=${process.env.GOOGLE_PUBLIC_KEY}`,
   },
 };
 
