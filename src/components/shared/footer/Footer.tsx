@@ -23,28 +23,20 @@ export default function Footer() {
               Media
             </p>
             <div className="flex items-center gap-4 mt-4">
-              <Link href="https://github.com/cipherunits/" target="_blank">
+              <Link href={process.env.Instageram_PAGE as string} target="_blank">
                 <Image
-                  src={process.env.NEXT_PUBLIC_BRAND_IMAGE_ALT as string}
-                  alt="CipherUnit Logo — Cipher Unit Open Source Developer Tools and Engineering Collective"
+                  src="/images/InstagramLogo.svg"
+                  alt="Instagream Page Link & Logo"
                   width={28}
                   height={28}
                 />
               </Link>
-              <Link href="https://github.com/cipherunits/" target="_blank">
+              <Link href={process.env.GITHUB_PAGE as string} target="_blank">
                 <Image
                   src="/images/GithubLogo.png"
                   alt="Github Logo"
                   width={30}
                   height={30}
-                />
-              </Link>
-              <Link href="https://github.com/cipherunits/" target="_blank">
-                <Image
-                  src="/images/LinuxLogoT.png"
-                  alt="Linux Logo"
-                  width={36}
-                  height={36}
                 />
               </Link>
             </div>

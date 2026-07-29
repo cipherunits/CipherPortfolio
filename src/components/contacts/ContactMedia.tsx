@@ -14,25 +14,22 @@ function ContactMedia() {
           target="_blank"
         >
           <Image
-            src={process.env.NEXT_PUBLIC_BRAND_IMAGE_ALT as string}
-            alt="Cipher Unit Logo"
-            width={20}
-            height={20}
-          />
-          <p className="text-(--color-stroke)">@CipherUnit</p>
-        </Link>
-        <Link
-          className="flex items-center gap-2 hover:underline duration-300 text-(--color-stroke)"
-          href="https://github.com/cipherunits/"
-          target="_blank"
-        >
-          <Image  
             src="/images/GithubLogo.png"
             alt="Github Logo"
             width={20}
             height={20}
           />
           <p className="text-(--color-stroke)">@CipherUnit</p>
+        </Link>
+        <Link href={process.env.Instageram_PAGE as string} target="_blank" className="flex items-center gap-2 hover:underline duration-300 text-(--color-stroke)">
+          <Image
+            src="/images/InstagramLogo.svg"
+            alt="Instagream Page Link & Logo"
+            width={20}
+            height={20}
+          />
+          <p className="text-(--color-stroke)">@CipherUnit</p>
+
         </Link>
       </div>
     </div>
