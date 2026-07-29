@@ -5,7 +5,7 @@ import Project from "./ProjectBox";
 
 const projects = [
   {
-    imageUrl: "/cipher-token.png",
+    imageUrl: "/images/cipher-token.png",
     teck: "Rust • Python • PyO3 • JWT • Cryptography",
     title: "Cipher Token",
     diceription:
@@ -17,7 +17,7 @@ const projects = [
     buttonDocs: "Documentation",
   },
   {
-    imageUrl: "/npm-mirrors.png",
+    imageUrl: "/images/npm-mirrors.png",
     teck: "Npm • Docker Compose • Makefile • Offline Package Cache",
     title: "NPM Mirror",
     diceription:

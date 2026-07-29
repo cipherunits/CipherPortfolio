@@ -7,7 +7,7 @@ export default function Skils() {
     <div className="max-w-6xl mx-auto p-6 mt-12">
       <Fields text="skills" />
       <div className="flex flex-col md:flex-row gap-12 mt-8 justify-between items-center">
-        <Image src="/Skils.png" alt="Skils Logo" width={320} height={320} />
+        <Image src="/images/Skils.png" alt="Skils Logo" width={320} height={320} />
         <div className="flex flex-col gap-2">
           <div className="flex gap-2">
             <SkilBox
