@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,10 +7,46 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/private/", "/_vercel/"],
+        disallow: [
+          "/api/",
+          "/_next/",
+          "/private/",
+          "/_vercel/",
+          "/github",
+        ],
+      },
+      {
+        userAgent: "GPTBot",
+        allow: ["/", "/llms.txt"],
+        disallow: ["/api/", "/_next/", "/private/", "/github"],
+      },
+      {
+        userAgent: "ChatGPT-User",
+        allow: ["/", "/llms.txt"],
+        disallow: ["/api/", "/_next/", "/private/", "/github"],
+      },
+      {
+        userAgent: "Google-Extended",
+        allow: ["/", "/llms.txt"],
+        disallow: ["/api/", "/_next/", "/private/", "/github"],
+      },
+      {
+        userAgent: "anthropic-ai",
+        allow: ["/", "/llms.txt"],
+        disallow: ["/api/", "/_next/", "/private/", "/github"],
+      },
+      {
+        userAgent: "ClaudeBot",
+        allow: ["/", "/llms.txt"],
+        disallow: ["/api/", "/_next/", "/private/", "/github"],
+      },
+      {
+        userAgent: "PerplexityBot",
+        allow: ["/", "/llms.txt"],
+        disallow: ["/api/", "/_next/", "/private/", "/github"],
       },
     ],
-    sitemap: `${siteConfig.url}/sitemap.xml`,
+    sitemap: absoluteUrl("/sitemap.xml"),
     host: siteConfig.url,
   };
 }

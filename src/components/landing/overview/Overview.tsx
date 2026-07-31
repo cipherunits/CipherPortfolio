@@ -1,6 +1,9 @@
 export default function Overview() {
   return (
-    <div className="w-full flex justify-center items-center gap-14 p-6 border-y border-(--color-stroke)">
+    <section
+      className="w-full flex justify-center items-center gap-14 p-6 border-y border-(--color-stroke)"
+      aria-label="Cipher Unit at a glance"
+    >
       <div className="text-center">
         <p className="text-2xl md:text-4xl text-(--color-primery)/80 font-bold shadow-2xl">
           6+
@@ -21,6 +24,6 @@ export default function Overview() {
         </p>
         <span className="text-(--color-stroke) font-semibold">Commands</span>
       </div>
-    </div>
+    </section>
   );
 }

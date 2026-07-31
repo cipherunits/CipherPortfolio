@@ -2,31 +2,7 @@ import Link from "next/link";
 
 import Fields from "@/components/shared/Fields";
 import ProjectBox from "./ProjectBox";
-
-const projects = [
-  {
-    imageUrl: "/images/cipher-token.png",
-    tech: "Rust • Python • PyO3 • JWT • Cryptography",
-    title: "Cipher Token",
-    description:
-      "A high-performance Rust library for secure JWT token generation, validation and cryptographic utilities with Python bindings powered by PyO3.",
-    linkLive: "https://github.com/cipherunits/CipherToken",
-    linkDocs: "https://cipherunits.github.io/CipherToken/getting-started",
-    buttonLive: "GitHub Repository",
-    buttonDocs: "Documentation",
-  },
-  {
-    imageUrl: "/images/npm-mirrors.png",
-    tech: "Npm • Docker Compose • Makefile • Offline Package Cache",
-    title: "NPM Mirror",
-    description:
-      "Create a local offline mirror of npm packages before losing internet connectivity. Built with Docker, Docker Compose and Makefile for reliable package caching.",
-    linkLive: "https://github.com/cipherunits/npm-mirror",
-    linkDocs: "https://cipherunits.github.io/npm-mirror/",
-    buttonLive: "GitHub Repository",
-    buttonDocs: "Documentation",
-  },
-];
+import { projects } from "@/lib/projects";
 
 export default function Projects({ view = false }: { view?: boolean }) {
   return (
@@ -35,7 +11,7 @@ export default function Projects({ view = false }: { view?: boolean }) {
       aria-labelledby="projects-heading"
     >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="w-full">
+        <div className="w-full" id="projects-heading">
           <Fields text="projects" />
         </div>
 
@@ -60,14 +36,13 @@ export default function Projects({ view = false }: { view?: boolean }) {
 
         {projects.map((project, index) => (
           <div
-            key={project.title}
+            key={project.slug}
             className="mx-auto w-full max-w-95"
             itemProp="itemListElement"
             itemScope
             itemType="https://schema.org/ListItem"
           >
             <meta itemProp="position" content={String(index + 1)} />
-
             <ProjectBox {...project} />
           </div>
         ))}

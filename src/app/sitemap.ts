@@ -1,31 +1,27 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
+
+const LAST_MODIFIED = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: siteConfig.url,
-      lastModified: new Date(),
+      lastModified: LAST_MODIFIED,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${siteConfig.url}/projects`,
-      lastModified: new Date(),
+      url: absoluteUrl("/projects"),
+      lastModified: LAST_MODIFIED,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${siteConfig.url}/contact`,
-      lastModified: new Date(),
+      url: absoluteUrl("/contact"),
+      lastModified: LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.8,
-    },
-    {
-      url: `${siteConfig.url}/github`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.5,
     },
   ];
 }

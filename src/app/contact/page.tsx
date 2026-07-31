@@ -4,22 +4,20 @@ import ContactText from "@/components/contacts/ContactText";
 import NamePage from "@/components/shared/NamePage";
 import SubNamePage from "@/components/shared/SubNamePage";
 import type { Metadata } from "next";
-
 import {
   BreadcrumbJsonLdContact,
+  ContactPageJsonLd,
   JsonLd,
 } from "@/components/shared/JsonLd";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, brandOgImages, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
     absolute:
       "Contact CipherUnit | Open Source Software Engineers & Development Team",
   },
-
   description:
     "Contact CipherUnit for open-source software development, engineering collaborations, technical consulting, project partnerships, business inquiries, GitHub contributions, and developer support.",
-
   keywords: [
     "Contact CipherUnit",
     "Cipher Unit",
@@ -33,34 +31,29 @@ export const metadata: Metadata = {
     "Project Collaboration",
     "Engineering Team",
     "Hire Developers",
-    "Web Development",
-    "Next.js Developers",
-    "React Developers",
-    "TypeScript Experts",
-    "Open Source Community",
   ],
-
   alternates: {
     canonical: "/contact",
   },
-
   openGraph: {
     title: "Contact CipherUnit | Open Source Engineering Collective",
     description:
       "Reach the CipherUnit engineering team for collaborations, open-source contributions, consulting, partnerships, and technical discussions.",
-    url: `${siteConfig.url}/contact`,
-    siteName: "CipherUnit",
+    url: absoluteUrl("/contact"),
+    siteName: siteConfig.name,
     locale: "en_US",
     type: "website",
+    images: brandOgImages(
+      "Contact Cipher Unit — Open Source Engineering Collective",
+    ),
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Contact CipherUnit | Open Source Engineering Collective",
     description:
       "Connect with CipherUnit for software engineering, open-source collaboration, consulting, and technical inquiries.",
+    images: [siteConfig.brand.main],
   },
-
   robots: {
     index: true,
     follow: true,
@@ -77,10 +70,12 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main
+      id="main-content"
       className="mx-auto my-8 max-w-6xl p-6 md:my-22"
       itemScope
       itemType="https://schema.org/ContactPage"
     >
+      <JsonLd id="jsonld-contact-page" data={ContactPageJsonLd} />
       <JsonLd id="jsonld-breadcrumb-contact" data={BreadcrumbJsonLdContact} />
 
       <header className="space-y-3">

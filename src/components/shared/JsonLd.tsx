@@ -1,30 +1,40 @@
-import { siteConfig } from "@/lib/site";
+import { faqItems } from "@/lib/faq";
+import { projects } from "@/lib/projects";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 const siteUrl = siteConfig.url;
+const orgId = `${siteUrl}/#organization`;
+const websiteId = `${siteUrl}/#website`;
+const logoId = `${siteUrl}/#logo`;
 
 export const OrganizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Cipher Unit",
-  alternateName: ["CipherUnit", "CipherUnit Open Source"],
+  "@id": orgId,
+  name: siteConfig.name,
+  alternateName: ["CipherUnit", "CipherUnit Open Source", "Cipher Unit"],
   url: siteUrl,
-  logo: `${siteUrl}/images/CipherUnit.png`,
-  image: `${siteUrl}/images/Hero.png`,
-  description:
-    "CipherUnit is an open-source engineering collective focused on building secure, scalable, and high-quality software systems.",
+  logo: {
+    "@type": "ImageObject",
+    "@id": logoId,
+    url: absoluteUrl(siteConfig.brand.logo),
+    contentUrl: absoluteUrl(siteConfig.brand.logo),
+    caption: "Cipher Unit logo",
+  },
+  image: absoluteUrl(siteConfig.brand.main),
+  description: siteConfig.description,
   foundingDate: "2024",
-  founders: [
-    {
-      "@type": "Person",
-      name: "Cipher Unit Engineering Team",
-    },
+  email: siteConfig.email,
+  sameAs: [
+    siteConfig.github,
+    ...(siteConfig.instagram ? [siteConfig.instagram] : []),
   ],
-  sameAs: [siteConfig.github],
   contactPoint: {
     "@type": "ContactPoint",
     email: siteConfig.email,
-    contactType: "support",
-    url: `${siteUrl}/contact`,
+    contactType: "customer support",
+    availableLanguage: ["English"],
+    url: absoluteUrl("/contact"),
   },
   areaServed: "Worldwide",
   knowsAbout: [
@@ -34,120 +44,158 @@ export const OrganizationJsonLd = {
     "scalable software systems",
     "backend systems",
     "developer infrastructure",
+    "Rust",
+    "Python",
+    "TypeScript",
   ],
 };
 
 export const WebSiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Cipher Unit",
+  "@id": websiteId,
+  name: siteConfig.name,
+  alternateName: siteConfig.shortName,
   url: siteUrl,
-  description:
-    "CipherUnit — an open-source engineering collective building modern developer tools, scalable systems, and clean architecture frameworks.",
-  inLanguage: ["en-US", "fa-IR"],
-  publisher: {
-    "@id": `${siteUrl}/#organization`,
-  },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${siteUrl}/?q={search_term_string}`,
-    "query-input": "required name=search_term_string",
-  },
+  description: siteConfig.description,
+  inLanguage: "en-US",
+  publisher: { "@id": orgId },
+  copyrightHolder: { "@id": orgId },
+  about: { "@id": orgId },
 };
 
-export const BreadcrumbJsonLdHome = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
+export function buildBreadcrumbJsonLd(
+  items: { name: string; path: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: siteUrl,
-    },
-  ],
-};
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  };
+}
 
-export const BreadcrumbJsonLdContact = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: siteUrl,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Contact",
-      item: `${siteUrl}/contact`,
-    },
-  ],
-};
+export const BreadcrumbJsonLdHome = buildBreadcrumbJsonLd([
+  { name: "Home", path: "/" },
+]);
 
-export const BreadcrumbJsonLdGithub = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: siteUrl,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "GitHub",
-      item: `${siteUrl}/github`,
-    },
-  ],
-};
+export const BreadcrumbJsonLdContact = buildBreadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Contact", path: "/contact" },
+]);
+
+export const BreadcrumbJsonLdProjects = buildBreadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Projects", path: "/projects" },
+]);
 
 export const FAQJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What is Cipher Unit?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Cipher Unit (CipherUnit) is an open-source engineering collective focused on building secure, scalable, and high-quality software systems and developer tools.",
-      },
+  "@id": `${siteUrl}/#faq`,
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
     },
-    {
-      "@type": "Question",
-      name: "What kind of tools does CipherUnit build?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "CipherUnit builds modern developer tools, open-source backend systems, clean architecture frameworks, and scalable software infrastructure.",
+  })),
+};
+
+export const HomePageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${siteUrl}/#webpage`,
+  url: siteUrl,
+  name: `${siteConfig.name} (${siteConfig.shortName}) | Open-Source Developer Tools & Engineering Collective`,
+  description: siteConfig.description,
+  inLanguage: "en-US",
+  isPartOf: { "@id": websiteId },
+  about: { "@id": orgId },
+  primaryImageOfPage: {
+    "@type": "ImageObject",
+    url: absoluteUrl(siteConfig.brand.main),
+  },
+  breadcrumb: BreadcrumbJsonLdHome,
+  mainEntity: { "@id": orgId },
+};
+
+export function buildProjectsGraphJsonLd() {
+  const pageUrl = absoluteUrl("/projects");
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: "Cipher Unit Open Source Projects",
+        description:
+          "Browse all open source projects developed by Cipher Unit.",
+        inLanguage: "en-US",
+        isPartOf: { "@id": websiteId },
+        about: { "@id": orgId },
+        breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
       },
-    },
-    {
-      "@type": "Question",
-      name: "Is Cipher Unit an open source group?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Cipher Unit is an open-source group. Everything CipherUnit builds is open source and available for the developer community.",
+      {
+        ...BreadcrumbJsonLdProjects,
+        "@id": `${pageUrl}#breadcrumb`,
       },
-    },
-    {
-      "@type": "Question",
-      name: "How can I contact CipherUnit?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: `You can contact CipherUnit via email at ${siteConfig.email} or through GitHub at github.com/cipherunits.`,
+      {
+        "@type": "ItemList",
+        "@id": `${pageUrl}#itemlist`,
+        name: "Cipher Unit Open Source Projects",
+        description:
+          "Collection of open-source software developed by Cipher Unit.",
+        numberOfItems: projects.length,
+        itemListOrder: "https://schema.org/ItemListOrderAscending",
+        itemListElement: projects.map((project, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "SoftwareSourceCode",
+            "@id": `${pageUrl}#${project.slug}`,
+            name: project.title,
+            description: project.description,
+            codeRepository: project.linkLive,
+            url: project.linkLive,
+            programmingLanguage: project.programmingLanguages,
+            image: absoluteUrl(project.imageUrl),
+            author: { "@id": orgId },
+            creator: { "@id": orgId },
+            license: "https://opensource.org/licenses",
+            applicationCategory: "DeveloperApplication",
+          },
+        })),
       },
-    },
-  ],
+    ],
+  };
+}
+
+export const ContactPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${absoluteUrl("/contact")}#webpage`,
+  url: absoluteUrl("/contact"),
+  name: "Contact CipherUnit",
+  description:
+    "Contact CipherUnit for open-source software development, engineering collaborations, and technical inquiries.",
+  inLanguage: "en-US",
+  isPartOf: { "@id": websiteId },
+  about: { "@id": orgId },
+  mainEntity: { "@id": orgId },
+  breadcrumb: BreadcrumbJsonLdContact,
 };
 
 type JsonLdProps = {
   id: string;
-  data: Record<string, unknown>;
+  data: Record<string, unknown> | Record<string, unknown>[];
 };
 
 export function JsonLd({ id, data }: JsonLdProps) {

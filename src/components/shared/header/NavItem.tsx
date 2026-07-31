@@ -1,13 +1,19 @@
+"use client";
+
 import Link from "next/link";
-import { navItems } from "./Item";
 import { usePathname } from "next/navigation";
+import { navItems } from "./Item";
 
-export default function NavItem() {
-  const pathname = usePathname();
+export default function NavItem({
+  onNavigate,
+}: {
+  onNavigate?: () => void;
+}) {
+  const pathname = usePathname() || "/";
+  const name =
+    pathname === "/" ? "home" : pathname.split("/").filter(Boolean).pop();
 
-  const name = pathname === "/" ? "home" : pathname.split("/").filter(Boolean).pop();
-
-  return navItems.map((item: { name: string; link: string }) => {
+  return navItems.map((item) => {
     const isActive = name === item.name;
 
     return (
@@ -15,11 +21,18 @@ export default function NavItem() {
         key={item.name}
         className="text-gray-400 hover:text-white transition-colors cursor-pointer"
       >
-        <Link className="flex gap-1" href={item.link}>
+        <Link
+          className="flex gap-1"
+          href={item.link}
+          {...(item.link.startsWith("http")
+            ? { target: "_blank" as const, rel: "noopener noreferrer" }
+            : {})}
+          {...(onNavigate ? { onClick: onNavigate } : {})}
+        >
           <span className="text-(--color-primery)">#</span>
-          <p className={`${isActive ? "text-white" : ""}`}>{item.name}</p>
+          <span className={`${isActive ? "text-white" : ""}`}>{item.name}</span>
         </Link>
       </li>
     );
   });
-} 
+}

@@ -7,6 +7,7 @@ import type { Project } from "../types/projects.type";
 export default function ProjectBox({
   imageUrl,
   tech,
+  programmingLanguages,
   title,
   description,
   buttonLive,
@@ -57,12 +58,10 @@ export default function ProjectBox({
       </figure>
 
       <div className="border-y border-(--color-stroke) px-4 py-3">
-        <p
-          className="text-xs leading-6 text-(--color-stroke)"
-          itemProp="programmingLanguage"
-        >
-          {tech}
-        </p>
+        <p className="text-xs leading-6 text-(--color-stroke)">{tech}</p>
+        {programmingLanguages?.map((lang) => (
+          <meta key={lang} itemProp="programmingLanguage" content={lang} />
+        ))}
       </div>
 
       <div className="flex flex-1 flex-col p-5">

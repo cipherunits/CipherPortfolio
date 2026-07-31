@@ -1,4 +1,4 @@
-function ContactText() {
+export default function ContactText() {
   return (
     <p className="font-medium text-(--color-stroke) max-w-sm [word-spacing:2px]">
       Get in touch with CipherUnit for collaborations, contributions, or any
@@ -6,5 +6,3 @@ function ContactText() {
     </p>
   );
 }
-
-export default ContactText;

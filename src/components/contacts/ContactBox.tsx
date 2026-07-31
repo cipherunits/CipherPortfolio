@@ -2,16 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { mailtoHref, siteConfig } from "@/lib/site";
 
-function ContactBox() {
+export default function ContactBox() {
   return (
     <div className="border border-(--color-stroke) p-4 space-y-4">
       <h2 className="text-white font-semibold">Message us here</h2>
       <div className="flex justify-start items-center gap-2 text-(--color-stroke)">
         <Image
           src="/images/GithubLogo.png"
-          alt="Github Logo"
+          alt=""
           width={24}
           height={24}
+          aria-hidden
         />
         <Link
           className="hover:underline duration-300"
@@ -25,9 +26,10 @@ function ContactBox() {
       <div className="flex justify-start items-center gap-2 text-(--color-stroke)">
         <Image
           src="/images/EmailLogo.png"
-          alt="Email Logo"
+          alt=""
           width={24}
           height={24}
+          aria-hidden
         />
         <Link
           className="hover:underline duration-300"
@@ -41,5 +43,3 @@ function ContactBox() {
     </div>
   );
 }
-
-export default ContactBox;

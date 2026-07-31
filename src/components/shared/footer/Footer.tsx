@@ -4,6 +4,8 @@ import Image from "next/image";
 import { siteConfig } from "@/lib/site";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="w-full border-t border-(--color-stroke) pt-6 mt-auto">
       <div className="w-full max-w-6xl p-6 mx-auto">
@@ -52,7 +54,12 @@ export default function Footer() {
           </div>
         </div>
         <p className="text-center text-base [word-spacing:2px] text-(--color-stroke)">
-          Made with ❤️ for developers by{" "}
+          © {year}{" "}
+          <Link className="hover:underline" href="/">
+            Cipher Unit
+          </Link>
+          {" · "}
+          Made for developers by{" "}
           <Link
             className="hover:underline"
             href={siteConfig.github}

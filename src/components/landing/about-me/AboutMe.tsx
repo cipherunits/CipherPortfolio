@@ -6,11 +6,16 @@ import { siteConfig } from "@/lib/site";
 
 export default function AboutMe() {
   return (
-    <div className="max-w-6xl p-6 mx-auto pt-12 space-y-6 flex flex-col md:flex-row justify-between items-center">
+    <section
+      className="max-w-6xl p-6 mx-auto pt-12 space-y-6 flex flex-col md:flex-row justify-between items-center"
+      aria-labelledby="about-heading"
+    >
       <div className="space-y-6 max-w-lg">
-        <Fields text="about-us" />
+        <div id="about-heading">
+          <Fields text="about-us" />
+        </div>
         <div className="space-y-4 text-(--color-stroke)">
-          <p>CipherUnit!</p>
+          <p className="text-white font-medium">CipherUnit!</p>
           <p>
             CipherUnit is an open-source engineering collective focused on
             building secure, scalable, and high-quality software systems. We
@@ -28,7 +33,8 @@ export default function AboutMe() {
         alt="CipherUnit Cipher Unit Open Source Engineering Collective — about us"
         width={300}
         height={300}
+        sizes="(max-width: 768px) 70vw, 300px"
       />
-    </div>
+    </section>
   );
 }

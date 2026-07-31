@@ -1,16 +1,44 @@
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import "./styles/globals.css";
 import Header from "@/components/shared/header/Header";
 import Footer from "@/components/shared/footer/Footer";
 import {
-  BreadcrumbJsonLdHome,
-  FAQJsonLd,
   JsonLd,
   OrganizationJsonLd,
   WebSiteJsonLd,
 } from "@/components/shared/JsonLd";
 import TerminalManager from "@/components/terminal/TerminalManager";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, brandOgImages, siteConfig } from "@/lib/site";
+
+const inter = localFont({
+  src: [
+    {
+      path: "../../public/fonts/InterRegular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/InterMedium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/InterSemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/InterBold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-inter",
+  display: "swap",
+  preload: true,
+  fallback: ["ui-sans-serif", "system-ui", "sans-serif"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -19,8 +47,7 @@ export const metadata: Metadata = {
       "Cipher Unit (CipherUnit) | Open-Source Developer Tools & Engineering Collective",
     template: "%s | Cipher Unit",
   },
-  description:
-    "CipherUnit is an open-source engineering collective focused on building secure, scalable, and high-quality software systems. Discover CipherUnit developer tools, clean architecture frameworks, and open-source backend systems.",
+  description: siteConfig.description,
   keywords: [
     "Cipher Unit",
     "CipherUnit",
@@ -38,6 +65,8 @@ export const metadata: Metadata = {
     "scalable systems",
     "programming tools",
     "engineering collective",
+    "Rust developer tools",
+    "Python open source",
   ],
   authors: [
     {
@@ -60,7 +89,7 @@ export const metadata: Metadata = {
       {
         url: siteConfig.brand.logo,
         sizes: "180x180",
-        type: "image/jpeg",
+        type: "image/png",
       },
     ],
   },
@@ -69,33 +98,16 @@ export const metadata: Metadata = {
     type: "website",
     url: siteConfig.url,
     title: "Cipher Unit — Open-Source Developer Tools & Engineering Systems",
-    description:
-      "Build modern software with CipherUnit (Cipher Unit). Open-source developer tools, scalable backend systems, and engineering frameworks designed for performance and clean architecture.",
+    description: siteConfig.description,
     siteName: "Cipher Unit",
-    images: [
-      {
-        url: siteConfig.brand.main,
-        width: 1200,
-        height: 630,
-        alt: "CipherUnit Open Source Engineering Collective — Developer tools and scalable software systems",
-        type: "image/png",
-      },
-      {
-        url: siteConfig.brand.alt,
-        width: 1200,
-        height: 630,
-        alt: "CipherUnit Cipher Unit Logo — Open Source Developer Tools",
-        type: "image/png",
-      },
-    ],
+    images: brandOgImages(),
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title:
       "Cipher Unit — CipherUnit Open Source Developer Tools and Engineering Collective",
-    description:
-      "CipherUnit (Cipher Unit) is an open-source engineering collective building modern developer tools, scalable systems, and clean architecture frameworks.",
+    description: siteConfig.description,
     images: [siteConfig.brand.main],
   },
   robots: {
@@ -112,8 +124,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
     languages: {
-      en: siteConfig.url,
-      fa: `${siteConfig.url}/?lang=fa`,
+      "en-US": absoluteUrl("/"),
+      "x-default": absoluteUrl("/"),
+    },
+    types: {
+      "text/plain": absoluteUrl("/llms.txt"),
     },
   },
   appleWebApp: {
@@ -141,6 +156,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#282c33" },
+  ],
 };
 
 export default function RootLayout({
@@ -149,15 +168,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" dir="ltr">
-      <head>
-        <meta name="theme-color" content="#0a0a0a" />
-      </head>
-      <body>
+    <html lang="en" dir="ltr" className={inter.variable}>
+      <body className={`${inter.className} antialiased`}>
+        <a
+          href="#main-content"
+          className="absolute left-4 top-4 z-[100] -translate-y-16 bg-(--color-bg) px-4 py-2 text-white outline outline-(--color-primery) transition focus:translate-y-0"
+        >
+          Skip to main content
+        </a>
         <JsonLd id="jsonld-organization" data={OrganizationJsonLd} />
         <JsonLd id="jsonld-website" data={WebSiteJsonLd} />
-        <JsonLd id="jsonld-faq" data={FAQJsonLd} />
-        <JsonLd id="jsonld-breadcrumb-home" data={BreadcrumbJsonLdHome} />
         <Header />
         {children}
         <TerminalManager />

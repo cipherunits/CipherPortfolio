@@ -3,19 +3,26 @@
   "short_name": "CipherUnit",
   "description": "CipherUnit — open-source engineering collective building modern developer tools, scalable systems, and clean architecture frameworks.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
   "background_color": "#282c33",
   "theme_color": "#0a0a0a",
+  "categories": ["developer", "productivity", "utilities"],
   "icons": [
     {
       "src": "/images/CipherUnit.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/images/Hero.png",
+      "src": "/images/CipherUnit.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

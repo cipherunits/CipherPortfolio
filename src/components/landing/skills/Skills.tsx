@@ -4,14 +4,20 @@ import SkillBox from "./SkillBox";
 
 export default function Skills() {
   return (
-    <div className="max-w-6xl mx-auto p-6 mt-12">
-      <Fields text="skills" />
+    <section
+      className="max-w-6xl mx-auto p-6 mt-12"
+      aria-labelledby="skills-heading"
+    >
+      <div id="skills-heading">
+        <Fields text="skills" />
+      </div>
       <div className="flex flex-col md:flex-row gap-12 mt-8 justify-between items-center">
         <Image
           src="/images/Skills.png"
-          alt="Cipher Unit skills"
+          alt="Cipher Unit engineering skills — languages, frameworks, DevOps and developer tools"
           width={320}
           height={320}
+          sizes="(max-width: 768px) 70vw, 320px"
         />
         <div className="flex flex-col gap-2">
           <div className="flex gap-2">
@@ -40,6 +46,6 @@ export default function Skills() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,9 +1,22 @@
 import Button from "@/components/shared/Button";
 import Link from "next/link";
+import type { Metadata } from "next";
 
-function notfound() {
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  description: "The page you are looking for doesn’t exist or has been moved.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
+
+export default function NotFound() {
   return (
-    <div className="flex flex-col justify-center items-center w-full h-[80vh] pb-10">
+    <main
+      id="main-content"
+      className="flex flex-col justify-center items-center w-full h-[80vh] pb-10"
+    >
       <h1 className="font-bold text-[200px] text-white">404</h1>
       <p className="text-(--color-stroke) text-center">
         The page you are looking for doesn’t exist or has been moved.
@@ -11,8 +24,6 @@ function notfound() {
       <Link href="/" className="mt-6">
         <Button>Back to Landing page</Button>
       </Link>
-    </div>
+    </main>
   );
 }
-
-export default notfound;
