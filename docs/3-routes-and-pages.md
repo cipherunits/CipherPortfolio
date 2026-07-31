@@ -1,84 +1,94 @@
 # Routes & Pages
 
-## `/` (Home)
+## `/` — Home
 
-File: `src/app/page.tsx`
+**File:** `src/app/page.tsx`
 
-Part of: `src/app/page.tsx:1`
+Landing composition: Hero → Overview → Projects → Skills → Team (preview) → AboutMe → Faq → Contact.
 
-Assembles all landing sections from `src/components` in the following order:
-1. `Hero`
-2. `Overview`
-3. `Projects`
-4. `Skills`
-5. `AboutMe`
-6. `Contact` (landing)
+- `revalidate = 3600`
+- Page metadata overrides title/OG/Twitter for the home absolute title
+- JSON-LD: `HomePageJsonLd`, `BreadcrumbJsonLdHome`, `FAQJsonLd`
 
-Metadata is inherited from the root layout.
+## `/projects`
+
+**File:** `src/app/projects/page.tsx`
+
+Full projects listing via `<Projects view={false} />`.
+
+- Canonical `/projects`
+- JSON-LD: `buildProjectsGraphJsonLd()`
+
+## `/team`
+
+**File:** `src/app/team/page.tsx`
+
+Public GitHub organization members.
+
+- `revalidate = 3600`
+- Loads members with `getTeamMembers()` from `src/lib/team.ts`
+- Renders `<Team preview={false} />`
+- JSON-LD: `buildTeamGraphJsonLd(members)`
+- Header copy via `NamePage` + `SubNamePage`
 
 ## `/contact`
 
-File: `src/app/contact/page.tsx`
+**File:** `src/app/contact/page.tsx`
 
-Part of: `src/app/contact/page.tsx:1`
+Dedicated contact page:
 
-Renders the dedicated contact page:
+- `NamePage` — path-derived heading
+- `ContactText` — intro
+- `ContactBox` — GitHub + email
+- `ContactMedia` — social row
 
-- `NamePage` — dynamic route heading (`/contact`)
-- `ContactText` — introductory sentence
-- `ContactBox` — GitHub + email contact cards
-- `ContactMedia` — social/community links row
-
-Metadata:
-- Title: `Contact CipherUnit — Cipher Unit Open Source Developer Tools`
-- Canonical: `/contact`
-- Embedded JSON-LD: `BreadcrumbJsonLdContact`
+Metadata and contact-page JSON-LD are defined on the route.
 
 ## `/github`
 
-File: `src/app/github/page.tsx`
+**File:** `src/app/github/page.tsx`
 
-Part of: `src/app/github/page.tsx:1`
+- `robots: { index: false, follow: false }`
+- Server `redirect()` to `https://github.com/cipherunits`
+- Disallowed in `src/app/robots.ts`
 
-Behavior:
-- Sets route metadata (`robots: { index: false, follow: false }`, canonical `/github`)
-- Calls Next.js `redirect()` to `https://github.com/cipherunits`
-- No content is rendered; the user is redirected server-side.
+## Not found
 
-## `/404` (Not Found)
+**File:** `src/app/not-found.tsx`
 
-File: `src/app/not-found.tsx`
-
-Part of: `src/app/not-found.tsx:1`
-
-- Custom 404 page rendered at a large headline scale.
-- CTA button linking back to `/`.
+Custom 404 with CTA back to `/`.
 
 ## Sitemap
 
-File: `src/app/sitemap.ts`
+**File:** `src/app/sitemap.ts`
 
-Part of: `src/app/sitemap.ts:1`
+| Path | changeFrequency | priority |
+|------|-----------------|----------|
+| `/` | weekly | 1.0 |
+| `/projects` | weekly | 0.9 |
+| `/team` | weekly | 0.85 |
+| `/contact` | monthly | 0.8 |
 
-Generates a standard XML sitemap with three entries:
+`lastModified` is `new Date()` at build/request time. `/github` is intentionally omitted.
 
-| Path | lastModified | changeFrequency | priority |
-|------|------------|----------------|----------|
-| `/` | 2025-01-01 | daily | 1.0 |
-| `/contact` | 2025-01-01 | monthly | 0.8 |
-| `/github` | 2025-01-01 | weekly | 0.6 |
+## Robots
 
-All entries include `alternates.languages` for `en` and `fa`.
+**File:** `src/app/robots.ts` (dynamic; no static `public/robots.txt`)
 
-## robots.txt
+- Default UA: allow `/`, disallow `/api/`, `/_next/`, `/private/`, `/_vercel/`, `/github`
+- AI crawlers (GPTBot, ClaudeBot, etc.): allow `/` and `/llms.txt`
+- `sitemap` + `host` from `siteConfig`
 
-File: `public/robots.txt`
+## Navigation
 
-Part of: `public/robots.txt:1`
+**File:** `src/components/shared/header/Item.ts`
 
-Rules:
-- `User-agent: *` — allow `/`, `/contact`, `/github`; block `/_next/static/`, `/_next/data/`, `/api/`
-- `Googlebot` — full allow with crawl delay 0
-- `Bingbot` — full allow with crawl delay 1
-- Host: `https://cipherunit.xyz`
-- Sitemap: `https://cipherunit.xyz/sitemap.xml`
+```ts
+[
+  { name: "home", link: "/" },
+  { name: "projects", link: "/projects" },
+  { name: "team", link: "/team" },
+  { name: "contact", link: "/contact" },
+  { name: "docs", link: "https://cipherunits.github.io/CipherPortfolio/" },
+]
+```

@@ -1,41 +1,36 @@
 # Known Issues & Notes
 
-## Resolved in production pass
-
-The following content/config issues were fixed for production readiness:
+## Resolved (production hardening)
 
 | Previous issue | Resolution |
 |----------------|------------|
-| `<Co1ntact />` import typo | Renamed to `<Contact />` |
-| Folder/file `skils` / `Skils` | Renamed to `skills` / `Skills` |
-| `IGet in touch` | Corrected to `Get in touch` |
-| `CiphrtUnit !` | Corrected to `CipherUnit!` |
-| `items-cennter` | Corrected to `items-center` |
-| `teck` / `diceription` | Renamed to `tech` / `description` |
-| `Instageram_PAGE` | Prefer `INSTAGRAM_PAGE` (legacy key still accepted) |
-| Manifest at `public/images/manifest.json` | Moved to `public/manifest.json` |
-| Broken icon path `/Hero.png` in manifest | Fixed to `/images/Hero.png` |
-| Wrong projects domain `cipherunit.com` | Uses `siteConfig.url` (`cipherunit.xyz`) |
-| Google verification meta double-prefixed | Uses Next.js `verification.google` |
-| Scattered env/GitHub URLs | Centralized in `src/lib/site.ts` |
-| Terminal `social` / `github` wrong org | Updated to `cipherunits` |
-| Duplicate JSON-LD script `id` | Unique ids per block |
-| `.env` tracked / not ignored | `.env` gitignored; `.env.example` added |
+| Import / folder typos (`Co1ntact`, `skils`, etc.) | Renamed to correct identifiers |
+| Manifest under `public/images/` | Moved to `public/manifest.json` |
+| Wrong projects domain | Uses `siteConfig.url` (`cipherunit.xyz`) |
+| Scattered env / GitHub URLs | Centralized in `src/lib/site.ts` |
+| Terminal org slug mismatch | Aligned to `cipherunits` |
+| Duplicate JSON-LD script ids | Unique `id` per block |
+| Tracked `.env` | Gitignored; `.env.example` provided |
+| Static `robots.txt` drift | Replaced by `src/app/robots.ts` |
 
-## Docs vs. Site
+## Docs vs portfolio
 
-- The docs site (this folder) is published via Zensical to GitHub Pages.
-- The main portfolio site lives under `src/app/` and is deployed separately (Vercel recommended).
+| Surface | Tooling | Deploy |
+|---------|---------|--------|
+| Portfolio | Next.js | App host (e.g. Vercel / Docker) |
+| Documentation | Zensical (`docs/` + `zensical.toml`) | GitHub Pages via `docs.yml` |
 
 ## Dockerfile
 
-The Dockerfile is functional. Node `20` and pnpm `10.5.1` are hardcoded; add `ARG`s if the pipeline needs overrides.
+Node `20` and a pinned pnpm version are hardcoded. Introduce `ARG`s if CI needs overrides.
 
-## pnpm-workspace.yaml
+## `pnpm-workspace.yaml`
 
-The workspace file disables native builds for `sharp` and `unrs-resolver`. This is intentional for compatibility in constrained environments.
+Disables native builds for `sharp` and `unrs-resolver` intentionally for constrained environments.
 
-## Remaining notes
+## Intentional quirks
 
-- CSS token `--color-primery` keeps the historical spelling; renaming would touch many class names with no user-facing benefit.
-- Terminal content is still partly playful/demo (e.g. uptime, neofetch) and not live system data.
+- CSS token `--color-primery` keeps the historical spelling; renaming would churn class names without user-facing benefit.
+- Terminal output is demo content (static uptime, neofetch-style text), not live system metrics.
+- Overview “People” falls back to `8+` if the GitHub API returns no members (rate limit / network).
+- `/github` exists for redirects and branding but is `noindex` and omitted from the sitemap.

@@ -1,118 +1,129 @@
 # CipherPortfolio
 
-Official portfolio website for **Cipher Unit**, built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
+Official portfolio website for **[Cipher Unit](https://cipherunit.xyz)** — an open-source engineering collective building secure, scalable developer tools.
+
+Built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
 
 <a href="https://cipherunit.xyz">
-  <img src="https://raw.githubusercontent.com/cipherunits/CipherPortfolio/main/public/github-image-page.png" alt="CipherPortfolio Preview" />
+  <img src="https://raw.githubusercontent.com/cipherunits/CipherPortfolio/main/public/images/github-image-page.png" alt="CipherPortfolio preview" />
 </a>
 
+---
 
-<br/>
+## Live
+
+| Resource | URL |
+|----------|-----|
+| Website | [cipherunit.xyz](https://cipherunit.xyz) |
+| Documentation | [cipherunits.github.io/CipherPortfolio](https://cipherunits.github.io/CipherPortfolio/) |
+| GitHub Org | [github.com/cipherunits](https://github.com/cipherunits) |
 
 ---
 
-## 📚 Documentation
+## Features
 
-Complete documentation, architecture, project structure, deployment guide, SEO, and development workflow are available here:
-
-https://cipherunits.github.io/CipherPortfolio/
-
----
-
-## ✨ Features
-
-- ⚡ Built with Next.js 16 + React 19
-- 🎨 Tailwind CSS v4
-- 📱 Responsive design
-- 🔍 SEO optimized
-- 🗺️ Automatic sitemap & robots
-- 📄 JSON-LD structured data
-- 🐳 Docker support
-- 📚 Comprehensive documentation
-
-Built by **[Cipher-Unit](https://cipherunit.xyz/)**.
+- Responsive landing page with hero, projects, skills, team, FAQ, and contact
+- Dedicated `/projects`, `/team`, and `/contact` routes
+- Interactive client-side terminal overlay
+- SEO: metadata, Open Graph, Twitter Cards, JSON-LD, sitemap, robots, `llms.txt`
+- Team members loaded from the GitHub organization API
+- Docker multi-stage production image
+- Docs site via [Zensical](https://zensical.org) → GitHub Pages
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
+
+**Requirements:** Node.js 20+, pnpm 9+
 
 ```bash
 git clone https://github.com/cipherunits/CipherPortfolio.git
-
 cd CipherPortfolio
-
-make install
-make dev
-```
-
-or
-
-```bash
+cp .env.example .env.local
 pnpm install
 pnpm dev
 ```
 
-Open:
+Open [http://localhost:3000](http://localhost:3000).
 
-```
-http://localhost:3000
+Via Make:
+
+```bash
+make install
+make dev
 ```
 
 ---
 
-## 📦 Production
+## Scripts
 
-```bash
-make build-app
-make run
-```
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Development server |
+| `pnpm build` | Typecheck, lint, then production build |
+| `pnpm start` | Serve the production build |
+| `pnpm check` | TypeScript + ESLint |
+| `pnpm lint` | ESLint only |
+| `pnpm typecheck` | `tsc --noEmit` |
 
-or
+---
+
+## Production
 
 ```bash
 pnpm build
 pnpm start
 ```
 
+Docker:
+
+```bash
+make build   # docker image
+make run     # container on :3000
+```
+
 ---
 
-## 📖 Learn More
+## Documentation
 
-The documentation includes everything about the project, including:
+Full architecture, routes, components, SEO, and contribution guides:
 
-- Installation
-- Project architecture
-- Folder structure
-- Components
-- Routing
-- SEO
-- Docker
-- Deployment
-- Troubleshooting
-- Contribution guide
+**[https://cipherunits.github.io/CipherPortfolio/](https://cipherunits.github.io/CipherPortfolio/)**
 
+Source lives in [`docs/`](./docs/). Build locally:
 
-## Contribute
+```bash
+pip install zensical
+zensical serve
+```
 
-Contributions are welcome! Whether it's bug fixes, new algorithms, documentation improvements, or feature suggestions — feel free to open an issue or pull request.
+---
 
-- **Repository:** [https://github.com/cipherunits/CipherPortfolio](https://github.com/cipherunits/CipherPortfolio)
-- **Issues:** [https://github.com/cipherunits/CipherPortfolio/issues](https://github.com/cipherunits/CipherPortfolio/issues)
+## Project Layout
 
-Please read the code of conduct and contribution guidelines before submitting. All contributions must follow the MIT license.
+```
+src/
+  app/           # App Router pages, layout, sitemap, robots
+  components/    # Landing, contact, terminal, shared UI
+  lib/           # site config, projects, team, FAQ data
+docs/            # Zensical documentation
+public/          # Static assets, fonts, manifest, llms.txt
+```
+
+---
+
+## Contributing
+
+Bug fixes, docs, and features are welcome. Open an issue or pull request on [GitHub](https://github.com/cipherunits/CipherPortfolio).
+
+Please keep changes focused and follow existing code style. Licensed under MIT.
 
 ---
 
 ## License
 
-**MIT** — see [LICENSE](LICENSE) for details.
-
-
-<br/>
-<br/>
-<br/>
-<br/>
+[MIT](./LICENSE) © Cipher Unit
 
 <p align="center">
-  <b><i>Made with ❤️ for developers by CipherUnit</i></b>
+  <i>Built by <a href="https://cipherunit.xyz">Cipher Unit</a></i>
 </p>

@@ -1,21 +1,30 @@
 [project]
 
 site_name = "CipherPortfolio"
-site_description = "Official portfolio documentation for Cipher Unit (CipherUnit) — an open-source engineering collective focused on building secure, scalable, and high-quality software systems."
-site_author = "MohammadTahaBatoomi"
+site_description = "Technical documentation for CipherPortfolio — the official Cipher Unit portfolio site built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4."
+site_author = "Cipher Unit"
+site_url = "https://cipherunits.github.io/CipherPortfolio/"
 
 copyright = "Copyright &copy; 2026 Cipher Unit"
 
 repo_url = "https://github.com/cipherunits/CipherPortfolio"
+repo_name = "cipherunits/CipherPortfolio"
+
+docs_dir = "docs"
+site_dir = "site"
+
+logo = "CipherUnit.png"
+favicon = "CipherUnit.png"
 
 nav = [
-  { "Overview" = "README.md" },
+  { "Home" = "README.md" },
+  { "Project Overview" = "1-project-overview.md" },
   { "Architecture" = "2-architecture.md" },
   { "Routes & Pages" = "3-routes-and-pages.md" },
   { "Components" = "4-components.md" },
   { "Development" = "5-development.md" },
   { "SEO & Metadata" = "6-seo.md" },
-  { "Content Update Guide" = "7-content-update-guide.md" },
+  { "Content Updates" = "7-content-update-guide.md" },
   { "Known Issues" = "8-known-issues.md" },
   { "CLI & Commands" = "9-cli-commands.md" },
   { "Configuration" = "10-configuration.md" },
@@ -39,6 +48,7 @@ features = [
     "navigation.top",
     "navigation.tracking",
     "search.highlight",
+    "toc.follow",
 ]
 
 language = "en"
@@ -89,6 +99,10 @@ combine_header_slug = true
 custom_checkbox = true
 [project.markdown_extensions.pymdownx.tilde]
 
-[project.extra]
-logo = "/images/CipherUnit.png"
-favicon = "/images/CipherUnit.png"
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/cipherunits/CipherPortfolio"
+
+[[project.extra.social]]
+icon = "fontawesome/solid/globe"
+link = "https://cipherunit.xyz"

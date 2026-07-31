@@ -1,101 +1,94 @@
 # Content Update Guide
 
-This is the quick-reference map for updating static content in the portfolio. All paths are relative to the repository root.
+Quick map for editing static content. Paths are relative to the repository root.
 
-## Hero Section
+## Site-wide brand & URLs
 
-File: `src/components/landing/hero/Hero.tsx`
+**File:** `src/lib/site.ts` + `.env.local`
 
-- Headline, intro paragraph, CTA label
-- Status strip text ("Currently working on Cipher Unit")
-- Image: `/images/Hero.png` in `public/`
+- Name, tagline, description, URL, email, GitHub, docs URL
+- Brand image paths (`NEXT_PUBLIC_BRAND_IMAGE_*`)
+- Google verification (`GOOGLE_PUBLIC_KEY`)
 
-## Overview Stats
+## Hero
 
-File: `src/components/landing/overview/Overview.tsx`
+`src/components/landing/hero/Hero.tsx` — headline, copy, CTA, status strip. Image: `public/images/Hero.png`.
 
-- Edit the three stat numbers/labels directly in the component.
+## Overview stats
+
+`src/components/landing/overview/Overview.tsx`
+
+- Project count and commands are hardcoded
+- People count comes from `getTeamMembers()` (fallback `8+`)
 
 ## Projects
 
-Files:
-- `src/components/landing/projects/components/Projects.tsx` — section header and project list
-- `src/components/landing/projects/components/ProjectBox.tsx` — card layout
-- `src/components/landing/projects/types/projects.type.ts` — `Project` type definition
+**Data:** `src/lib/projects.ts` — append objects to the `projects` array.
 
-To add a project, append an object to the `projects` array in `Projects.tsx`.
+| Field | Required | Notes |
+|-------|----------|-------|
+| `slug` | yes | Stable id |
+| `imageUrl` | yes | Under `public/images/` |
+| `tech` | yes | Display string |
+| `programmingLanguages` | yes | Array for schema |
+| `title` / `description` | yes | Card copy |
+| `linkLive` / `linkDocs` | yes | URLs |
+| `buttonLive` / `buttonDocs` | no | Button labels |
 
-Project card props:
-- `imageUrl`, `tech`, `title`, `description`, `linkLive`, `linkDocs`, `buttonLive`, `buttonDocs`
+UI: `Projects.tsx`, `ProjectBox.tsx`.
+
+## Team
+
+Members are **not** hardcoded. Source: GitHub org public members via `src/lib/team.ts`.
+
+- Preview count: `LANDING_PREVIEW_COUNT` in `Team.tsx` (default `4`)
+- Optional `GITHUB_TOKEN` for API rate limits
+- Card UI: `MemberCard.tsx`
 
 ## Skills
 
-Files:
-- `src/components/landing/skills/Skills.tsx` — category list and layout
-- `src/components/landing/skills/SkillBox.tsx` — single category box
+`src/components/landing/skills/Skills.tsx` + `SkillBox.tsx` — edit categories and entries in the component tree.
 
-Edit the `SkillBox` instances to change categories and tool entries.
+## About
 
-## About Me
+`src/components/landing/about-me/AboutMe.tsx` — copy + CTA. Image: `public/images/AboutMe.png`.
 
-File: `src/components/landing/about-me/AboutMe.tsx`
+## FAQ
 
-- Brand description paragraph
-- CTA label
+`src/lib/faq.ts` — shared by `Faq.tsx` and `FAQJsonLd`. Update both answer text and schema by editing this file only.
 
-Image: `/AboutMe.png`
+## Contact
 
-## Contact Sections
+| Surface | Files |
+|---------|-------|
+| Landing teaser | `landing/contact/Contact.tsx` |
+| `/contact` page | `contacts/ContactText.tsx`, `ContactBox.tsx`, `ContactMedia.tsx` |
 
-### Landing contact teaser
-`src/components/landing/contact/Contact.tsx`
+Email/GitHub resolve from `siteConfig` / env.
 
-- Description paragraph and message card on homepage.
+## Navigation & footer
 
-### Dedicated `/contact` page
-Files:
-- `src/components/contacts/ContactText.tsx` — intro paragraph
-- `src/components/contacts/ContactBox.tsx` — contact card (GitHub + email)
-- `src/components/contacts/ContactMedia.tsx` — social links row
+- Nav: `src/components/shared/header/Item.ts`
+- Footer: `src/components/shared/footer/Footer.tsx`
 
-Email displayed is read from `process.env.CONTACT_EMAIL`.
+## Terminal commands
 
-## Header Navigation
+`src/components/terminal/Commands.ts` — add keys to the `commands` object. Client-only.
 
-File: `src/components/shared/header/Item.ts`
+## Theme
 
-Edit the `navItems` array to change labels and links. The array contains:
+`src/app/styles/globals.css` — CSS variables under `:root`.
 
-```ts
-[
-  { name: "home", link: "/" },
-  { name: "contact", link: "/contact" },
-  { name: "docs", link: "https://cipherunits.github.io/CipherPortfolio/" },
-]
-```
+## SEO surfaces
 
-## Footer
+| What | Where |
+|------|-------|
+| Global metadata | `src/app/layout.tsx` |
+| Per-route metadata | Each `src/app/*/page.tsx` |
+| Sitemap | `src/app/sitemap.ts` |
+| Robots | `src/app/robots.ts` |
+| LLM summary | `public/llms.txt` |
+| Manifest | `public/manifest.json` |
+| IndexNow ping | `scripts/seo-notify.mjs` |
 
-`src/components/shared/footer/Footer.tsx`
-
-- App name, `CONTACT_EMAIL`, and social media image links
-- Attribution text
-
-## Terminal Commands
-
-File: `src/components/terminal/Commands.ts`
-
-Edit or extend the `commands` object to add new terminal responses. Client-side only; no backend.
-
-## Global Theme
-
-File: `src/app/styles/globals.css`
-
-Edit CSS variables at the top of the file to change the color system. All components consume these via Tailwind arbitrary tokens.
-
-## SEO Values
-
-- Global / per-route: `src/app/layout.tsx`, `src/app/contact/page.tsx`, `src/app/github/page.tsx`
-- Sitemap: `src/app/sitemap.ts`
-- Robots: `public/robots.txt`
-- Manifest: `public/manifest.json`
+After meaningful URL or content changes, rebuild and consider running the SEO notify script.
