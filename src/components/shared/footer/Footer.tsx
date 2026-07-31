@@ -56,9 +56,9 @@ export default function Footer() {
         <p className="text-center text-base [word-spacing:2px] text-(--color-stroke)">
           © {year}{" "}
           <Link className="hover:underline" href="/">
-            Cipher Unit
+            Cipher Unit 
           </Link>
-          {" · "}
+          {" ❤️‍🔥 "}
           Made for developers by{" "}
           <Link
             className="hover:underline"

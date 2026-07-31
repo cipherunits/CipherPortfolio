@@ -6,7 +6,7 @@ export default function ImageLogo() {
   return (
     <Link className="flex items-center gap-2" href="/">
       <Image
-        src={siteConfig.brand.logo}
+        src={siteConfig.brand.alt}
         alt="Cipher Unit"
         width={25}
         height={25}
