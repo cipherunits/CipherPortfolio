@@ -1,38 +1,77 @@
 {
-  "name": "CipherPortfolio",
-  "version": "2.5.0",
+  "name": "cipher-portfolio",
+  "version": "3.0.0",
   "private": false,
+  "description": "Official portfolio website for Cipher Unit — an open-source engineering collective building secure, scalable developer tools.",
+  "license": "MIT",
   "author": {
-    "name": "cipherunit",
+    "name": "Cipher Unit",
     "email": "cipherunit.dev@gmail.com",
     "url": "https://cipherunit.xyz"
   },
-  "license": "MIT",
+  "homepage": "https://cipherunit.xyz",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cipherunits/CipherPortfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cipherunits/CipherPortfolio/issues"
+  },
+  "keywords": [
+    "cipher-unit",
+    "cipherunit",
+    "portfolio",
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "open-source",
+    "developer-tools",
+    "engineering-collective"
+  ],
+  "engines": {
+    "node": ">=20.9.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@11.5.2",
+  "sideEffects": false,
   "scripts": {
     "banner": "printf '\n██████╗██╗██████╗ ██╗  ██╗███████╗██████╗ ██╗   ██╗███╗   ██╗██╗████████╗\n██╔════╝██║██╔══██╗██║  ██║██╔════╝██╔══██╗██║   ██║████╗  ██║██║╚══██╔══╝\n██║     ██║██████╔╝███████║█████╗  ██████╔╝██║   ██║██╔██╗ ██║██║   ██║\n██║     ██║██╔═══╝ ██╔══██║██╔══╝  ██╔══██╗██║   ██║██║╚██╗██║██║   ██║\n╚██████╗██║██║     ██║  ██║███████╗██║  ██║╚██████╔╝██║ ╚████║██║   ██║\n ╚═════╝╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝   ╚═╝\n\n'",
+    "predev": "pnpm --silent banner",
+    "dev": "next dev",
+    "prebuild": "pnpm --silent banner && pnpm --silent check",
+    "build": "next build",
+    "prestart": "pnpm --silent banner",
+    "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "check": "pnpm typecheck && pnpm lint",
-    "dev": "pnpm --silent banner && next dev",
-    "build": "pnpm --silent banner && pnpm --silent check && next build",
-    "start": "pnpm --silent banner && next start",
+    "clean": "rm -rf .next out dist node_modules/.cache",
+    "seo:notify": "node scripts/seo-notify.mjs",
     "prepare": "husky"
   },
   "dependencies": {
-    "next": "16.2.7",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "next": "16.2.12",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.19.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.7",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.2.12",
     "husky": "^9.1.7",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
+  },
+  "browserslist": [
+    "chrome >= 111",
+    "firefox >= 111",
+    "safari >= 16.4",
+    "edge >= 111",
+    "not dead"
+  ]
 }

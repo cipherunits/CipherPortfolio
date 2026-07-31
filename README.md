@@ -65,6 +65,8 @@ make dev
 | `pnpm check` | TypeScript + ESLint |
 | `pnpm lint` | ESLint only |
 | `pnpm typecheck` | `tsc --noEmit` |
+| `pnpm clean` | Remove `.next` / build caches |
+| `pnpm seo:notify` | Ping search engines (IndexNow) |
 
 ---
 

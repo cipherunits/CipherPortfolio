@@ -2,48 +2,61 @@ import Image from "next/image";
 import Fields from "@/components/shared/Fields";
 import SkillBox from "./SkillBox";
 
+const skills = [
+  {
+    title: "Languages",
+    subTitle: "TypeScript JavaScript Python C# Rust C",
+  },
+  {
+    title: "Databases",
+    subTitle: "SQLite PostgreSQL MongoDB SQLServer MySQL",
+  },
+  {
+    title: "Frameworks",
+    subTitle: "React Django FastApi .NetCore",
+  },
+  {
+    title: "Tools",
+    subTitle: "VScode Neovim Linux Git",
+  },
+  {
+    title: "Other",
+    subTitle: "NextJs JWT Tailwind pip pnpm uv cargo",
+  },
+  {
+    title: "DevOps",
+    subTitle: "IIS Nginx DockerSvc Bash CI-Cd",
+  },
+] as const;
+
 export default function Skills() {
   return (
     <section
-      className="max-w-6xl mx-auto p-6 mt-12"
+      className="mx-auto mt-12 max-w-6xl p-4 sm:p-6"
       aria-labelledby="skills-heading"
     >
       <div id="skills-heading">
         <Fields text="skills" />
       </div>
-      <div className="flex flex-col md:flex-row gap-12 mt-8 justify-between items-center">
+
+      <div className="mt-8 flex flex-col items-center justify-between gap-8 md:flex-row md:gap-12">
         <Image
           src="/images/Skills.png"
           alt="Cipher Unit engineering skills — languages, frameworks, DevOps and developer tools"
           width={320}
           height={320}
-          sizes="(max-width: 768px) 70vw, 320px"
+          className="h-auto w-48 max-w-full sm:w-64 md:w-80"
+          sizes="(max-width: 640px) 192px, (max-width: 768px) 256px, 320px"
         />
-        <div className="flex flex-col gap-2">
-          <div className="flex gap-2">
+
+        <div className="grid w-full grid-cols-2 gap-2 sm:gap-3 md:max-w-xl lg:max-w-2xl">
+          {skills.map((skill) => (
             <SkillBox
-              title="Languages"
-              subTitle="TypeScript JavaScript Python C# Rust C"
+              key={skill.title}
+              title={skill.title}
+              subTitle={skill.subTitle}
             />
-            <SkillBox
-              title="Databases"
-              subTitle="SQLite PostgreSQL MongoDB SQLServer MySQL"
-            />
-            <SkillBox
-              title="Frameworks"
-              subTitle="React Django FastApi .NetCore"
-            />
-          </div>
-          <div className="flex justify-end gap-2">
-            <SkillBox title="Tools" subTitle="VScode Neovim Linux Git" />
-            <SkillBox
-              title="Other"
-              subTitle="NextJs JWT Tailwind pip pnpm uv cargo"
-            />
-          </div>
-          <div className="flex md:justify-end justify-center gap-2">
-            <SkillBox title="DevOps" subTitle="IIS Nginx DockerSvc Bash CI-Cd " />
-          </div>
+          ))}
         </div>
       </div>
     </section>
