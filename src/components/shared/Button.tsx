@@ -11,7 +11,7 @@ export default function Button({ children, Theme = "primary" }: Props) {
   
   return (
     <button className={`
-      font-medium cursor-pointer duration-300 py-1 px-4
+      font-medium cursor-pointer duration-300 py-1 px-2
       ${themeClasses[Theme]}
     `}>
       {children}

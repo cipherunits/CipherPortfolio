@@ -8,7 +8,7 @@ import {
   JsonLd,
 } from "@/components/shared/JsonLd";
 import { projects } from "@/lib/projects";
-import { projectImageCaption, projectImageTitle } from "@/lib/seo-images";
+import { projectImageTitle } from "@/lib/seo-images";
 import { absoluteUrl, brandOgImages, siteConfig } from "@/lib/site";
 
 const PAGE_URL = absoluteUrl("/projects");
@@ -89,15 +89,12 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main id="main-content" className="mx-auto my-8 max-w-6xl p-6 md:my-22">
+    <main id="main-content" className="mx-auto my-8 max-w-6xl px-4 sm:px-6 md:my-22">
       <JsonLd id="jsonld-projects-graph" data={buildProjectsGraphJsonLd()} />
 
-      <header className="mb-16 space-y-3">
+      <header className="mb-10 space-y-2">
         <NamePage />
         <SubNamePage text="Explore all open-source projects developed by Cipher Unit." />
-        <p className="sr-only">
-          {projects.map((project) => projectImageCaption(project)).join(" ")}
-        </p>
       </header>
 
       <Projects view={false} />

@@ -50,14 +50,16 @@ export default function Home() {
       <JsonLd id="jsonld-home-webpage" data={HomePageJsonLd} />
       <JsonLd id="jsonld-breadcrumb-home" data={BreadcrumbJsonLdHome} />
       <JsonLd id="jsonld-faq" data={FAQJsonLd} />
-      <Hero />
-      <Overview />
-      <Projects view={true} />
-      <Skills />
-      <Team preview />
-      <AboutMe />
-      <Faq />
-      <Contact />
+      <div className="space-y-20">
+        <Hero />
+        <Overview />
+        <Projects view={true} />
+        <Skills />
+        <Team preview />
+        <AboutMe />
+        <Faq />
+        <Contact />
+      </div>
     </main>
   );
 }

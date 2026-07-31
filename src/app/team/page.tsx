@@ -92,24 +92,12 @@ export default async function TeamPage() {
   const members = await getTeamMembers();
 
   return (
-    <main id="main-content" className="mx-auto my-8 max-w-6xl p-6 md:my-22">
+    <main id="main-content" className="mx-auto my-8 max-w-6xl px-4 sm:px-6 md:my-22">
       <JsonLd id="jsonld-team-graph" data={buildTeamGraphJsonLd(members)} />
 
-      <header className="mb-10 space-y-3">
+      <header className="mb-10 space-y-2">
         <NamePage />
         <SubNamePage text="Public GitHub members of the Cipher Units organization." />
-        <p className="max-w-2xl text-sm leading-7 text-(--color-stroke)">
-          Browse engineers and contributors listed publicly on{" "}
-          <a
-            href={siteConfig.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:underline"
-          >
-            github.com/{siteConfig.githubOrg}
-          </a>
-          . Each profile links to their GitHub account.
-        </p>
       </header>
 
       <Team preview={false} />

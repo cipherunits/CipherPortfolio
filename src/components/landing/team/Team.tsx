@@ -18,8 +18,13 @@ export default async function Team({ preview = false }: { preview?: boolean }) {
 
   return (
     <section
-      className="mx-auto mt-12 w-full max-w-7xl px-4 sm:px-6 lg:px-8"
-      aria-labelledby="team-heading"
+      className={
+        preview
+          ? "mx-auto mt-12 w-full max-w-7xl px-4 sm:px-6 lg:px-20"
+          : "w-full"
+      }
+      aria-labelledby={preview ? "team-heading" : undefined}
+      aria-label={preview ? undefined : "Cipher Unit GitHub team"}
       itemScope
       itemType="https://schema.org/ItemList"
     >
@@ -31,32 +36,33 @@ export default async function Team({ preview = false }: { preview?: boolean }) {
       <meta itemProp="numberOfItems" content={String(shown.length)} />
       <meta itemProp="itemListOrder" content="Ascending" />
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="w-full" id="team-heading">
-          <Fields text="team" />
-        </div>
+      {preview ? (
+        <>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="w-full" id="team-heading">
+              <Fields text="team" />
+            </div>
 
-        {preview ? (
-          <Link
-            href="/team"
-            className="shrink-0 text-sm font-medium text-white transition hover:underline"
-            aria-label="View all Cipher Unit GitHub team members"
-          >
-            View all team →
-          </Link>
-        ) : null}
-      </div>
+            <Link
+              href="/team"
+              className="shrink-0 text-sm font-medium text-white transition hover:underline"
+              aria-label="View all Cipher Unit GitHub team members"
+            >
+              View all team →
+            </Link>
+          </div>
 
-      <p className="mt-4 max-w-2xl text-sm leading-7 text-(--color-stroke)">
-        {preview
-          ? `Meet public GitHub members building open-source tools at ${siteConfig.name}.`
-          : `Public contributors and engineers from the ${siteConfig.githubOrg} GitHub organization — avatars, names, and profiles.`}
-      </p>
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-(--color-stroke)">
+            Meet public GitHub members building open-source tools at{" "}
+            {siteConfig.name}.
+          </p>
+        </>
+      ) : null}
 
       <div
-        className={`mt-10 grid justify-center gap-6 ${
+        className={`grid justify-center gap-6 ${
           preview
-            ? "grid-cols-2 sm:grid-cols-4"
+            ? "mt-10 grid-cols-2 sm:grid-cols-4"
             : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         }`}
       >

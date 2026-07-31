@@ -5,17 +5,24 @@ import ProjectBox from "./ProjectBox";
 import { projects } from "@/lib/projects";
 
 export default function Projects({ view = false }: { view?: boolean }) {
+  const isLanding = view;
+
   return (
     <section
-      className="mx-auto mt-12 w-full max-w-7xl px-4 sm:px-6 lg:px-8"
-      aria-labelledby="projects-heading"
+      className={
+        isLanding
+          ? "mx-auto mt-12 w-full max-w-7xl px-4 sm:px-6 lg:px-20"
+          : "w-full"
+      }
+      aria-labelledby={isLanding ? "projects-heading" : undefined}
+      aria-label={isLanding ? undefined : "Cipher Unit open source projects"}
     >
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="w-full" id="projects-heading">
-          <Fields text="projects" />
-        </div>
+      {isLanding ? (
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="w-full" id="projects-heading">
+            <Fields text="projects" />
+          </div>
 
-        {view && (
           <Link
             href="/projects"
             className="shrink-0 text-sm font-medium text-white transition hover:underline"
@@ -23,11 +30,13 @@ export default function Projects({ view = false }: { view?: boolean }) {
           >
             View all projects →
           </Link>
-        )}
-      </div>
+        </div>
+      ) : null}
 
       <div
-        className="mt-12 grid grid-cols-1 justify-center gap-8 lg:grid-cols-3"
+        className={`grid grid-cols-1 justify-center gap-8 lg:grid-cols-3 ${
+          isLanding ? "mt-12" : ""
+        }`}
         itemScope
         itemType="https://schema.org/ItemList"
       >
