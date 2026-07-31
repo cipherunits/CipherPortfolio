@@ -7,28 +7,29 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full border-t border-(--color-stroke) pt-6 mt-auto">
-      <div className="w-full max-w-6xl p-6 mx-auto">
-        <div className="md:mb-18 mb-12 flex flex-col md:flex-row items-center justify-between md:gap-0 gap-12">
+    <footer className="mt-auto w-full border-t border-(--color-stroke)/30 pt-6">
+      <div className="mx-auto w-full max-w-6xl p-6">
+        <div className="mb-12 flex flex-col items-center justify-between gap-12 md:mb-18 md:flex-row md:gap-0">
           <div className="space-y-2">
-            <div className="flex flex-col md:flex-row items-center md:gap-4 gap-6">
+            <div className="flex flex-col items-center gap-6 md:flex-row md:gap-4">
               <ImageLogo />
               <p className="text-base text-(--color-stroke)">{siteConfig.email}</p>
             </div>
-            <p className="text-base text-(--color-stroke) md:text-start text-center">
+            <p className="text-center text-base text-(--color-stroke) md:text-start">
               Building open-source tools for developers by developers.
             </p>
           </div>
           <div>
-            <p className="text-2xl text-white font-semibold md:text-start text-center">
+            <p className="text-center text-2xl font-semibold text-white md:text-start">
               Media
             </p>
-            <div className="flex items-center gap-4 mt-4">
+            <div className="mt-4 flex items-center gap-3">
               {siteConfig.instagram ? (
                 <Link
                   href={siteConfig.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="rounded-md border border-(--color-stroke)/30 p-2 transition hover:border-(--color-primery)/40 hover:bg-(--color-surface)"
                 >
                   <Image
                     src="/images/InstagramLogo.svg"
@@ -42,6 +43,7 @@ export default function Footer() {
                 href={siteConfig.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="rounded-md border border-(--color-stroke)/30 p-2 transition hover:border-(--color-primery)/40 hover:bg-(--color-surface)"
               >
                 <Image
                   src="/images/GithubLogo.png"
@@ -53,10 +55,10 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <p className="text-center text-base [word-spacing:2px] text-(--color-stroke)">
+        <p className="text-center text-base text-(--color-stroke) [word-spacing:2px]">
           © {year}{" "}
           <Link className="hover:underline" href="/">
-            Cipher Unit 
+            CipherUnit
           </Link>
           {" ❤️‍🔥 "}
           Made for developers by{" "}

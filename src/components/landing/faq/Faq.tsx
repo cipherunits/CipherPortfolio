@@ -17,21 +17,26 @@ export default function Faq() {
         <Fields text="faq" as="h2" />
       </div>
 
-      <div className="mt-8 divide-y divide-(--color-stroke)/40 border-y border-(--color-stroke)/40">
+      <div className="mt-8 overflow-hidden rounded-xl border border-(--color-stroke)/40 bg-(--color-background-secondary)/60">
         {faqItems.map((item, index) => {
           const isOpen = openIndex === index;
           const panelId = `${baseId}-panel-${index}`;
           const buttonId = `${baseId}-button-${index}`;
 
           return (
-            <div key={item.question}>
+            <div
+              key={item.question}
+              className={
+                index > 0 ? "border-t border-(--color-stroke)/30" : undefined
+              }
+            >
               <h3>
                 <button
                   id={buttonId}
                   type="button"
                   aria-expanded={isOpen}
                   aria-controls={panelId}
-                  className="flex w-full items-center justify-between gap-4 py-5 text-left text-white transition hover:text-(--color-primery)"
+                  className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left text-white transition hover:bg-(--color-surface)/70 hover:text-(--color-primery)"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                 >
                   <span className="text-base font-medium md:text-lg">
@@ -39,9 +44,14 @@ export default function Faq() {
                   </span>
                   <span
                     aria-hidden
-                    className="shrink-0 text-(--color-primery) text-xl leading-none"
+                    className="relative flex size-8 shrink-0 items-center justify-center rounded-md border border-(--color-stroke)/30 text-(--color-primery)"
                   >
-                    {isOpen ? "−" : "+"}
+                    <span className="absolute h-0.5 w-3 rounded-full bg-current" />
+                    <span
+                      className={`absolute h-3 w-0.5 rounded-full bg-current transition-transform duration-300 ease-out ${
+                        isOpen ? "scale-y-0" : "scale-y-100"
+                      }`}
+                    />
                   </span>
                 </button>
               </h3>
@@ -49,10 +59,20 @@ export default function Faq() {
                 id={panelId}
                 role="region"
                 aria-labelledby={buttonId}
-                hidden={!isOpen}
-                className="pb-5 text-(--color-stroke) leading-7"
+                aria-hidden={!isOpen}
+                className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                  isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                }`}
               >
-                {isOpen ? <p>{item.answer}</p> : null}
+                <div className="overflow-hidden">
+                  <p
+                    className={`px-5 pb-5 leading-7 text-(--color-stroke) transition-opacity duration-300 ease-out ${
+                      isOpen ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {item.answer}
+                  </p>
+                </div>
               </div>
             </div>
           );

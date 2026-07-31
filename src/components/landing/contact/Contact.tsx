@@ -6,20 +6,20 @@ import { mailtoHref, siteConfig } from "@/lib/site";
 export default function Contact() {
   return (
     <section
-      className="max-w-6xl mx-auto p-6 mt-12"
+      className="mx-auto mt-12 max-w-6xl p-6"
       aria-labelledby="contacts-heading"
     >
       <div id="contacts-heading">
         <Fields text="contacts" />
       </div>
-      <div className="flex md:flex-row flex-col gap-10 items-center justify-between ">
-        <p className="w-md font-medium [word-spacing:6px] md:px-0 px-8 md:text-start text-center text-(--color-stroke)">
+      <div className="mt-8 flex flex-col items-center justify-between gap-10 md:flex-row">
+        <p className="w-md px-8 text-center font-medium text-(--color-stroke) [word-spacing:6px] md:px-0 md:text-start">
           Get in touch with CipherUnit (Cipher Unit) for open source
           collaborations, contributions, or technical inquiries.
         </p>
-        <div className="border border-(--color-stroke) p-4 space-y-4">
-          <h3 className="text-white font-semibold">Message us here</h3>
-          <div className="flex justify-start items-center gap-2 text-(--color-stroke)">
+        <div className="space-y-4 rounded-xl border border-(--color-stroke)/50 bg-(--color-background-secondary) p-5 shadow-[0_12px_32px_-24px_rgba(0,0,0,0.5)]">
+          <h3 className="font-semibold text-white">Message us here</h3>
+          <div className="flex items-center justify-start gap-2 text-(--color-stroke)">
             <Image
               src="/images/GithubLogo.png"
               alt=""
@@ -28,7 +28,7 @@ export default function Contact() {
               aria-hidden
             />
             <Link
-              className="hover:underline duration-300"
+              className="rounded-sm transition duration-300 hover:text-white hover:underline"
               href={siteConfig.github}
               target="_blank"
               rel="noopener noreferrer"
@@ -36,7 +36,7 @@ export default function Contact() {
               cipherunits
             </Link>
           </div>
-          <div className="flex justify-start items-center gap-2 text-(--color-stroke)">
+          <div className="flex items-center justify-start gap-2 text-(--color-stroke)">
             <Image
               src="/images/EmailLogo.png"
               alt=""
@@ -45,7 +45,7 @@ export default function Contact() {
               aria-hidden
             />
             <Link
-              className="hover:underline duration-300"
+              className="rounded-sm transition duration-300 hover:text-white hover:underline"
               href={mailtoHref()}
               target="_blank"
               rel="noopener noreferrer"

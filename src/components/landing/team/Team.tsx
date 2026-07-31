@@ -34,7 +34,7 @@ export default async function Team({ preview = false }: { preview?: boolean }) {
         content={`Public GitHub members of the ${siteConfig.name} open-source engineering collective.`}
       />
       <meta itemProp="numberOfItems" content={String(shown.length)} />
-      <meta itemProp="itemListOrder" content="Ascending" />
+      <meta itemProp="itemListOrder" content="Descending" />
 
       {preview ? (
         <>
@@ -45,7 +45,7 @@ export default async function Team({ preview = false }: { preview?: boolean }) {
 
             <Link
               href="/team"
-              className="shrink-0 text-sm font-medium text-white transition hover:underline"
+              className="shrink-0 rounded-md border border-(--color-stroke)/40 bg-(--color-background-secondary) px-3 py-2 text-sm font-medium text-white transition hover:border-(--color-primery)/40 hover:bg-(--color-surface)"
               aria-label="View all Cipher Unit GitHub team members"
             >
               View all team →
@@ -81,7 +81,10 @@ export default async function Team({ preview = false }: { preview?: boolean }) {
 
       {preview && members.length > LANDING_PREVIEW_COUNT ? (
         <p className="mt-6 text-center text-sm text-(--color-stroke)">
-          <Link href="/team" className="text-white hover:underline">
+          <Link
+            href="/team"
+            className="rounded-md px-2 py-1 text-white transition hover:bg-(--color-surface) hover:underline"
+          >
             +{members.length - LANDING_PREVIEW_COUNT} more on the team page
           </Link>
         </p>

@@ -28,7 +28,7 @@ export const projects: Project[] = [
   {
     slug: "npm-mirror",
     imageUrl: "/images/npm-mirrors.png",
-    tech: "Npm • Docker Compose • Makefile • Offline Package Cache",
+    tech: "Npm • Docker Compose • Offline Package Cache",
     programmingLanguages: ["Docker", "Shell", "Makefile"],
     title: "NPM Mirror",
     description:

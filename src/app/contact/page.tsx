@@ -71,7 +71,7 @@ export default function ContactPage() {
   return (
     <main
       id="main-content"
-      className="mx-auto my-8 max-w-6xl p-6 md:my-22"
+      className="mx-auto my-8 max-w-6xl p-6 mt-16 mb-24"
       itemScope
       itemType="https://schema.org/ContactPage"
     >

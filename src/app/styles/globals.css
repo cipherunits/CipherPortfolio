@@ -2,21 +2,34 @@
 
 :root {
   --color-bg: #282c33;
-  --color-pink: #E06B74;
-  --color-green: #98C379;
-  --color-yellow: #E5C07A;
-  --color-blue: #62AEEF;
-  --color-primery: #C778DD;
-  --color-secondary: #55B6C2;
-  --color-stroke: #ABB2BF;
+  --color-background-secondary: #2f343c;
+  --color-surface: #323842;
+  --color-pink: #e06b74;
+  --color-green: #98c379;
+  --color-yellow: #e5c07a;
+  --color-blue: #62aeef;
+  --color-primery: #c778dd;
+  --color-secondary: #55b6c2;
+  --color-stroke: #abb2bf;
   --color-terminal: #00ff00;
-  --color-red-terminal: #FF5F57;
-  --color-yellow-terminal: #FFBD2E;
-  --color-green-terminal: #28C840;
+  --color-red-terminal: #ff5f57;
+  --color-yellow-terminal: #ffbd2e;
+  --color-green-terminal: #28c840;
   --color-bg-terminal: #1e1e1e;
   --color-command-terminal: #f0f0f0;
   --color-output-terminal: #d4d4d4;
   --color-shadow-primery: rgba(199, 120, 221, 0.6);
+}
+
+@theme {
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -31,4 +44,28 @@ body {
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-primery) 35%, transparent);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primery);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -12,7 +12,7 @@ function OpenTerminal({ onClick }: OpenTerminalProps) {
       className="fixed left-4 bottom-4 z-50 group cursor-pointer"
       onClick={onClick}
     >
-      <div className="absolute bottom-full mb-2 left-14 -translate-x-1/2 bg-(--color-bg) border border-(--color-stroke) text-white text-xs px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+      <div className="pointer-events-none absolute bottom-full left-14 mb-2 -translate-x-1/2 rounded-md border border-(--color-stroke)/40 bg-(--color-surface) px-3 py-1.5 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
         Open Terminal
       </div>
       <Image

@@ -13,7 +13,10 @@ export default function Fields({
         </span>
         <Tag className="">{text}</Tag>
       </div>
-      <span className="border border-(--color-primery) w-[85%] md:w-50" aria-hidden />
+      <span
+        className="h-px w-[85%] rounded-full bg-(--color-primery)/80 md:w-50"
+        aria-hidden
+      />
     </div>
   );
 }

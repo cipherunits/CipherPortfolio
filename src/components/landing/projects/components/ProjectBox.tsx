@@ -27,12 +27,13 @@ export default function ProjectBox({
         group
         flex h-full w-full flex-col
         overflow-hidden
-        border border-(--color-stroke)
+        rounded-xl
+        border border-(--color-stroke)/50
         bg-(--color-background-secondary)
         transition-all duration-300
         hover:-translate-y-1
-        hover:border-white/20
-        hover:shadow-2xl
+        hover:border-(--color-primery)/40
+        hover:shadow-[0_16px_40px_-20px_rgba(0,0,0,0.55)]
       "
     >
       <meta itemProp="codeRepository" content={linkLive} />
@@ -70,7 +71,7 @@ export default function ProjectBox({
         </figcaption>
       </figure>
 
-      <div className="border-y border-(--color-stroke) px-4 py-3">
+      <div className="border-y border-(--color-stroke)/40 bg-(--color-surface)/40 px-4 py-3">
         <p className="text-xs leading-6 text-(--color-stroke)">{tech}</p>
         {programmingLanguages?.map((lang) => (
           <meta key={lang} itemProp="programmingLanguage" content={lang} />

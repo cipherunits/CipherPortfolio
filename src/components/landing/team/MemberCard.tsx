@@ -24,11 +24,12 @@ export default function MemberCard({
       itemType="https://schema.org/Person"
       className={`
         group flex h-full w-full flex-col items-center text-center
-        border border-(--color-stroke)
+        rounded-xl border border-(--color-stroke)/50
         bg-(--color-background-secondary)
         transition-all duration-300
         hover:-translate-y-1
-        hover:border-white/20
+        hover:border-(--color-primery)/40
+        hover:shadow-[0_16px_40px_-20px_rgba(0,0,0,0.55)]
         ${compact ? "gap-3 p-4" : "gap-4 p-6"}
       `}
     >
@@ -38,7 +39,7 @@ export default function MemberCard({
         rel="noopener noreferrer me"
         aria-label={`Open ${name}'s GitHub profile (@${login})`}
         title={`${name} on GitHub`}
-        className="relative block shrink-0 overflow-hidden border border-(--color-stroke) transition group-hover:border-(--color-primery)"
+        className="relative block shrink-0 overflow-hidden rounded-lg border border-(--color-stroke)/50 transition group-hover:border-(--color-primery)"
         itemProp="url"
       >
         <Image
@@ -99,7 +100,7 @@ export default function MemberCard({
           href={htmlUrl}
           target="_blank"
           rel="noopener noreferrer me"
-          className="mt-auto text-sm text-(--color-stroke) transition hover:text-white hover:underline"
+          className="mt-auto rounded-md px-2 py-1 text-sm text-(--color-stroke) transition hover:bg-(--color-surface) hover:text-white"
           aria-label={`Visit ${name} on GitHub`}
         >
           github.com/{login} →

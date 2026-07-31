@@ -27,7 +27,9 @@ function Terminal({ onClose, size, toggleSize }: TerminalProps) {
     return "w-[600px] h-[400px]";
   };
 
-  const StyleSixe = `${getSizeClass()} border border-(--color-stroke)/20 bg-(--color-bg-terminal)`;
+  const StyleSixe = `${getSizeClass()} overflow-hidden border border-(--color-stroke)/25 bg-(--color-bg-terminal) shadow-[0_24px_60px_-28px_rgba(0,0,0,0.7)] ${
+    size.full ? "rounded-none" : "rounded-xl"
+  }`;
 
   const runCommand = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== "Enter") {return;}

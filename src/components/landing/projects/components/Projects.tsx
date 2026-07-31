@@ -25,7 +25,7 @@ export default function Projects({ view = false }: { view?: boolean }) {
 
           <Link
             href="/projects"
-            className="shrink-0 text-sm font-medium text-white transition hover:underline"
+            className="shrink-0 rounded-md border border-(--color-stroke)/40 bg-(--color-background-secondary) px-3 py-2 text-sm font-medium text-white transition hover:border-(--color-primery)/40 hover:bg-(--color-surface)"
             aria-label="View all Cipher Unit open source projects"
           >
             View all projects →

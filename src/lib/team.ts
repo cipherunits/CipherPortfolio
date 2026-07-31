@@ -92,7 +92,10 @@ export async function getTeamMembers(): Promise<TeamMember[]> {
       return [];
     }
 
-    const members = (await res.json()) as GitHubOrgMember[];
+    // GitHub returns oldest members first; reverse so newest appear first.
+    const members = (
+      (await res.json()) as GitHubOrgMember[]
+    ).toReversed();
 
     const profiles = await Promise.all(
       members.map(async (member) => {
@@ -111,9 +114,7 @@ export async function getTeamMembers(): Promise<TeamMember[]> {
       }),
     );
 
-    return profiles.sort((a, b) =>
-      a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
-    );
+    return profiles;
   } catch (error) {
     console.error("Failed to load GitHub team members:", error);
     return [];

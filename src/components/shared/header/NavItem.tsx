@@ -17,12 +17,14 @@ export default function NavItem({
     const isActive = name === item.name;
 
     return (
-      <li
-        key={item.name}
-        className="text-gray-400 hover:text-white transition-colors cursor-pointer"
-      >
+      <li key={item.name}>
         <Link
-          className="flex gap-1"
+          className={`
+            flex items-center gap-1 rounded-md px-3 py-2
+            text-(--color-stroke) transition-colors
+            hover:bg-(--color-surface) hover:text-white
+            ${isActive ? "bg-(--color-surface) text-white" : ""}
+          `}
           href={item.link}
           {...(item.link.startsWith("http")
             ? { target: "_blank" as const, rel: "noopener noreferrer" }
@@ -30,7 +32,7 @@ export default function NavItem({
           {...(onNavigate ? { onClick: onNavigate } : {})}
         >
           <span className="text-(--color-primery)">#</span>
-          <span className={`${isActive ? "text-white" : ""}`}>{item.name}</span>
+          <span>{item.name}</span>
         </Link>
       </li>
     );
