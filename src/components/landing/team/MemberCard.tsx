@@ -43,7 +43,8 @@ export default function MemberCard({
       >
         <Image
           src={avatarUrl}
-          alt={`${name} (@${login}) — public GitHub avatar, Cipher Unit engineering team`}
+          alt={`${name} (@${login}) — public GitHub avatar, Cipher Unit (CipherUnit) engineering team`}
+          title={`${name} (@${login}) — Cipher Unit team member`}
           width={compact ? 72 : 112}
           height={compact ? 72 : 112}
           sizes={compact ? "72px" : "112px"}

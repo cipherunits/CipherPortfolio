@@ -1,5 +1,9 @@
 import { faqItems } from "@/lib/faq";
 import { projects } from "@/lib/projects";
+import {
+  projectImageObject,
+  teamImageObject,
+} from "@/lib/seo-images";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 import type { TeamMember } from "@/lib/team";
 
@@ -20,9 +24,13 @@ export const OrganizationJsonLd = {
     "@id": logoId,
     url: absoluteUrl(siteConfig.brand.logo),
     contentUrl: absoluteUrl(siteConfig.brand.logo),
+    name: "Cipher Unit (CipherUnit) logo",
     caption: "Cipher Unit logo",
   },
-  image: absoluteUrl(siteConfig.brand.main),
+  image: [
+    absoluteUrl(siteConfig.brand.main),
+    ...projects.map((project) => absoluteUrl(project.imageUrl)),
+  ],
   description: siteConfig.description,
   foundingDate: "2024",
   email: siteConfig.email,
@@ -133,6 +141,7 @@ export const HomePageJsonLd = {
 
 export function buildProjectsGraphJsonLd() {
   const pageUrl = absoluteUrl("/projects");
+  const imageNodes = projects.map((project) => projectImageObject(project));
 
   return {
     "@context": "https://schema.org",
@@ -147,6 +156,8 @@ export function buildProjectsGraphJsonLd() {
         inLanguage: "en-US",
         isPartOf: { "@id": websiteId },
         about: { "@id": orgId },
+        primaryImageOfPage: { "@id": imageNodes[0]?.["@id"] },
+        image: imageNodes.map((image) => ({ "@id": image["@id"] })),
         breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
       },
       {
@@ -172,7 +183,7 @@ export function buildProjectsGraphJsonLd() {
             codeRepository: project.linkLive,
             url: project.linkLive,
             programmingLanguage: project.programmingLanguages,
-            image: absoluteUrl(project.imageUrl),
+            image: { "@id": `${pageUrl}#${project.slug}-image` },
             author: { "@id": orgId },
             creator: { "@id": orgId },
             license: "https://opensource.org/licenses",
@@ -180,6 +191,7 @@ export function buildProjectsGraphJsonLd() {
           },
         })),
       },
+      ...imageNodes,
     ],
   };
 }
@@ -201,6 +213,9 @@ export const ContactPageJsonLd = {
 
 export function buildTeamGraphJsonLd(members: TeamMember[]) {
   const pageUrl = absoluteUrl("/team");
+  const imageNodes = members.map((member) =>
+    teamImageObject(member, pageUrl),
+  );
 
   const personNodes = members.map((member) => ({
     "@type": "Person" as const,
@@ -208,7 +223,7 @@ export function buildTeamGraphJsonLd(members: TeamMember[]) {
     name: member.name,
     alternateName: member.login,
     url: member.htmlUrl,
-    image: member.avatarUrl,
+    image: { "@id": `${pageUrl}#${member.login}-image` },
     sameAs: [member.htmlUrl],
     jobTitle: "Open Source Engineer",
     worksFor: { "@id": orgId },
@@ -233,6 +248,10 @@ export function buildTeamGraphJsonLd(members: TeamMember[]) {
         isPartOf: { "@id": websiteId },
         about: { "@id": orgId },
         mainEntity: { "@id": `${pageUrl}#itemlist` },
+        primaryImageOfPage: imageNodes[0]
+          ? { "@id": imageNodes[0]["@id"] }
+          : undefined,
+        image: imageNodes.map((image) => ({ "@id": image["@id"] })),
         breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
       },
       {
@@ -253,6 +272,7 @@ export function buildTeamGraphJsonLd(members: TeamMember[]) {
         })),
       },
       ...personNodes,
+      ...imageNodes,
     ],
   };
 }

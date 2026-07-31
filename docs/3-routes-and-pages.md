@@ -71,13 +71,15 @@ Custom 404 with CTA back to `/`.
 
 `lastModified` is `new Date()` at build/request time. `/github` is intentionally omitted.
 
+Page entries also embed related image URLs (brand, project screenshots, team avatars). A dedicated Google image sitemap with titles/captions is served at `/image-sitemap.xml`.
+
 ## Robots
 
 **File:** `src/app/robots.ts` (dynamic; no static `public/robots.txt`)
 
 - Default UA: allow `/`, disallow `/api/`, `/_next/`, `/private/`, `/_vercel/`, `/github`
 - AI crawlers (GPTBot, ClaudeBot, etc.): allow `/` and `/llms.txt`
-- `sitemap` + `host` from `siteConfig`
+- `sitemap` (`/sitemap.xml`, `/image-sitemap.xml`) + `host` from `siteConfig`
 
 ## Navigation
 

@@ -14,6 +14,7 @@ const urls = [
   `${SITE}/team`,
   `${SITE}/contact`,
   `${SITE}/sitemap.xml`,
+  `${SITE}/image-sitemap.xml`,
 ];
 
 async function pingIndexNow() {
@@ -40,6 +41,7 @@ async function main() {
     `https://search.google.com/search-console/sitemaps?resource_id=${encodeURIComponent(SITE + "/")}`,
   );
   console.log(`Direct sitemap URL: ${SITE}/sitemap.xml`);
+  console.log(`Image sitemap URL: ${SITE}/image-sitemap.xml`);
   console.log("");
   console.log("Rich Results Test:");
   for (const url of [

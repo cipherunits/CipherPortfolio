@@ -7,9 +7,17 @@ import {
   buildProjectsGraphJsonLd,
   JsonLd,
 } from "@/components/shared/JsonLd";
+import { projects } from "@/lib/projects";
+import { projectImageCaption, projectImageTitle } from "@/lib/seo-images";
 import { absoluteUrl, brandOgImages, siteConfig } from "@/lib/site";
 
 const PAGE_URL = absoluteUrl("/projects");
+
+const projectOgImages = projects.map((project) => ({
+  url: project.imageUrl,
+  alt: projectImageTitle(project),
+  type: "image/png" as const,
+}));
 
 export const metadata: Metadata = {
   title:
@@ -65,14 +73,17 @@ export const metadata: Metadata = {
     title: "Cipher Unit Open Source Projects",
     description:
       "Browse open-source developer tools, Rust libraries, Python packages and Docker utilities built by Cipher Unit.",
-    images: brandOgImages("Cipher Unit Open Source Projects"),
+    images: [
+      ...brandOgImages("Cipher Unit Open Source Projects"),
+      ...projectOgImages,
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cipher Unit Open Source Projects",
     description:
       "Browse open-source developer tools and engineering projects created by Cipher Unit.",
-    images: [siteConfig.brand.main],
+    images: [projects[0]?.imageUrl || siteConfig.brand.main],
   },
 };
 
@@ -84,6 +95,9 @@ export default function ProjectsPage() {
       <header className="mb-16 space-y-3">
         <NamePage />
         <SubNamePage text="Explore all open-source projects developed by Cipher Unit." />
+        <p className="sr-only">
+          {projects.map((project) => projectImageCaption(project)).join(" ")}
+        </p>
       </header>
 
       <Projects view={false} />

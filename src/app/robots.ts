@@ -46,7 +46,10 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/", "/private/", "/github"],
       },
     ],
-    sitemap: absoluteUrl("/sitemap.xml"),
+    sitemap: [
+      absoluteUrl("/sitemap.xml"),
+      absoluteUrl("/image-sitemap.xml"),
+    ],
     host: siteConfig.url,
   };
 }

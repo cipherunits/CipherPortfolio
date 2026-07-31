@@ -20,12 +20,15 @@
 ## Projects
 
 - Cipher Token: https://github.com/cipherunits/CipherToken — high-performance Rust JWT/crypto library with Python (PyO3) bindings
+  - Image: https://cipherunit.xyz/images/cipher-token.png
 - NPM Mirror: https://github.com/cipherunits/npm-mirror — offline npm package mirror with Docker Compose
+  - Image: https://cipherunit.xyz/images/npm-mirrors.png
 
 ## Team
 
 - Public GitHub organization members: https://cipherunit.xyz/team
 - Organization: https://github.com/cipherunits
+- Team photos/avatars are listed on https://cipherunit.xyz/team and in https://cipherunit.xyz/image-sitemap.xml
 
 ## Focus
 

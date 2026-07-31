@@ -45,6 +45,7 @@ Page-specific JSON-LD (home FAQ/breadcrumb, projects graph, team graph, contact)
 | Module | Role |
 |--------|------|
 | `site.ts` | URLs, email, brand images, OG helpers |
+| `seo-images.ts` | Image sitemap helpers, ImageObject builders, avatar SEO URLs |
 | `projects.ts` | Typed `projects` array + `Project` type |
 | `team.ts` | `getTeamMembers()` via GitHub Org + user profiles |
 | `faq.ts` | FAQ entries shared by UI and JSON-LD |

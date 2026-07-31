@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Button from "@/components/shared/Button";
+import { absoluteUrl } from "@/lib/site";
 import type { Project } from "../types/projects.type";
 
 export default function ProjectBox({
@@ -15,6 +16,9 @@ export default function ProjectBox({
   linkLive,
   linkDocs,
 }: Project) {
+  const absoluteImageUrl = absoluteUrl(imageUrl);
+  const imageTitle = `${title} — Cipher Unit (CipherUnit) open source project`;
+
   return (
     <article
       itemScope
@@ -43,9 +47,17 @@ export default function ProjectBox({
         itemScope
         itemType="https://schema.org/ImageObject"
       >
+        <meta itemProp="contentUrl" content={absoluteImageUrl} />
+        <meta itemProp="url" content={absoluteImageUrl} />
+        <meta itemProp="name" content={imageTitle} />
+        <meta
+          itemProp="caption"
+          content={`${title} by Cipher Unit. ${description}`}
+        />
         <Image
           src={imageUrl}
-          alt={`${title} open source software developed by Cipher Unit. ${description}`}
+          alt={`${title} open source software developed by Cipher Unit (CipherUnit). ${description}`}
+          title={imageTitle}
           fill
           quality={90}
           sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 380px"
@@ -53,7 +65,8 @@ export default function ProjectBox({
         />
 
         <figcaption className="sr-only">
-          {title} open source developer tool screenshot.
+          {title} open source developer tool screenshot by Cipher Unit
+          (CipherUnit).
         </figcaption>
       </figure>
 

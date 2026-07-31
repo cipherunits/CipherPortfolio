@@ -24,8 +24,8 @@ Root layout injects **Organization** and **WebSite** JSON-LD only. Page-level sc
 | Route | Notes |
 |-------|-------|
 | `/` | Absolute home title; `HomePageJsonLd`, breadcrumb, `FAQJsonLd` |
-| `/projects` | Projects keywords/OG; `buildProjectsGraphJsonLd()` |
-| `/team` | Team keywords/OG; `buildTeamGraphJsonLd(members)` |
+| `/projects` | Projects keywords/OG (includes project screenshots); `buildProjectsGraphJsonLd()` with ImageObject nodes |
+| `/team` | Team keywords/OG (includes member avatars); `buildTeamGraphJsonLd(members)` with Person + ImageObject |
 | `/contact` | Contact metadata + contact JSON-LD / breadcrumb |
 | `/github` | `noindex, nofollow`; redirect only |
 
@@ -33,7 +33,18 @@ Root layout injects **Organization** and **WebSite** JSON-LD only. Page-level sc
 
 `src/app/sitemap.ts` — `/`, `/projects`, `/team`, `/contact` with weekly/monthly frequencies and priorities `1.0` / `0.9` / `0.85` / `0.8`.
 
-Cache-Control for `/sitemap.xml` is set in `next.config.ts` (1 hour).
+Each URL also lists related **images** for Google Images discovery:
+
+- Home: brand + project screenshots + team avatars
+- `/projects`: Cipher Token + NPM Mirror images
+- `/team`: each public member avatar (GitHub, `s=460`)
+- `/contact`: brand images
+
+**Image sitemap (titles + captions):** `src/app/image-sitemap.xml/route.ts` → `/image-sitemap.xml`
+
+Helpers live in `src/lib/seo-images.ts`.
+
+Cache-Control for `/sitemap.xml` and `/image-sitemap.xml` is set in `next.config.ts` (1 hour).
 
 ## Robots
 
@@ -41,7 +52,7 @@ Cache-Control for `/sitemap.xml` is set in `next.config.ts` (1 hour).
 
 - Blocks `/github` and internal paths
 - Explicit allows for major AI crawlers on `/` and `/llms.txt`
-- Host + sitemap from `siteConfig` / `absoluteUrl`
+- Host + sitemaps: `/sitemap.xml` and `/image-sitemap.xml`
 
 ## `llms.txt`
 
@@ -63,4 +74,4 @@ Cache-Control for `/sitemap.xml` is set in `next.config.ts` (1 hour).
 ## IndexNow
 
 - Key file: `public/cipherunit-indexnow-2026.txt`
-- Notify script: `scripts/seo-notify.mjs` (home, projects, team, contact, sitemap)
+- Notify script: `scripts/seo-notify.mjs` (home, projects, team, contact, sitemap, image sitemap)
