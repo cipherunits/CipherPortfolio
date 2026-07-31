@@ -11,6 +11,7 @@ const INDEXNOW_KEY = "cipherunit-indexnow-2026";
 const urls = [
   `${SITE}/`,
   `${SITE}/projects`,
+  `${SITE}/team`,
   `${SITE}/contact`,
   `${SITE}/sitemap.xml`,
 ];
@@ -41,7 +42,12 @@ async function main() {
   console.log(`Direct sitemap URL: ${SITE}/sitemap.xml`);
   console.log("");
   console.log("Rich Results Test:");
-  for (const url of [`${SITE}/`, `${SITE}/projects`, `${SITE}/contact`]) {
+  for (const url of [
+    `${SITE}/`,
+    `${SITE}/projects`,
+    `${SITE}/team`,
+    `${SITE}/contact`,
+  ]) {
     console.log(
       `https://search.google.com/test/rich-results?url=${encodeURIComponent(url)}`,
     );

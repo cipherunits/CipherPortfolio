@@ -4,6 +4,7 @@ import Contact from "@/components/landing/contact/Contact";
 import Overview from "@/components/landing/overview/Overview";
 import Skills from "@/components/landing/skills/Skills";
 import Projects from "@/components/landing/projects/components/Projects";
+import Team from "@/components/landing/team/Team";
 import Faq from "@/components/landing/faq/Faq";
 import {
   BreadcrumbJsonLdHome,
@@ -13,6 +14,8 @@ import {
 } from "@/components/shared/JsonLd";
 import type { Metadata } from "next";
 import { brandOgImages, siteConfig } from "@/lib/site";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: {
@@ -51,6 +54,7 @@ export default function Home() {
       <Overview />
       <Projects view={true} />
       <Skills />
+      <Team preview />
       <AboutMe />
       <Faq />
       <Contact />

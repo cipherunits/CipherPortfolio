@@ -1,6 +1,7 @@
 import { faqItems } from "@/lib/faq";
 import { projects } from "@/lib/projects";
 import { absoluteUrl, siteConfig } from "@/lib/site";
+import type { TeamMember } from "@/lib/team";
 
 const siteUrl = siteConfig.url;
 const orgId = `${siteUrl}/#organization`;
@@ -91,6 +92,11 @@ export const BreadcrumbJsonLdContact = buildBreadcrumbJsonLd([
 export const BreadcrumbJsonLdProjects = buildBreadcrumbJsonLd([
   { name: "Home", path: "/" },
   { name: "Projects", path: "/projects" },
+]);
+
+export const BreadcrumbJsonLdTeam = buildBreadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Team", path: "/team" },
 ]);
 
 export const FAQJsonLd = {
@@ -192,6 +198,64 @@ export const ContactPageJsonLd = {
   mainEntity: { "@id": orgId },
   breadcrumb: BreadcrumbJsonLdContact,
 };
+
+export function buildTeamGraphJsonLd(members: TeamMember[]) {
+  const pageUrl = absoluteUrl("/team");
+
+  const personNodes = members.map((member) => ({
+    "@type": "Person" as const,
+    "@id": `${pageUrl}#${member.login}`,
+    name: member.name,
+    alternateName: member.login,
+    url: member.htmlUrl,
+    image: member.avatarUrl,
+    sameAs: [member.htmlUrl],
+    jobTitle: "Open Source Engineer",
+    worksFor: { "@id": orgId },
+    affiliation: { "@id": orgId },
+    memberOf: { "@id": orgId },
+    description:
+      member.bio ||
+      `Public GitHub member of the ${siteConfig.name} open-source engineering collective (@${member.login}).`,
+  }));
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: "Cipher Unit GitHub Team & Contributors",
+        description:
+          "Public GitHub members of the Cipher Unit open-source engineering collective.",
+        inLanguage: "en-US",
+        isPartOf: { "@id": websiteId },
+        about: { "@id": orgId },
+        mainEntity: { "@id": `${pageUrl}#itemlist` },
+        breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+      },
+      {
+        ...BreadcrumbJsonLdTeam,
+        "@id": `${pageUrl}#breadcrumb`,
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${pageUrl}#itemlist`,
+        name: "Cipher Unit GitHub Team",
+        description: `Public members of the ${siteConfig.githubOrg} GitHub organization.`,
+        numberOfItems: members.length,
+        itemListOrder: "https://schema.org/ItemListOrderAscending",
+        itemListElement: personNodes.map((person, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: { "@id": person["@id"] },
+        })),
+      },
+      ...personNodes,
+    ],
+  };
+}
 
 type JsonLdProps = {
   id: string;

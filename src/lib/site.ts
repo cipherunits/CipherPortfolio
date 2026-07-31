@@ -18,6 +18,8 @@ export const siteConfig = {
   url: process.env.SITE_NAME || DEFAULT_SITE_URL,
   email: process.env.CONTACT_EMAIL || DEFAULT_EMAIL,
   github: process.env.GITHUB_PAGE || DEFAULT_GITHUB,
+  githubOrg: "cipherunits",
+
   docs: "https://cipherunits.github.io/CipherPortfolio/",
   /** Prefer INSTAGRAM_PAGE; keep Instageram_PAGE as legacy fallback. */
   instagram:
