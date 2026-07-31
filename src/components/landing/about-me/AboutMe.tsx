@@ -2,6 +2,7 @@ import Image from "next/image";
 import Fields from "@/components/shared/Fields";
 import Button from "@/components/shared/Button";
 import Link from "next/link";
+import { siteConfig } from "@/lib/site";
 
 export default function AboutMe() {
   return (
@@ -9,19 +10,25 @@ export default function AboutMe() {
       <div className="space-y-6 max-w-lg">
         <Fields text="about-us" />
         <div className="space-y-4 text-(--color-stroke)">
-          <p>CiphrtUnit !</p>
+          <p>CipherUnit!</p>
           <p>
-            CipherUnit is an open-source engineering collective
-            focused on building secure, scalable, and high-quality software systems.
-            We design and develop developer tools, frameworks, and infrastructure
-            with a strong emphasis on performance, clean architecture, and reliability.
+            CipherUnit is an open-source engineering collective focused on
+            building secure, scalable, and high-quality software systems. We
+            design and develop developer tools, frameworks, and infrastructure
+            with a strong emphasis on performance, clean architecture, and
+            reliability.
           </p>
         </div>
-        <Link target="_blank" href="https://github.com/cipherunits/">
+        <Link target="_blank" rel="noopener noreferrer" href={siteConfig.github}>
           <Button>Read more {"->"}</Button>
         </Link>
       </div>
-      <Image src="/images/AboutMe.png" alt="CipherUnit Cipher Unit Open Source Engineering Collective — about us" width={300} height={300} />
+      <Image
+        src="/images/AboutMe.png"
+        alt="CipherUnit Cipher Unit Open Source Engineering Collective — about us"
+        width={300}
+        height={300}
+      />
     </div>
   );
 }

@@ -11,31 +11,29 @@ These are composed in order in `src/app/page.tsx`.
 
 - Top-of-page hero section.
 - Contains headline, descriptive paragraph, and primary "Contact us !" CTA (links `/contact`).
-- Renders `/Hero.png` alongside a status strip showing "Currently working on Cipher Unit".
+- Renders `/images/Hero.png` alongside a status strip showing "Currently working on Cipher Unit".
 
 ### `Overview`
 `src/components/landing/overview/Overview.tsx`
 
 - Quick stats strip.
-- Displays three stat blocks: `1,200+` Project Built, `25+` Theme, `∞` Commands.
-
-⚠️ Note: Contains a Tailwind class typo (`items-cennter` instead of `items-center`) at `src/components/landing/overview/Overview.tsx:3`. The layout still renders but the class is ignored.
+- Displays three stat blocks: `6+` Project Built, `8+` People, `∞` Commands.
 
 ### `Projects`
 `src/components/landing/projects/components/Projects.tsx`
 
 - Section shell rendered with `Fields text="projects"`.
-- Currently renders one hardcoded `Project` card for **CipherToken**.
-- Includes a "View all ~~>" link (href `#`).
+- Hardcoded project cards (Cipher Token, NPM Mirror).
+- Optional "View all projects →" link to `/projects` when `view` is true.
 
 ### `ProjectBox`
 `src/components/landing/projects/components/ProjectBox.tsx`
 
-Props (from `src/components/landing/projects/types/projects.type.ts:1`):
+Props (from `src/components/landing/projects/types/projects.type.ts`):
 - `imageUrl`
-- `teck`
+- `tech`
 - `title`
-- `diceription`
+- `description`
 - `buttonLive`, `buttonDocs`
 - `linkLive`, `linkDocs`
 
@@ -44,15 +42,12 @@ Renders a bordered card containing:
 - Tech keywords strip
 - Title and description
 - Live (primary) and Docs (stroke) action buttons
-- Inline star rating decoration (`⭐⭐⭐⭐`)
 
-⚠️ Note: The type definition uses `diceription` (typo) and `teck` (typo) instead of the conventional `description` and `tech`.
-
-### `Skils`
-`src/components/landing/skils/Skils.tsx`
+### `Skills`
+`src/components/landing/skills/Skills.tsx`
 
 - Skills section shell.
-- Renders `/Skils.png` alongside categorized `SkilBox` elements arranged in rows.
+- Renders `/images/Skills.png` alongside categorized `SkillBox` elements arranged in rows.
 
 Categories currently shown:
 - Languages: `TypeScript JavaScript Python C# Rust C`
@@ -62,14 +57,12 @@ Categories currently shown:
 - Other: `NextJs JWT Tailwind pip pnpm uv cargo`
 - DevOps: `IIS Nginx DockerSvc Bash CI-Cd`
 
-⚠️ The directory and file name is `skils` (missing an `l`) rather than `skills`.
-
-### `SkilBox`
-`src/components/landing/skils/SkilBox.tsx`
+### `SkillBox`
+`src/components/landing/skills/SkillBox.tsx`
 
 Props:
 - `title` — category header
-- `subTitle` — comma-separated skills
+- `subTitle` — space-separated skills
 
 Renders a bordered box with category title and skill list.
 
@@ -77,16 +70,14 @@ Renders a bordered box with category title and skill list.
 `src/components/landing/about-me/AboutMe.tsx`
 
 - About section with brand description.
-- Renders CTA button "Read more ->" and `/AboutMe.png`.
-
-⚠️ Note: The component currently renders `CiphrtUnit !` (typo) in the subtitle text at `src/components/landing/about-me/AboutMe.tsx:11`.
+- Renders CTA button "Read more ->" and `/images/AboutMe.png`.
 
 ### `Contact` (landing)
 `src/components/landing/contact/Contact.tsx`
 
 - Secondary contact teaser on the homepage.
 - Renders `Fields text="contacts"`, a description paragraph, and a contact card with GitHub + email links.
-- Reads `process.env.CONTACT_EMAIL` for the displayed email.
+- Uses `siteConfig` from `src/lib/site.ts` for email and GitHub URL.
 
 ## Contact Subcomponents (`/contact` route)
 
@@ -96,13 +87,11 @@ Renders a bordered box with category title and skill list.
 - Intro paragraph for the contact page.
 - Uses hardcoded text.
 
-⚠️ Note: The rendered text begins with `IGet` (typo) rather than `Get` at `src/components/contacts/ContactText.tsx:6`.
-
 ### `ContactBox`
 `src/components/contacts/ContactBox.tsx`
 
 - Contact card on `/contact`.
-- Shows GitHub username (`cipherunits`) and `mailto:` link using `process.env.CONTACT_EMAIL`.
+- Shows GitHub username (`cipherunits`) and `mailto:` link via `siteConfig`.
 
 ### `ContactMedia`
 `src/components/contacts/ContactMedia.tsx`

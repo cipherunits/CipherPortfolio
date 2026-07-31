@@ -4,7 +4,9 @@ import NamePage from "@/components/shared/NamePage";
 import SubNamePage from "@/components/shared/SubNamePage";
 import Projects from "@/components/landing/projects/components/Projects";
 
-const SITE_URL = "https://cipherunit.com";
+import { siteConfig } from "@/lib/site";
+
+const SITE_URL = siteConfig.url;
 const PAGE_URL = `${SITE_URL}/projects`;
 
 const OG_IMAGE =

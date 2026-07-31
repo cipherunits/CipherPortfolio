@@ -118,4 +118,4 @@ Rules:
 - Short name: CipherUnit
 - Background color: `#0a0a0a`
 - Theme color: `#22c55e`
-- Icons: `/images/CipherUnit.png` (192x192), `/Hero.png` (512x512)
+- Icons: `/images/CipherUnit.png` (192x192), `/images/Hero.png` (512x512)

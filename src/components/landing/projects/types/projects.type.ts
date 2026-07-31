@@ -1,8 +1,8 @@
 export type Project = {
   imageUrl: string;
-  teck: string;
+  tech: string;
   title: string;
-  diceription: string;
+  description: string;
   buttonLive?: string;
   buttonDocs?: string;
   linkLive: string;

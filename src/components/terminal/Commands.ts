@@ -1,3 +1,5 @@
+import { siteConfig } from "@/lib/site";
+
 export const commands = {
   help: `
      
@@ -12,13 +14,6 @@ date
 neofetch 
 
 `,
-
-// cat       
-// clear  
-// ls       
-// pwd     
-// uptime    
-
 
   ls: "projects  blog  contact  skills.md  about.txt  README.md",
 
@@ -46,25 +41,21 @@ Cybersecurity
 `,
 
   projects: `
-1. Portfolio Website
-2. Terminal UI Portfolio
-3. AI Chat Application
-4. Security Toolkit
-5. E-Commerce Platform
+1. Cipher Token
+2. NPM Mirror
+3. CipherPortfolio
 `,
 
   contact: `
-Email: hello@cipherunit.dev
-Location: Earth 🌍
+Email: ${siteConfig.email}
+Location: Earth
 `,
 
   social: `
-GitHub: github.com/cipherunit
-LinkedIn: linkedin.com/in/cipherunit
-Twitter: x.com/cipherunit
+GitHub: github.com/cipherunits
 `,
 
-  github: "Redirecting to github.com/cipherunit ...",
+  github: "Redirecting to github.com/cipherunits ...",
 
   blog: `
 Latest Posts:

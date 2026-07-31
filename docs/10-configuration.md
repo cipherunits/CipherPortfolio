@@ -10,12 +10,15 @@
 | `postcss.config.mjs` | Tailwind CSS v4 PostCSS integration |
 | `eslint.config.mjs` | Flat ESLint config using `eslint-config-next` |
 | `pnpm-workspace.yaml` | Workspace constraints (disable native builds for `sharp`, `unrs-resolver`) |
-| `.env` / `.env.local` | Environment variables (do not commit secrets) |
+| `.env` / `.env.local` | Environment variables (gitignored; use `.env.example`) |
+| `.env.example` | Documented env keys for local/prod setup |
+| `src/lib/site.ts` | Central site URL, contact, social, and brand config |
 | `zensical.toml` | Zensical docs site configuration |
 | `Makefile` | Docker and local dev targets |
 | `Dockerfile` | Multi-stage production image definition |
 | `public/manifest.json` | PWA manifest |
-| `public/robots.txt` | Crawler rules |
+| `src/app/robots.ts` | Dynamic robots.txt |
+| `src/app/sitemap.ts` | Dynamic sitemap.xml |
 
 ## Package Scripts
 

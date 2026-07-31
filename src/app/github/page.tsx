@@ -1,5 +1,6 @@
-import { redirect } from 'next/navigation';
-import type { Metadata, Viewport } from 'next';
+import { redirect } from "next/navigation";
+import type { Metadata, Viewport } from "next";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   robots: {
@@ -7,17 +8,18 @@ export const metadata: Metadata = {
     follow: false,
   },
   title: "Cipher Unit on GitHub — CipherUnit Open Source Developer Tools",
-  description: "Explore Cipher Unit's (CipherUnit) open-source projects and repositories on GitHub.",
+  description:
+    "Explore Cipher Unit's (CipherUnit) open-source projects and repositories on GitHub.",
   alternates: {
-    canonical: '/github',
+    canonical: "/github",
   },
 };
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
 };
 
 export default function GithubPage() {
-  redirect('https://github.com/cipherunits');
+  redirect(siteConfig.github);
 }

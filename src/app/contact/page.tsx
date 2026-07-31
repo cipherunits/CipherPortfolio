@@ -9,6 +9,7 @@ import {
   BreadcrumbJsonLdContact,
   JsonLd,
 } from "@/components/shared/JsonLd";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
@@ -44,11 +45,10 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title:
-      "Contact CipherUnit | Open Source Engineering Collective",
+    title: "Contact CipherUnit | Open Source Engineering Collective",
     description:
       "Reach the CipherUnit engineering team for collaborations, open-source contributions, consulting, partnerships, and technical discussions.",
-    url: "https://cipherunit.xyz/contact",
+    url: `${siteConfig.url}/contact`,
     siteName: "CipherUnit",
     locale: "en_US",
     type: "website",
@@ -56,8 +56,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title:
-      "Contact CipherUnit | Open Source Engineering Collective",
+    title: "Contact CipherUnit | Open Source Engineering Collective",
     description:
       "Connect with CipherUnit for software engineering, open-source collaboration, consulting, and technical inquiries.",
   },
@@ -82,7 +81,7 @@ export default function ContactPage() {
       itemScope
       itemType="https://schema.org/ContactPage"
     >
-      <JsonLd data={BreadcrumbJsonLdContact} />
+      <JsonLd id="jsonld-breadcrumb-contact" data={BreadcrumbJsonLdContact} />
 
       <header className="space-y-3">
         <NamePage />

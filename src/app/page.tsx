@@ -1,8 +1,8 @@
 import AboutMe from "@/components/landing/about-me/AboutMe";
 import Hero from "@/components/landing/hero/Hero";
-import Co1ntact from "@/components/landing/contact/Contact";
+import Contact from "@/components/landing/contact/Contact";
 import Overview from "@/components/landing/overview/Overview";
-import Skils from "@/components/landing/skils/Skils";
+import Skills from "@/components/landing/skills/Skills";
 import Projects from "@/components/landing/projects/components/Projects";
 
 export default function Home() {
@@ -11,9 +11,9 @@ export default function Home() {
       <Hero />
       <Overview />
       <Projects view={true} />
-      <Skils />
+      <Skills />
       <AboutMe />
-      <Co1ntact />
+      <Contact />
     </>
   );
 }

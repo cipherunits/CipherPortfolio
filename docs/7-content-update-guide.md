@@ -8,7 +8,7 @@ File: `src/components/landing/hero/Hero.tsx`
 
 - Headline, intro paragraph, CTA label
 - Status strip text ("Currently working on Cipher Unit")
-- Image: `/Hero.png` in `public/`
+- Image: `/images/Hero.png` in `public/`
 
 ## Overview Stats
 
@@ -19,22 +19,22 @@ File: `src/components/landing/overview/Overview.tsx`
 ## Projects
 
 Files:
-- `src/components/landing/projects/components/Projects.tsx` — section header and individual card props
+- `src/components/landing/projects/components/Projects.tsx` — section header and project list
 - `src/components/landing/projects/components/ProjectBox.tsx` — card layout
 - `src/components/landing/projects/types/projects.type.ts` — `Project` type definition
 
-To add a project, add another `<Project ... />` call with the required props in `Projects.tsx`.
+To add a project, append an object to the `projects` array in `Projects.tsx`.
 
 Project card props:
-- `imageUrl`, `teck`, `title`, `diceription`, `linkLive`, `linkDocs`, `buttonLive`, `buttonDocs`
+- `imageUrl`, `tech`, `title`, `description`, `linkLive`, `linkDocs`, `buttonLive`, `buttonDocs`
 
 ## Skills
 
 Files:
-- `src/components/landing/skils/Skils.tsx` — category list and layout
-- `src/components/landing/skils/SkilBox.tsx` — single category box
+- `src/components/landing/skills/Skills.tsx` — category list and layout
+- `src/components/landing/skills/SkillBox.tsx` — single category box
 
-Edit the five `SkilBox` instances to change categories and tool entries.
+Edit the `SkillBox` instances to change categories and tool entries.
 
 ## About Me
 

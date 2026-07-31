@@ -1,26 +1,25 @@
 import Link from "next/link";
 
 import Fields from "@/components/shared/Fields";
-import Project from "./ProjectBox";
+import ProjectBox from "./ProjectBox";
 
 const projects = [
   {
     imageUrl: "/images/cipher-token.png",
-    teck: "Rust • Python • PyO3 • JWT • Cryptography",
+    tech: "Rust • Python • PyO3 • JWT • Cryptography",
     title: "Cipher Token",
-    diceription:
+    description:
       "A high-performance Rust library for secure JWT token generation, validation and cryptographic utilities with Python bindings powered by PyO3.",
     linkLive: "https://github.com/cipherunits/CipherToken",
-    linkDocs:
-      "https://cipherunits.github.io/CipherToken/getting-started",
+    linkDocs: "https://cipherunits.github.io/CipherToken/getting-started",
     buttonLive: "GitHub Repository",
     buttonDocs: "Documentation",
   },
   {
     imageUrl: "/images/npm-mirrors.png",
-    teck: "Npm • Docker Compose • Makefile • Offline Package Cache",
+    tech: "Npm • Docker Compose • Makefile • Offline Package Cache",
     title: "NPM Mirror",
-    diceription:
+    description:
       "Create a local offline mirror of npm packages before losing internet connectivity. Built with Docker, Docker Compose and Makefile for reliable package caching.",
     linkLive: "https://github.com/cipherunits/npm-mirror",
     linkDocs: "https://cipherunits.github.io/npm-mirror/",
@@ -29,11 +28,7 @@ const projects = [
   },
 ];
 
-export default function Projects({
-  view = false,
-}: {
-  view?: boolean;
-}) {
+export default function Projects({ view = false }: { view?: boolean }) {
   return (
     <section
       className="mx-auto mt-12 w-full max-w-7xl px-4 sm:px-6 lg:px-8"
@@ -73,7 +68,7 @@ export default function Projects({
           >
             <meta itemProp="position" content={String(index + 1)} />
 
-            <Project {...project} />
+            <ProjectBox {...project} />
           </div>
         ))}
       </div>

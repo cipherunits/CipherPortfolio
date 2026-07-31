@@ -36,7 +36,7 @@ Client components in this project:
 1. `Hero`
 2. `Overview`
 3. `Projects`
-4. `Skils`
+4. `Skills`
 5. `AboutMe`
 6. `Contact` (landing)
 

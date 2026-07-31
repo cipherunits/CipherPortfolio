@@ -10,17 +10,10 @@ import {
   WebSiteJsonLd,
 } from "@/components/shared/JsonLd";
 import TerminalManager from "@/components/terminal/TerminalManager";
-
-const baseUrl = process.env.SITE_NAME as string;
-
-const cloudImages = {
-  main: process.env.NEXT_PUBLIC_BRAND_IMAGE_MAIN as string,
-  logo: process.env.NEXT_PUBLIC_BRAND_IMAGE_LOGO as string,
-  alt: process.env.NEXT_PUBLIC_BRAND_IMAGE_ALT as string,
-};
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL(siteConfig.url),
   title: {
     default:
       "Cipher Unit (CipherUnit) | Open-Source Developer Tools & Engineering Collective",
@@ -49,7 +42,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Cipher Unit Engineering Team",
-      url: process.env.GITHUB_PAGE as string,
+      url: siteConfig.github,
     },
   ],
   creator: "Cipher Unit",
@@ -59,13 +52,13 @@ export const metadata: Metadata = {
   classification: "Software Development / Open Source",
   icons: {
     icon: [
-      { url: cloudImages.logo, sizes: "any" },
-      { url: cloudImages.main, type: "image/png" },
+      { url: siteConfig.brand.logo, sizes: "any" },
+      { url: siteConfig.brand.main, type: "image/png" },
     ],
-    shortcut: cloudImages.logo,
+    shortcut: siteConfig.brand.logo,
     apple: [
       {
-        url: cloudImages.logo,
+        url: siteConfig.brand.logo,
         sizes: "180x180",
         type: "image/jpeg",
       },
@@ -74,21 +67,21 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   openGraph: {
     type: "website",
-    url: baseUrl,
+    url: siteConfig.url,
     title: "Cipher Unit — Open-Source Developer Tools & Engineering Systems",
     description:
       "Build modern software with CipherUnit (Cipher Unit). Open-source developer tools, scalable backend systems, and engineering frameworks designed for performance and clean architecture.",
     siteName: "Cipher Unit",
     images: [
       {
-        url: cloudImages.main,
+        url: siteConfig.brand.main,
         width: 1200,
         height: 630,
         alt: "CipherUnit Open Source Engineering Collective — Developer tools and scalable software systems",
         type: "image/png",
       },
       {
-        url: cloudImages.alt,
+        url: siteConfig.brand.alt,
         width: 1200,
         height: 630,
         alt: "CipherUnit Cipher Unit Logo — Open Source Developer Tools",
@@ -103,7 +96,7 @@ export const metadata: Metadata = {
       "Cipher Unit — CipherUnit Open Source Developer Tools and Engineering Collective",
     description:
       "CipherUnit (Cipher Unit) is an open-source engineering collective building modern developer tools, scalable systems, and clean architecture frameworks.",
-    images: [cloudImages.main],
+    images: [siteConfig.brand.main],
   },
   robots: {
     index: true,
@@ -119,8 +112,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
     languages: {
-      en: baseUrl,
-      fa: `${baseUrl}/?lang=fa`,
+      en: siteConfig.url,
+      fa: `${siteConfig.url}/?lang=fa`,
     },
   },
   appleWebApp: {
@@ -135,11 +128,12 @@ export const metadata: Metadata = {
     date: false,
     url: true,
   },
+  verification: siteConfig.googleVerification
+    ? { google: siteConfig.googleVerification }
+    : undefined,
   other: {
-    "contact:email": "cipherunit.dev@gmail.com",
-    "contact:github": process.env.GITHUB_PAGE as string,
-    "google-site-verification":
-      `google-site-verification=${process.env.GOOGLE_PUBLIC_KEY}`,
+    "contact:email": siteConfig.email,
+    "contact:github": siteConfig.github,
   },
 };
 
@@ -160,10 +154,10 @@ export default function RootLayout({
         <meta name="theme-color" content="#0a0a0a" />
       </head>
       <body>
-        <JsonLd data={OrganizationJsonLd} />
-        <JsonLd data={WebSiteJsonLd} />
-        <JsonLd data={FAQJsonLd} />
-        <JsonLd data={BreadcrumbJsonLdHome} />
+        <JsonLd id="jsonld-organization" data={OrganizationJsonLd} />
+        <JsonLd id="jsonld-website" data={WebSiteJsonLd} />
+        <JsonLd id="jsonld-faq" data={FAQJsonLd} />
+        <JsonLd id="jsonld-breadcrumb-home" data={BreadcrumbJsonLdHome} />
         <Header />
         {children}
         <TerminalManager />

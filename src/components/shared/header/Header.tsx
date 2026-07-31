@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import ImageLogo from "../ImageLogo";
 import NavItem from "./NavItem";
+import { siteConfig } from "@/lib/site";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,15 +47,23 @@ export default function Header() {
             <NavItem />
           </ul>
           <div className="absolute flex justify-center items-center gap-4 bottom-10 right-0 left-0 mx-auto w-max">
-            <Link href="https://github.com/cipherunits/" target="_blank">
+            <Link
+              href={siteConfig.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Image
-                  src={process.env.NEXT_PUBLIC_BRAND_IMAGE_ALT as string}
-                  alt="CipherUnit Logo — Cipher Unit Open Source Developer Tools and Engineering Collective"
-                  width={38}
-                  height={38}
-                />
+                src={siteConfig.brand.alt}
+                alt="CipherUnit Logo — Cipher Unit Open Source Developer Tools and Engineering Collective"
+                width={38}
+                height={38}
+              />
             </Link>
-            <Link href="https://github.com/cipherunits/" target="_blank">
+            <Link
+              href={siteConfig.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Image
                 src="/images/GithubLogo.png"
                 alt="Github Logo"
@@ -62,7 +71,11 @@ export default function Header() {
                 height={40}
               />
             </Link>
-            <Link href="https://github.com/cipherunits/" target="_blank">
+            <Link
+              href={siteConfig.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Image
                 src="/images/LinuxLogoT.png"
                 alt="Linux Logo"

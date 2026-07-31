@@ -4,11 +4,11 @@ import Link from "next/link";
 import Button from "@/components/shared/Button";
 import type { Project } from "../types/projects.type";
 
-export default function Project({
+export default function ProjectBox({
   imageUrl,
-  teck,
+  tech,
   title,
-  diceription,
+  description,
   buttonLive,
   buttonDocs,
   linkLive,
@@ -44,7 +44,7 @@ export default function Project({
       >
         <Image
           src={imageUrl}
-          alt={`${title} open source software developed by Cipher Unit. ${diceription}`}
+          alt={`${title} open source software developed by Cipher Unit. ${description}`}
           fill
           quality={90}
           sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 380px"
@@ -61,16 +61,13 @@ export default function Project({
           className="text-xs leading-6 text-(--color-stroke)"
           itemProp="programmingLanguage"
         >
-          {teck}
+          {tech}
         </p>
       </div>
 
       <div className="flex flex-1 flex-col p-5">
         <header>
-          <h2
-            itemProp="name"
-            className="text-2xl font-semibold text-white"
-          >
+          <h2 itemProp="name" className="text-2xl font-semibold text-white">
             {title}
           </h2>
 
@@ -78,7 +75,7 @@ export default function Project({
             itemProp="description"
             className="mt-3 text-sm leading-7 text-(--color-stroke)"
           >
-            {diceription}
+            {description}
           </p>
         </header>
 
@@ -90,27 +87,23 @@ export default function Project({
             <Link
               href={linkLive}
               target="_blank"
-              rel="noopener noreferrer external"
+              rel="noopener noreferrer"
               aria-label={`Open ${title} GitHub repository`}
               title={`${title} GitHub Repository`}
               itemProp="codeRepository"
             >
-              <Button Theme="primary">
-                {buttonLive}
-              </Button>
+              <Button Theme="primary">{buttonLive}</Button>
             </Link>
 
             <Link
               href={linkDocs}
               target="_blank"
-              rel="noopener noreferrer external"
+              rel="noopener noreferrer"
               aria-label={`Read ${title} documentation`}
               title={`${title} Documentation`}
               itemProp="url"
             >
-              <Button Theme="stroke">
-                {buttonDocs}
-              </Button>
+              <Button Theme="stroke">{buttonDocs}</Button>
             </Link>
           </nav>
         </footer>

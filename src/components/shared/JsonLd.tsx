@@ -1,11 +1,15 @@
+import { siteConfig } from "@/lib/site";
+
+const siteUrl = siteConfig.url;
+
 export const OrganizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Cipher Unit",
   alternateName: ["CipherUnit", "CipherUnit Open Source"],
-  url: "https://cipherunit.xyz",
-  logo: "https://cipherunit.xyz/CipherUnit.png",
-  image: "https://cipherunit.xyz/Hero.png",
+  url: siteUrl,
+  logo: `${siteUrl}/images/CipherUnit.png`,
+  image: `${siteUrl}/images/Hero.png`,
   description:
     "CipherUnit is an open-source engineering collective focused on building secure, scalable, and high-quality software systems.",
   foundingDate: "2024",
@@ -15,14 +19,12 @@ export const OrganizationJsonLd = {
       name: "Cipher Unit Engineering Team",
     },
   ],
-  sameAs: [
-    "https://github.com/cipherunits",
-  ],
+  sameAs: [siteConfig.github],
   contactPoint: {
     "@type": "ContactPoint",
-    email: "cipherunit.dev@gmail.com",
+    email: siteConfig.email,
     contactType: "support",
-    url: "https://cipherunit.xyz/contact",
+    url: `${siteUrl}/contact`,
   },
   areaServed: "Worldwide",
   knowsAbout: [
@@ -39,16 +41,16 @@ export const WebSiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Cipher Unit",
-  url: "https://cipherunit.xyz",
+  url: siteUrl,
   description:
     "CipherUnit — an open-source engineering collective building modern developer tools, scalable systems, and clean architecture frameworks.",
   inLanguage: ["en-US", "fa-IR"],
   publisher: {
-    "@id": "https://cipherunit.xyz/#organization",
+    "@id": `${siteUrl}/#organization`,
   },
   potentialAction: {
     "@type": "SearchAction",
-    target: "https://cipherunit.xyz/?q={search_term_string}",
+    target: `${siteUrl}/?q={search_term_string}`,
     "query-input": "required name=search_term_string",
   },
 };
@@ -61,7 +63,7 @@ export const BreadcrumbJsonLdHome = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://cipherunit.xyz",
+      item: siteUrl,
     },
   ],
 };
@@ -74,13 +76,13 @@ export const BreadcrumbJsonLdContact = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://cipherunit.xyz",
+      item: siteUrl,
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Contact",
-      item: "https://cipherunit.xyz/contact",
+      item: `${siteUrl}/contact`,
     },
   ],
 };
@@ -93,13 +95,13 @@ export const BreadcrumbJsonLdGithub = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://cipherunit.xyz",
+      item: siteUrl,
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "GitHub",
-      item: "https://cipherunit.xyz/github",
+      item: `${siteUrl}/github`,
     },
   ],
 };
@@ -137,20 +139,21 @@ export const FAQJsonLd = {
       name: "How can I contact CipherUnit?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "You can contact CipherUnit via email at cipherunit.dev@gmail.com or through GitHub at github.com/cipherunits.",
+        text: `You can contact CipherUnit via email at ${siteConfig.email} or through GitHub at github.com/cipherunits.`,
       },
     },
   ],
 };
 
 type JsonLdProps = {
+  id: string;
   data: Record<string, unknown>;
 };
 
-export function JsonLd({ data }: JsonLdProps) {
+export function JsonLd({ id, data }: JsonLdProps) {
   return (
     <script
-      id="jsonld"
+      id={id}
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
