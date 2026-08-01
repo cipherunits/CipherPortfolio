@@ -39,6 +39,19 @@ export default function Footer() {
                   />
                 </Link>
               ) : null}
+             <Link
+                href={siteConfig.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-md border border-(--color-stroke)/30 p-2 transition hover:border-(--color-primery)/40 hover:bg-(--color-surface)"
+              >
+                <Image
+                  src="/images/DiscordLogo.svg"
+                  alt="Discord Logo"
+                  width={30}
+                  height={30}
+                />
+              </Link>
               <Link
                 href={siteConfig.github}
                 target="_blank"

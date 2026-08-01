@@ -13,7 +13,7 @@ export default function Contact() {
         <Fields text="contacts" />
       </div>
       <div className="mt-8 flex flex-col items-center justify-between gap-10 md:flex-row">
-        <p className="w-md px-8 text-center font-medium text-(--color-stroke) [word-spacing:6px] md:px-0 md:text-start">
+        <p className="w-full max-w-md px-4 text-center font-medium text-(--color-stroke) [word-spacing:6px] md:px-0 md:text-start">
           Get in touch with CipherUnit (Cipher Unit) for open source
           collaborations, contributions, or technical inquiries.
         </p>

@@ -22,6 +22,20 @@ function ContactMedia() {
           />
           <p>@CipherUnit</p>
         </Link>
+        <Link
+          className="flex items-center gap-2 rounded-lg border border-(--color-stroke)/40 bg-(--color-background-secondary) px-3 py-2 text-(--color-stroke) transition duration-300 hover:border-(--color-primery)/40 hover:bg-(--color-surface) hover:text-white"
+          href={siteConfig.github}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            src="/images/DiscordLogo.svg"
+            alt="Discord Logo"
+            width={20}
+            height={20}
+          />
+          <p>@CipherUnit</p>
+        </Link>
         {siteConfig.instagram ? (
           <Link
             href={siteConfig.instagram}

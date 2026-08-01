@@ -37,6 +37,7 @@ export default function Hero() {
           priority
           fetchPriority="high"
           sizes="(max-width: 768px) 90vw, 500px"
+          className="h-auto w-full max-w-[500px]"
         />
         <div className="flex w-[80%] items-center gap-3 rounded-lg border border-(--color-stroke)/50 bg-(--color-background-secondary) px-3 py-2">
           <span

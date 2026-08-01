@@ -9,7 +9,7 @@ const skills = [
   },
   {
     title: "Databases",
-    subTitle: "SQLite PostgreSQL MongoDB SQLServer MySQL",
+    subTitle: "PostgreSQL MongoDB SQLServer MySQL",
   },
   {
     title: "Frameworks",
