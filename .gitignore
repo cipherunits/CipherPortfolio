@@ -20,6 +20,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 saveFile.txt
-.env
 .env.local
 .env.*.local
+

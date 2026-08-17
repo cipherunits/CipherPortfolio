@@ -29,7 +29,7 @@ export const siteConfig = {
     logo: process.env.NEXT_PUBLIC_BRAND_IMAGE_LOGO || DEFAULT_BRAND.logo,
     alt: process.env.NEXT_PUBLIC_BRAND_IMAGE_ALT || DEFAULT_BRAND.alt,
   },
-  googleVerification: process.env.GOOGLE_PUBLIC_KEY || "",
+  googleVerification: "LvFG04WguElw5_gD50zQhyMH1xEQUJua1Xj1Mh9nQ80",
 } as const;
 
 export function absoluteUrl(path = "/") {
