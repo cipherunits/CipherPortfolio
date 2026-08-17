@@ -79,7 +79,7 @@ export default function ContactPage() {
       <JsonLd id="jsonld-breadcrumb-contact" data={BreadcrumbJsonLdContact} />
 
       <header className="space-y-3">
-        <NamePage />
+        <NamePage title="Contact CipherUnit" />
         <SubNamePage text="Contact CipherUnit" />
       </header>
 

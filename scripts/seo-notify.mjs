@@ -11,6 +11,8 @@ const INDEXNOW_KEY = "cipherunit-indexnow-2026";
 const urls = [
   `${SITE}/`,
   `${SITE}/projects`,
+  `${SITE}/projects/cipher-token`,
+  `${SITE}/projects/npm-mirror`,
   `${SITE}/team`,
   `${SITE}/contact`,
   `${SITE}/sitemap.xml`,
@@ -47,6 +49,8 @@ async function main() {
   for (const url of [
     `${SITE}/`,
     `${SITE}/projects`,
+    `${SITE}/projects/cipher-token`,
+    `${SITE}/projects/npm-mirror`,
     `${SITE}/team`,
     `${SITE}/contact`,
   ]) {

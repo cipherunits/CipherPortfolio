@@ -1,49 +1,53 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
+const allowAssets = ["/", "/_next/static/", "/_next/image/"];
+const allowAi = ["/", "/llms.txt", "/_next/static/", "/_next/image/"];
+const disallow = [
+  "/api/",
+  "/_next/data/",
+  "/private/",
+  "/_vercel/",
+  "/github",
+];
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
-        disallow: [
-          "/api/",
-          "/_next/",
-          "/private/",
-          "/_vercel/",
-          "/github",
-        ],
+        allow: allowAssets,
+        disallow,
       },
       {
         userAgent: "GPTBot",
-        allow: ["/", "/llms.txt"],
-        disallow: ["/api/", "/_next/", "/private/", "/github"],
+        allow: allowAi,
+        disallow,
       },
       {
         userAgent: "ChatGPT-User",
-        allow: ["/", "/llms.txt"],
-        disallow: ["/api/", "/_next/", "/private/", "/github"],
+        allow: allowAi,
+        disallow,
       },
       {
         userAgent: "Google-Extended",
-        allow: ["/", "/llms.txt"],
-        disallow: ["/api/", "/_next/", "/private/", "/github"],
+        allow: allowAi,
+        disallow,
       },
       {
         userAgent: "anthropic-ai",
-        allow: ["/", "/llms.txt"],
-        disallow: ["/api/", "/_next/", "/private/", "/github"],
+        allow: allowAi,
+        disallow,
       },
       {
         userAgent: "ClaudeBot",
-        allow: ["/", "/llms.txt"],
-        disallow: ["/api/", "/_next/", "/private/", "/github"],
+        allow: allowAi,
+        disallow,
       },
       {
         userAgent: "PerplexityBot",
-        allow: ["/", "/llms.txt"],
-        disallow: ["/api/", "/_next/", "/private/", "/github"],
+        allow: allowAi,
+        disallow,
       },
     ],
     sitemap: [

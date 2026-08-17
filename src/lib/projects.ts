@@ -11,6 +11,10 @@ export type Project = {
   linkDocs: string;
 };
 
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projects.find((project) => project.slug === slug);
+}
+
 export const projects: Project[] = [
   {
     slug: "cipher-token",

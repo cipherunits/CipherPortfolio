@@ -6,6 +6,7 @@ import { absoluteUrl } from "@/lib/site";
 import type { Project } from "../types/projects.type";
 
 export default function ProjectBox({
+  slug,
   imageUrl,
   tech,
   programmingLanguages,
@@ -16,6 +17,7 @@ export default function ProjectBox({
   linkLive,
   linkDocs,
 }: Project) {
+  const pagePath = `/projects/${slug}`;
   const absoluteImageUrl = absoluteUrl(imageUrl);
   const imageTitle = `${title} — Cipher Unit (CipherUnit) open source project`;
 
@@ -37,7 +39,7 @@ export default function ProjectBox({
       "
     >
       <meta itemProp="codeRepository" content={linkLive} />
-      <meta itemProp="url" content={linkDocs} />
+      <meta itemProp="url" content={absoluteUrl(pagePath)} />
       <meta itemProp="applicationCategory" content="Developer Tool" />
       <meta itemProp="author" content="Cipher Unit" />
       <meta itemProp="creator" content="Cipher Unit" />
@@ -55,15 +57,22 @@ export default function ProjectBox({
           itemProp="caption"
           content={`${title} by Cipher Unit. ${description}`}
         />
-        <Image
-          src={imageUrl}
-          alt={`${title} open source software developed by Cipher Unit (CipherUnit). ${description}`}
+        <Link
+          href={pagePath}
+          aria-label={`${title} — Cipher Unit project page`}
           title={imageTitle}
-          fill
-          quality={90}
-          sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 380px"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+          className="absolute inset-0"
+        >
+          <Image
+            src={imageUrl}
+            alt={`${title} open source software developed by Cipher Unit (CipherUnit). ${description}`}
+            title={imageTitle}
+            fill
+            quality={90}
+            sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 380px"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </Link>
 
         <figcaption className="sr-only">
           {title} open source developer tool screenshot by Cipher Unit
@@ -81,7 +90,12 @@ export default function ProjectBox({
       <div className="flex flex-1 flex-col p-5">
         <header>
           <h2 itemProp="name" className="text-2xl font-semibold text-white">
-            {title}
+            <Link
+              href={pagePath}
+              className="transition hover:text-(--color-primery)"
+            >
+              {title}
+            </Link>
           </h2>
 
           <p
@@ -114,7 +128,6 @@ export default function ProjectBox({
               rel="noopener noreferrer"
               aria-label={`Read ${title} documentation`}
               title={`${title} Documentation`}
-              itemProp="url"
             >
               <Button Theme="stroke">{buttonDocs}</Button>
             </Link>

@@ -64,7 +64,7 @@ async function fetchUserProfile(login: string): Promise<TeamMember | null> {
     return {
       login: user.login,
       name: resolveDisplayName(user.login, user.name),
-      avatarUrl: `${user.avatar_url}${user.avatar_url.includes("?") ? "&" : "?"}s=460`,
+      avatarUrl: user.avatar_url,
       htmlUrl: user.html_url,
       bio: user.bio?.trim() || null,
     };
@@ -107,7 +107,7 @@ export async function getTeamMembers(): Promise<TeamMember[]> {
         return {
           login: member.login,
           name: member.login,
-          avatarUrl: `${member.avatar_url}${member.avatar_url.includes("?") ? "&" : "?"}s=460`,
+          avatarUrl: member.avatar_url,
           htmlUrl: member.html_url,
           bio: null,
         } satisfies TeamMember;

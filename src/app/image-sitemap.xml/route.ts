@@ -1,9 +1,13 @@
 import {
   brandImageUrls,
   buildImageSitemapXml,
+  projectImageCaption,
+  projectImageTitle,
+  projectPagePath,
   projectSitemapImages,
   teamSitemapImages,
 } from "@/lib/seo-images";
+import { projects } from "@/lib/projects";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 import { getTeamMembers } from "@/lib/team";
 
@@ -31,6 +35,16 @@ export async function GET() {
       pageUrl: absoluteUrl("/projects"),
       images: projectSitemapImages(),
     },
+    ...projects.map((project) => ({
+      pageUrl: absoluteUrl(projectPagePath(project)),
+      images: [
+        {
+          loc: absoluteUrl(project.imageUrl),
+          title: projectImageTitle(project),
+          caption: projectImageCaption(project),
+        },
+      ],
+    })),
     {
       pageUrl: absoluteUrl("/team"),
       images: teamSitemapImages(members),

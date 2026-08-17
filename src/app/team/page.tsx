@@ -23,8 +23,10 @@ export async function generateMetadata(): Promise<Metadata> {
   }));
 
   return {
-    title:
-      "GitHub Team & Contributors | Cipher Unit Open-Source Engineering Collective",
+    title: {
+      absolute:
+        "GitHub Team & Contributors | Cipher Unit Open-Source Engineering Collective",
+    },
     description:
       "Meet the public GitHub members of Cipher Unit (cipherunits): engineers and open-source contributors with profiles, avatars, and GitHub links building developer tools.",
     keywords: [
@@ -96,7 +98,7 @@ export default async function TeamPage() {
       <JsonLd id="jsonld-team-graph" data={buildTeamGraphJsonLd(members)} />
 
       <header className="mb-10 space-y-2">
-        <NamePage />
+        <NamePage title="GitHub Team & Contributors" />
         <SubNamePage text="Public GitHub members of the Cipher Units organization." />
       </header>
 

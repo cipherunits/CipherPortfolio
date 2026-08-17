@@ -20,8 +20,10 @@ const projectOgImages = projects.map((project) => ({
 }));
 
 export const metadata: Metadata = {
-  title:
-    "Open Source Projects | Cipher Unit - Rust, Python, Docker & Developer Tools",
+  title: {
+    absolute:
+      "Open Source Projects | Cipher Unit - Rust, Python, Docker & Developer Tools",
+  },
   description:
     "Explore Cipher Unit's open-source software projects, including Rust libraries, Python packages, Docker utilities, cryptography tools and production-ready developer solutions.",
   keywords: [
@@ -93,7 +95,7 @@ export default function ProjectsPage() {
       <JsonLd id="jsonld-projects-graph" data={buildProjectsGraphJsonLd()} />
 
       <header className="mb-10 space-y-2">
-        <NamePage />
+        <NamePage title="Open Source Projects" />
         <SubNamePage text="Explore all open-source projects developed by Cipher Unit." />
       </header>
 

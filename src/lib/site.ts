@@ -37,6 +37,10 @@ export function absoluteUrl(path = "/") {
   if (!path || path === "/") {
     return base;
   }
+  // Cloudinary / GitHub / other CDNs are already absolute — do not prefix the site origin.
+  if (/^https?:\/\//i.test(path)) {
+    return path;
+  }
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }
 

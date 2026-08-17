@@ -1,7 +1,8 @@
 import { faqItems } from "@/lib/faq";
-import { projects } from "@/lib/projects";
+import { type Project, projects } from "@/lib/projects";
 import {
   projectImageObject,
+  projectPagePath,
   teamImageObject,
 } from "@/lib/seo-images";
 import { absoluteUrl, siteConfig } from "@/lib/site";
@@ -172,26 +173,78 @@ export function buildProjectsGraphJsonLd() {
           "Collection of open-source software developed by Cipher Unit.",
         numberOfItems: projects.length,
         itemListOrder: "https://schema.org/ItemListOrderAscending",
-        itemListElement: projects.map((project, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          item: {
-            "@type": "SoftwareSourceCode",
-            "@id": `${pageUrl}#${project.slug}`,
-            name: project.title,
-            description: project.description,
-            codeRepository: project.linkLive,
-            url: project.linkLive,
-            programmingLanguage: project.programmingLanguages,
-            image: { "@id": `${pageUrl}#${project.slug}-image` },
-            author: { "@id": orgId },
-            creator: { "@id": orgId },
-            license: "https://opensource.org/licenses",
-            applicationCategory: "DeveloperApplication",
-          },
-        })),
+        itemListElement: projects.map((project, index) => {
+          const projectUrl = absoluteUrl(projectPagePath(project));
+          return {
+            "@type": "ListItem",
+            position: index + 1,
+            item: {
+              "@type": "SoftwareSourceCode",
+              "@id": projectUrl,
+              name: project.title,
+              description: project.description,
+              codeRepository: project.linkLive,
+              url: projectUrl,
+              programmingLanguage: project.programmingLanguages,
+              image: { "@id": `${projectUrl}#image` },
+              author: { "@id": orgId },
+              creator: { "@id": orgId },
+              license: "https://opensource.org/licenses",
+              applicationCategory: "DeveloperApplication",
+            },
+          };
+        }),
       },
       ...imageNodes,
+    ],
+  };
+}
+
+export function buildProjectPageJsonLd(project: Project) {
+  const pageUrl = absoluteUrl(projectPagePath(project));
+  const image = projectImageObject(project, { representativeOfPage: true });
+  const breadcrumb = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Projects", path: "/projects" },
+    { name: project.title, path: projectPagePath(project) },
+  ]);
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: `${project.title} | Cipher Unit Open Source Project`,
+        description: project.description,
+        inLanguage: "en-US",
+        isPartOf: { "@id": websiteId },
+        about: { "@id": orgId },
+        primaryImageOfPage: { "@id": image["@id"] },
+        image: { "@id": image["@id"] },
+        breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+        mainEntity: { "@id": pageUrl },
+      },
+      {
+        ...breadcrumb,
+        "@id": `${pageUrl}#breadcrumb`,
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "@id": pageUrl,
+        name: project.title,
+        description: project.description,
+        url: pageUrl,
+        codeRepository: project.linkLive,
+        programmingLanguage: project.programmingLanguages,
+        image: { "@id": image["@id"] },
+        author: { "@id": orgId },
+        creator: { "@id": orgId },
+        license: "https://opensource.org/licenses",
+        applicationCategory: "DeveloperApplication",
+      },
+      image,
     ],
   };
 }

@@ -2,15 +2,24 @@ import { type Project, projects } from "@/lib/projects";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 import type { TeamMember } from "@/lib/team";
 
-/** Prefer a larger GitHub avatar for crawlers / image search. */
+/**
+ * Prefer a larger GitHub avatar for crawlers / image search.
+ * Keep a single query param so Next.js sitemap XML stays well-formed (`&` is not escaped).
+ */
 export function seoAvatarUrl(avatarUrl: string, size = 460): string {
   try {
     const url = new URL(avatarUrl);
+    url.search = "";
     url.searchParams.set("s", String(size));
     return url.toString();
   } catch {
-    return avatarUrl.replace(/([?&])s=\d+/i, `$1s=${size}`);
+    const withoutQuery = avatarUrl.split("?")[0];
+    return `${withoutQuery}?s=${size}`;
   }
+}
+
+export function projectPagePath(project: Pick<Project, "slug">): string {
+  return `/projects/${project.slug}`;
 }
 
 export function projectImageTitle(project: Project): string {
@@ -29,18 +38,22 @@ export function teamImageCaption(member: TeamMember): string {
   return `${member.name} is a public GitHub member of Cipher Unit (cipherunits / CipherUnit).`;
 }
 
-export function projectImageObject(project: Project) {
+export function projectImageObject(
+  project: Project,
+  options?: { representativeOfPage?: boolean },
+) {
+  const pageUrl = absoluteUrl(projectPagePath(project));
   const url = absoluteUrl(project.imageUrl);
   return {
     "@type": "ImageObject" as const,
-    "@id": `${absoluteUrl("/projects")}#${project.slug}-image`,
+    "@id": `${pageUrl}#image`,
     url,
     contentUrl: url,
     name: projectImageTitle(project),
     caption: projectImageCaption(project),
     description: projectImageCaption(project),
     encodingFormat: "image/png",
-    representativeOfPage: false,
+    representativeOfPage: options?.representativeOfPage ?? false,
     creator: {
       "@type": "Organization" as const,
       name: siteConfig.name,

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import type { TeamMember } from "@/lib/team";
+import { seoAvatarUrl } from "@/lib/seo-images";
 import { siteConfig } from "@/lib/site";
 
 type MemberCardProps = TeamMember & {
@@ -43,7 +44,7 @@ export default function MemberCard({
         itemProp="url"
       >
         <Image
-          src={avatarUrl}
+          src={seoAvatarUrl(avatarUrl)}
           alt={`${name} (@${login}) — public GitHub avatar, Cipher Unit (CipherUnit) engineering team`}
           title={`${name} (@${login}) — Cipher Unit team member`}
           width={compact ? 72 : 112}
