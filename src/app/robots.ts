@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
-const allowAssets = ["/", "/avatars/", "/_next/static/", "/_next/image/"];
-const allowAi = ["/", "/llms.txt", "/avatars/", "/_next/static/", "/_next/image/"];
+const allowAssets = ["/", "/images/", "/avatars/", "/_next/static/", "/_next/image/"];
+const allowAi = ["/", "/llms.txt", "/images/", "/avatars/", "/_next/static/", "/_next/image/"];
 const disallow = [
   "/api/",
   "/_next/data/",

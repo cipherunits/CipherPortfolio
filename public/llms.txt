@@ -19,10 +19,16 @@
 
 ## Projects
 
-- Cipher Token: https://cipherunit.xyz/projects/cipher-token — high-performance Rust JWT/crypto library with Python (PyO3) bindings
+- Fusion Framework: https://cipherunit.xyz/projects/fusion-framework — one framework, multiple languages for modern app development
+  - GitHub: https://github.com/cipherunits/fusion-framework
+  - Image: https://cipherunit.xyz/images/logo-fusion.png
+- Cipher Token: https://cipherunit.xyz/projects/cipher-token — high-performance Rust token/crypto utilities with Python (PyO3) bindings
   - GitHub: https://github.com/cipherunits/CipherToken
   - Image: https://cipherunit.xyz/images/cipher-token.png
-- NPM Mirror: https://cipherunit.xyz/projects/npm-mirror — offline npm package mirror with Docker Compose
+- Cipher Scope: https://cipherunit.xyz/projects/cipher-scope — runtime visibility CLI for modern apps (banner, env, tooling context)
+  - GitHub: https://github.com/cipherunits/CipherScope
+  - Image: https://cipherunit.xyz/images/cipher-scope.png
+- NPM Mirror: https://cipherunit.xyz/projects/npm-mirror — offline npm package cache/mirror for unreliable networks
   - GitHub: https://github.com/cipherunits/npm-mirror
   - Image: https://cipherunit.xyz/images/npm-mirrors.png
 

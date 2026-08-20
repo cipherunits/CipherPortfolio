@@ -53,6 +53,11 @@ export const metadata: Metadata = {
     "CipherUnit",
     "cipher unit",
     "cipherunit",
+    "cipherunits",
+    "cipher units",
+    "Cipherunits",
+    "CipherUnits",
+    "Cipher Units",
     "cipher unit github",
     "open source developer tools",
     "developer tools",
@@ -172,7 +177,7 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         <a
           href="#main-content"
-          className="absolute left-4 top-4 z-[100] -translate-y-16 rounded-md border border-(--color-primery) bg-(--color-surface) px-4 py-2 text-sm text-white shadow-lg transition focus:translate-y-0"
+          className="absolute left-4 top-4 z-100 -translate-y-16 rounded-md border border-(--color-primery) bg-(--color-surface) px-4 py-2 text-sm text-white shadow-lg transition focus:translate-y-0"
         >
           Skip to main content
         </a>

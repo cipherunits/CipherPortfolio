@@ -39,12 +39,40 @@ export function projectImageCaption(project: Project): string {
   return `${project.title} by Cipher Unit. ${project.description}`;
 }
 
-export function teamImageTitle(member: TeamMember): string {
-  return `${member.name} (@${member.login}) — Cipher Unit engineering team`;
+export function projectImageAlt(project: Project): string {
+  return `${project.title} open source software developed by Cipher Unit (CipherUnit). ${project.description}`;
 }
 
-export function teamImageCaption(member: TeamMember): string {
-  return `${member.name} is a public GitHub member of Cipher Unit (cipherunits / CipherUnit).`;
+/** All project card assets are authored at 1200×675 for OG / Image Search. */
+export const PROJECT_IMAGE_WIDTH = 1200;
+export const PROJECT_IMAGE_HEIGHT = 675;
+
+export function projectImageEncodingFormat(imageUrl: string): string {
+  const path = imageUrl.split("?")[0]?.toLowerCase() ?? "";
+  if (path.endsWith(".jpg") || path.endsWith(".jpeg")) {
+    return "image/jpeg";
+  }
+  if (path.endsWith(".webp")) {
+    return "image/webp";
+  }
+  if (path.endsWith(".svg")) {
+    return "image/svg+xml";
+  }
+  if (path.endsWith(".gif")) {
+    return "image/gif";
+  }
+  return "image/png";
+}
+
+export function projectOgImage(project: Project) {
+  return {
+    url: absoluteUrl(project.imageUrl),
+    secureUrl: absoluteUrl(project.imageUrl),
+    width: PROJECT_IMAGE_WIDTH,
+    height: PROJECT_IMAGE_HEIGHT,
+    alt: projectImageTitle(project),
+    type: projectImageEncodingFormat(project.imageUrl),
+  };
 }
 
 export function projectImageObject(
@@ -61,14 +89,31 @@ export function projectImageObject(
     name: projectImageTitle(project),
     caption: projectImageCaption(project),
     description: projectImageCaption(project),
-    encodingFormat: "image/png",
+    encodingFormat: projectImageEncodingFormat(project.imageUrl),
+    width: PROJECT_IMAGE_WIDTH,
+    height: PROJECT_IMAGE_HEIGHT,
     representativeOfPage: options?.representativeOfPage ?? false,
+    isPartOf: {
+      "@type": "WebPage" as const,
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+    },
     creator: {
       "@type": "Organization" as const,
       name: siteConfig.name,
       url: siteConfig.url,
     },
+    creditText: "Cipher Unit (CipherUnit)",
+    copyrightNotice: "Cipher Unit",
   };
+}
+
+export function teamImageTitle(member: TeamMember): string {
+  return `${member.name} (@${member.login}) — Cipher Unit engineering team`;
+}
+
+export function teamImageCaption(member: TeamMember): string {
+  return `${member.name} is a public GitHub member of Cipher Unit (cipherunits / CipherUnit).`;
 }
 
 export function teamImageObject(member: TeamMember, pageUrl: string) {

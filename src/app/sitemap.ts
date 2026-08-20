@@ -20,8 +20,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const projectPages: MetadataRoute.Sitemap = projects.map((project) => ({
     url: absoluteUrl(projectPagePath(project)),
     lastModified,
-    changeFrequency: "monthly",
-    priority: 0.86,
+    changeFrequency: "weekly",
+    priority: 0.88,
     images: [absoluteUrl(project.imageUrl)],
   }));
 

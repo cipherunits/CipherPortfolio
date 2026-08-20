@@ -41,9 +41,10 @@ Cybersecurity
 `,
 
   projects: `
-1. Cipher Token
-2. NPM Mirror
-3. CipherPortfolio
+1. Fusion Framework
+2. Cipher Token
+3. Cipher Scope
+4. NPM Mirror
 `,
 
   contact: `

@@ -12,8 +12,13 @@ import NamePage from "@/components/shared/NamePage";
 import SubNamePage from "@/components/shared/SubNamePage";
 import { getProjectBySlug, projects } from "@/lib/projects";
 import {
+  PROJECT_IMAGE_HEIGHT,
+  PROJECT_IMAGE_WIDTH,
+  projectImageAlt,
   projectImageCaption,
+  projectImageEncodingFormat,
   projectImageTitle,
+  projectOgImage,
   projectPagePath,
 } from "@/lib/seo-images";
 import { absoluteUrl, brandOgImages, siteConfig } from "@/lib/site";
@@ -42,7 +47,13 @@ export async function generateMetadata({
   }
 
   const pageUrl = absoluteUrl(projectPagePath(project));
+  const imageUrl = absoluteUrl(project.imageUrl);
+  const imageTitle = projectImageTitle(project);
   const title = `${project.title} | Cipher Unit Open Source Project`;
+  const techKeywords = project.tech
+    .split("•")
+    .map((part) => part.trim())
+    .filter(Boolean);
 
   return {
     title: { absolute: title },
@@ -52,8 +63,13 @@ export async function generateMetadata({
       "Cipher Unit",
       "CipherUnit",
       "open source",
+      "open source project",
+      "developer tools",
       ...project.programmingLanguages,
+      ...techKeywords,
     ],
+    category: "Technology",
+    classification: "Software Development",
     alternates: {
       canonical: projectPagePath(project),
     },
@@ -78,20 +94,17 @@ export async function generateMetadata({
       siteName: siteConfig.name,
       title: `${project.title} — Cipher Unit`,
       description: project.description,
-      images: [
-        {
-          url: project.imageUrl,
-          alt: projectImageTitle(project),
-          type: "image/png" as const,
-        },
-        ...brandOgImages(`${project.title} by Cipher Unit`),
-      ],
+      images: [projectOgImage(project), ...brandOgImages(`${project.title} by Cipher Unit`)],
     },
     twitter: {
       card: "summary_large_image",
       title: `${project.title} — Cipher Unit`,
       description: project.description,
-      images: [project.imageUrl],
+      images: [imageUrl],
+    },
+    other: {
+      "og:image:alt": imageTitle,
+      "image": imageUrl,
     },
   };
 }
@@ -106,6 +119,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const imageTitle = projectImageTitle(project);
   const imageCaption = projectImageCaption(project);
+  const imageAlt = projectImageAlt(project);
+  const absoluteImageUrl = absoluteUrl(project.imageUrl);
+  const encodingFormat = projectImageEncodingFormat(project.imageUrl);
 
   return (
     <main
@@ -137,28 +153,30 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <meta itemProp="creator" content="Cipher Unit" />
 
         <figure
-          className="relative aspect-video w-full overflow-hidden"
+          className="relative aspect-video w-full overflow-hidden bg-[#2c3138]"
           itemProp="image"
           itemScope
           itemType="https://schema.org/ImageObject"
         >
-          <meta
-            itemProp="contentUrl"
-            content={absoluteUrl(project.imageUrl)}
-          />
-          <meta itemProp="url" content={absoluteUrl(project.imageUrl)} />
+          <meta itemProp="contentUrl" content={absoluteImageUrl} />
+          <meta itemProp="url" content={absoluteImageUrl} />
           <meta itemProp="name" content={imageTitle} />
           <meta itemProp="caption" content={imageCaption} />
+          <meta itemProp="description" content={imageCaption} />
+          <meta itemProp="encodingFormat" content={encodingFormat} />
+          <meta itemProp="width" content={String(PROJECT_IMAGE_WIDTH)} />
+          <meta itemProp="height" content={String(PROJECT_IMAGE_HEIGHT)} />
+          <meta itemProp="representativeOfPage" content="true" />
           <Image
             src={project.imageUrl}
-            overrideSrc={absoluteUrl(project.imageUrl)}
-            alt={`${project.title} open source software developed by Cipher Unit (CipherUnit). ${project.description}`}
+            overrideSrc={absoluteImageUrl}
+            alt={imageAlt}
             title={imageTitle}
             fill
             priority
             quality={90}
             sizes="(max-width: 1024px) 100vw, 1152px"
-            className="object-cover"
+            className="object-contain"
           />
           <figcaption className="sr-only">{imageCaption}</figcaption>
         </figure>

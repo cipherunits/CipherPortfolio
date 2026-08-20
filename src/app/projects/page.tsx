@@ -8,16 +8,12 @@ import {
   JsonLd,
 } from "@/components/shared/JsonLd";
 import { projects } from "@/lib/projects";
-import { projectImageTitle } from "@/lib/seo-images";
+import { projectOgImage } from "@/lib/seo-images";
 import { absoluteUrl, brandOgImages, siteConfig } from "@/lib/site";
 
 const PAGE_URL = absoluteUrl("/projects");
 
-const projectOgImages = projects.map((project) => ({
-  url: project.imageUrl,
-  alt: projectImageTitle(project),
-  type: "image/png" as const,
-}));
+const projectOgImages = projects.map((project) => projectOgImage(project));
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +21,7 @@ export const metadata: Metadata = {
       "Open Source Projects | Cipher Unit - Rust, Python, Docker & Developer Tools",
   },
   description:
-    "Explore Cipher Unit's open-source software projects, including Rust libraries, Python packages, Docker utilities, cryptography tools and production-ready developer solutions.",
+    "Explore Cipher Unit's open-source software projects, including Fusion Framework, Cipher Token, Cipher Scope, NPM Mirror, Rust libraries, Python packages, Docker utilities and production-ready developer solutions.",
   keywords: [
     "Cipher Unit",
     "Cipher Unit Projects",
@@ -40,8 +36,10 @@ export const metadata: Metadata = {
     "Cryptography",
     "Docker",
     "Docker Compose",
-    "NPM Mirror",
+    "Fusion Framework",
     "Cipher Token",
+    "Cipher Scope",
+    "NPM Mirror",
     "Offline NPM",
     "GitHub",
     "CLI",
@@ -74,10 +72,10 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: "Cipher Unit Open Source Projects",
     description:
-      "Browse open-source developer tools, Rust libraries, Python packages and Docker utilities built by Cipher Unit.",
+      "Browse open-source developer tools — Fusion Framework, Cipher Token, Cipher Scope and NPM Mirror — built by Cipher Unit.",
     images: [
-      ...brandOgImages("Cipher Unit Open Source Projects"),
       ...projectOgImages,
+      ...brandOgImages("Cipher Unit Open Source Projects"),
     ],
   },
   twitter: {
@@ -85,7 +83,9 @@ export const metadata: Metadata = {
     title: "Cipher Unit Open Source Projects",
     description:
       "Browse open-source developer tools and engineering projects created by Cipher Unit.",
-    images: [projects[0]?.imageUrl || siteConfig.brand.main],
+    images: [
+      projectOgImages[0]?.url || absoluteUrl(siteConfig.brand.main),
+    ],
   },
 };
 

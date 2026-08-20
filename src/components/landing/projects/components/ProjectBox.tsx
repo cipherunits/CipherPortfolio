@@ -2,6 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Button from "@/components/shared/Button";
+import {
+  PROJECT_IMAGE_HEIGHT,
+  PROJECT_IMAGE_WIDTH,
+  projectImageAlt,
+  projectImageCaption,
+  projectImageEncodingFormat,
+  projectImageTitle,
+} from "@/lib/seo-images";
 import { absoluteUrl } from "@/lib/site";
 import type { Project } from "../types/projects.type";
 
@@ -17,9 +25,24 @@ export default function ProjectBox({
   linkLive,
   linkDocs,
 }: Project) {
+  const project = {
+    slug,
+    imageUrl,
+    tech,
+    programmingLanguages,
+    title,
+    description,
+    linkLive,
+    linkDocs,
+    ...(buttonLive ? { buttonLive } : {}),
+    ...(buttonDocs ? { buttonDocs } : {}),
+  } satisfies Project;
   const pagePath = `/projects/${slug}`;
   const absoluteImageUrl = absoluteUrl(imageUrl);
-  const imageTitle = `${title} — Cipher Unit (CipherUnit) open source project`;
+  const imageTitle = projectImageTitle(project);
+  const imageCaption = projectImageCaption(project);
+  const imageAlt = projectImageAlt(project);
+  const encodingFormat = projectImageEncodingFormat(imageUrl);
 
   return (
     <article
@@ -45,7 +68,7 @@ export default function ProjectBox({
       <meta itemProp="creator" content="Cipher Unit" />
 
       <figure
-        className="relative aspect-video overflow-hidden"
+        className="relative aspect-video overflow-hidden bg-[#2c3138]"
         itemProp="image"
         itemScope
         itemType="https://schema.org/ImageObject"
@@ -53,10 +76,11 @@ export default function ProjectBox({
         <meta itemProp="contentUrl" content={absoluteImageUrl} />
         <meta itemProp="url" content={absoluteImageUrl} />
         <meta itemProp="name" content={imageTitle} />
-        <meta
-          itemProp="caption"
-          content={`${title} by Cipher Unit. ${description}`}
-        />
+        <meta itemProp="caption" content={imageCaption} />
+        <meta itemProp="description" content={imageCaption} />
+        <meta itemProp="encodingFormat" content={encodingFormat} />
+        <meta itemProp="width" content={String(PROJECT_IMAGE_WIDTH)} />
+        <meta itemProp="height" content={String(PROJECT_IMAGE_HEIGHT)} />
         <Link
           href={pagePath}
           aria-label={`${title} — Cipher Unit project page`}
@@ -66,19 +90,16 @@ export default function ProjectBox({
           <Image
             src={imageUrl}
             overrideSrc={absoluteImageUrl}
-            alt={`${title} open source software developed by Cipher Unit (CipherUnit). ${description}`}
+            alt={imageAlt}
             title={imageTitle}
             fill
             quality={90}
             sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 380px"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
           />
         </Link>
 
-        <figcaption className="sr-only">
-          {title} open source developer tool screenshot by Cipher Unit
-          (CipherUnit).
-        </figcaption>
+        <figcaption className="sr-only">{imageCaption}</figcaption>
       </figure>
 
       <div className="border-y border-(--color-stroke)/40 bg-(--color-surface)/40 px-4 py-3">

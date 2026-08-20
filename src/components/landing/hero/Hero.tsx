@@ -22,7 +22,7 @@ export default function Hero() {
         <p className="font-base text-(--color-stroke) [word-spacing:2px] md:[word-spacing:6px]">
           CipherUnit is a collective of developers crafting open-source systems,
           developer tools, and infrastructure with a focus on security,
-          performance, and minimal design. Built for engineers who care about
+          performance, and minimal design. Built for enginers who care about
           how things really work.
         </p>
         <Link href="/contact" className="inline-block">
@@ -39,7 +39,7 @@ export default function Hero() {
           priority
           fetchPriority="high"
           sizes="(max-width: 768px) 90vw, 500px"
-          className="h-auto w-full max-w-[500px]"
+          className="h-auto w-full max-w-125"
         />
         <div className="flex w-[80%] items-center gap-3 rounded-lg border border-(--color-stroke)/50 bg-(--color-background-secondary) px-3 py-2">
           <span

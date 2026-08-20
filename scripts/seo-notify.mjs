@@ -8,11 +8,25 @@
 const SITE = process.env.SITE_NAME || "https://cipherunit.xyz";
 const INDEXNOW_KEY = "cipherunit-indexnow-2026";
 
+const projectSlugs = [
+  "fusion-framework",
+  "cipher-token",
+  "cipher-scope",
+  "npm-mirror",
+];
+
+const projectImages = [
+  `${SITE}/images/logo-fusion.png`,
+  `${SITE}/images/cipher-token.png`,
+  `${SITE}/images/cipher-scope.png`,
+  `${SITE}/images/npm-mirrors.png`,
+];
+
 const urls = [
   `${SITE}/`,
   `${SITE}/projects`,
-  `${SITE}/projects/cipher-token`,
-  `${SITE}/projects/npm-mirror`,
+  ...projectSlugs.map((slug) => `${SITE}/projects/${slug}`),
+  ...projectImages,
   `${SITE}/team`,
   `${SITE}/contact`,
   `${SITE}/sitemap.xml`,
@@ -49,8 +63,7 @@ async function main() {
   for (const url of [
     `${SITE}/`,
     `${SITE}/projects`,
-    `${SITE}/projects/cipher-token`,
-    `${SITE}/projects/npm-mirror`,
+    ...projectSlugs.map((slug) => `${SITE}/projects/${slug}`),
     `${SITE}/team`,
     `${SITE}/contact`,
   ]) {

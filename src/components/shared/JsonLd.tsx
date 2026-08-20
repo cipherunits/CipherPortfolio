@@ -241,6 +241,7 @@ export function buildProjectPageJsonLd(project: Project) {
         image: { "@id": image["@id"] },
         author: { "@id": orgId },
         creator: { "@id": orgId },
+        sameAs: [project.linkLive, project.linkDocs],
         license: "https://opensource.org/licenses",
         applicationCategory: "DeveloperApplication",
       },
