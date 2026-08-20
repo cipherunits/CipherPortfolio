@@ -30,7 +30,7 @@
 
 - Public GitHub organization members: https://cipherunit.xyz/team
 - Organization: https://github.com/cipherunits
-- Team photos/avatars are listed on https://cipherunit.xyz/team and in https://cipherunit.xyz/image-sitemap.xml
+- Team photos/avatars are served from https://cipherunit.xyz/avatars/<github-login> and listed in https://cipherunit.xyz/image-sitemap.xml
 
 ## Focus
 

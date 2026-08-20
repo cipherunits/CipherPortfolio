@@ -1,6 +1,9 @@
 const DEFAULT_SITE_URL = "https://cipherunit.xyz";
 const DEFAULT_GITHUB = "https://github.com/cipherunits";
 const DEFAULT_EMAIL = "cipherunit.dev@gmail.com";
+/** GSC meta token — env preferred; hardcoded so verification never drops. */
+const DEFAULT_GOOGLE_VERIFICATION =
+  "LvFG04WguElw5_gD50zQhyMH1xEQUJua1Xj1Mh9nQ80";
 
 /** Local fallbacks so OG/icons never resolve to empty strings. */
 const DEFAULT_BRAND = {
@@ -8,6 +11,12 @@ const DEFAULT_BRAND = {
   logo: "/images/CipherUnit.png",
   alt: "/images/CipherUnit.png",
 } as const;
+
+function resolveGoogleVerification() {
+  const raw =
+    process.env.GOOGLE_PUBLIC_KEY?.trim() || DEFAULT_GOOGLE_VERIFICATION;
+  return raw.replace(/^google-site-verification=/i, "").trim();
+}
 
 export const siteConfig = {
   name: "Cipher Unit",
@@ -29,7 +38,7 @@ export const siteConfig = {
     logo: process.env.NEXT_PUBLIC_BRAND_IMAGE_LOGO || DEFAULT_BRAND.logo,
     alt: process.env.NEXT_PUBLIC_BRAND_IMAGE_ALT || DEFAULT_BRAND.alt,
   },
-  googleVerification: "LvFG04WguElw5_gD50zQhyMH1xEQUJua1Xj1Mh9nQ80",
+  googleVerification: resolveGoogleVerification(),
 } as const;
 
 export function absoluteUrl(path = "/") {

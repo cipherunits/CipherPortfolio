@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Button from "@/components/shared/Button";
 import Link from "next/link";
+import { absoluteUrl } from "@/lib/site";
 
 export default function Hero() {
   return (
@@ -31,6 +32,7 @@ export default function Hero() {
       <div className="flex flex-col items-center justify-center gap-3">
         <Image
           src="/images/Hero.png"
+          overrideSrc={absoluteUrl("/images/Hero.png")}
           alt="CipherUnit Open Source Engineering Collective — Developer tools and scalable software systems"
           width={500}
           height={300}

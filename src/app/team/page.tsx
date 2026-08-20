@@ -7,7 +7,7 @@ import {
   buildTeamGraphJsonLd,
   JsonLd,
 } from "@/components/shared/JsonLd";
-import { seoAvatarUrl, teamImageTitle } from "@/lib/seo-images";
+import { teamAvatarUrl, teamImageTitle } from "@/lib/seo-images";
 import { absoluteUrl, brandOgImages, siteConfig } from "@/lib/site";
 import { getTeamMembers } from "@/lib/team";
 
@@ -18,7 +18,7 @@ export const revalidate = 3600;
 export async function generateMetadata(): Promise<Metadata> {
   const members = await getTeamMembers();
   const memberOgImages = members.slice(0, 8).map((member) => ({
-    url: seoAvatarUrl(member.avatarUrl),
+    url: teamAvatarUrl(member),
     alt: teamImageTitle(member),
   }));
 
@@ -97,9 +97,23 @@ export default async function TeamPage() {
     <main id="main-content" className="mx-auto my-8 max-w-6xl px-4 sm:px-6 md:my-22">
       <JsonLd id="jsonld-team-graph" data={buildTeamGraphJsonLd(members)} />
 
-      <header className="mb-10 space-y-2">
+      <header className="mb-10 space-y-3">
         <NamePage title="GitHub Team & Contributors" />
         <SubNamePage text="Public GitHub members of the Cipher Units organization." />
+        <p className="max-w-3xl text-sm leading-7 text-(--color-stroke)">
+          Cipher Unit ({siteConfig.shortName}) is built by public members of the{" "}
+          <a
+            href={siteConfig.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white underline-offset-2 hover:underline"
+          >
+            @{siteConfig.githubOrg}
+          </a>{" "}
+          GitHub organization. Browse profiles, avatars, and open-source
+          contributions from engineers shipping developer tools, Rust/Python
+          libraries, and infrastructure projects.
+        </p>
       </header>
 
       <Team preview={false} />

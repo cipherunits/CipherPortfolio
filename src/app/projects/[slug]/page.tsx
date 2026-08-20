@@ -151,6 +151,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <meta itemProp="caption" content={imageCaption} />
           <Image
             src={project.imageUrl}
+            overrideSrc={absoluteUrl(project.imageUrl)}
             alt={`${project.title} open source software developed by Cipher Unit (CipherUnit). ${project.description}`}
             title={imageTitle}
             fill

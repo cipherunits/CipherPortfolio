@@ -49,6 +49,10 @@ export async function GET() {
       pageUrl: absoluteUrl("/team"),
       images: teamSitemapImages(members),
     },
+    {
+      pageUrl: absoluteUrl("/contact"),
+      images: brandImages,
+    },
   ]);
 
   return new Response(xml, {

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Fields from "@/components/shared/Fields";
 import Button from "@/components/shared/Button";
 import Link from "next/link";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 export default function AboutMe() {
   return (
@@ -30,6 +30,7 @@ export default function AboutMe() {
       </div>
       <Image
         src="/images/AboutMe.png"
+        overrideSrc={absoluteUrl("/images/AboutMe.png")}
         alt="CipherUnit Cipher Unit Open Source Engineering Collective — about us"
         width={300}
         height={300}

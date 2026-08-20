@@ -2,7 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import type { TeamMember } from "@/lib/team";
-import { seoAvatarUrl } from "@/lib/seo-images";
+import {
+  seoAvatarUrl,
+  teamAvatarPath,
+  teamAvatarUrl,
+} from "@/lib/seo-images";
 import { siteConfig } from "@/lib/site";
 
 type MemberCardProps = TeamMember & {
@@ -18,6 +22,9 @@ export default function MemberCard({
   compact = false,
 }: MemberCardProps) {
   const label = `${name} (@${login}) — Cipher Unit GitHub member`;
+  const siteAvatar = teamAvatarPath({ login });
+  const absoluteAvatar = teamAvatarUrl({ login });
+  const size = compact ? 72 : 112;
 
   return (
     <article
@@ -45,14 +52,16 @@ export default function MemberCard({
       >
         <Image
           src={seoAvatarUrl(avatarUrl)}
+          overrideSrc={siteAvatar}
           alt={`${name} (@${login}) — public GitHub avatar, Cipher Unit (CipherUnit) engineering team`}
           title={`${name} (@${login}) — Cipher Unit team member`}
-          width={compact ? 72 : 112}
-          height={compact ? 72 : 112}
-          sizes={compact ? "72px" : "112px"}
+          width={size}
+          height={size}
+          sizes={`${size}px`}
           className="object-cover"
           itemProp="image"
         />
+        <meta itemProp="image" content={absoluteAvatar} />
       </Link>
 
       <div className="min-w-0 space-y-1">

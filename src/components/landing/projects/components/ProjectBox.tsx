@@ -65,6 +65,7 @@ export default function ProjectBox({
         >
           <Image
             src={imageUrl}
+            overrideSrc={absoluteImageUrl}
             alt={`${title} open source software developed by Cipher Unit (CipherUnit). ${description}`}
             title={imageTitle}
             fill

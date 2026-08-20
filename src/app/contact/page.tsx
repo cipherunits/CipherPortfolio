@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ContactBox from "@/components/contacts/ContactBox";
 import ContactMedia from "@/components/contacts/ContactMedia";
 import ContactText from "@/components/contacts/ContactText";
@@ -80,11 +81,44 @@ export default function ContactPage() {
 
       <header className="space-y-3">
         <NamePage title="Contact CipherUnit" />
-        <SubNamePage text="Contact CipherUnit" />
+        <SubNamePage text="Open-source collaborations, contributions, and technical inquiries." />
+        <p className="max-w-3xl text-sm leading-7 text-(--color-stroke)">
+          Reach the Cipher Unit engineering collective for open-source project
+          partnerships, GitHub contributions, consulting, and developer support.
+          Prefer email at{" "}
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="text-white underline-offset-2 hover:underline"
+          >
+            {siteConfig.email}
+          </a>{" "}
+          or message the team through{" "}
+          <a
+            href={siteConfig.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white underline-offset-2 hover:underline"
+          >
+            GitHub @{siteConfig.githubOrg}
+          </a>
+          .
+        </p>
       </header>
 
       <section className="mt-10 flex flex-col items-center justify-between gap-10 md:flex-row">
-        <ContactText />
+        <div className="space-y-6">
+          <ContactText />
+          <Image
+            src={siteConfig.brand.main}
+            overrideSrc={absoluteUrl(siteConfig.brand.main)}
+            alt="Contact Cipher Unit (CipherUnit) — open-source engineering collective"
+            title="Contact Cipher Unit"
+            width={420}
+            height={240}
+            sizes="(max-width: 768px) 90vw, 420px"
+            className="h-auto w-full max-w-[420px] rounded-lg border border-(--color-stroke)/40"
+          />
+        </div>
         <ContactBox />
       </section>
 

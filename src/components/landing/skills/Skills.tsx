@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Fields from "@/components/shared/Fields";
 import SkillBox from "./SkillBox";
+import { absoluteUrl } from "@/lib/site";
 
 const skills = [
   {
@@ -42,6 +43,7 @@ export default function Skills() {
       <div className="mt-8 flex flex-col items-center justify-between gap-8 md:flex-row md:gap-12">
         <Image
           src="/images/Skills.png"
+          overrideSrc={absoluteUrl("/images/Skills.png")}
           alt="Cipher Unit engineering skills — languages, frameworks, DevOps and developer tools"
           width={320}
           height={320}

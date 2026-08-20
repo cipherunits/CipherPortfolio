@@ -5,14 +5,14 @@ import {
   brandImageUrls,
   projectImageUrls,
   projectPagePath,
-  seoAvatarUrl,
+  teamAvatarUrl,
 } from "@/lib/seo-images";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 import { getTeamMembers } from "@/lib/team";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const members = await getTeamMembers();
-  const teamAvatars = members.map((member) => seoAvatarUrl(member.avatarUrl));
+  const teamAvatars = members.map((member) => teamAvatarUrl(member));
   const projectImages = projectImageUrls();
   const brandImages = brandImageUrls();
   const lastModified = new Date();

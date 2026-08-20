@@ -22,6 +22,15 @@ export function projectPagePath(project: Pick<Project, "slug">): string {
   return `/projects/${project.slug}`;
 }
 
+/** Same-origin path so Image Search attributes team photos to this site. */
+export function teamAvatarPath(member: Pick<TeamMember, "login">): string {
+  return `/avatars/${encodeURIComponent(member.login)}`;
+}
+
+export function teamAvatarUrl(member: Pick<TeamMember, "login">): string {
+  return absoluteUrl(teamAvatarPath(member));
+}
+
 export function projectImageTitle(project: Project): string {
   return `${project.title} — Cipher Unit (CipherUnit) open source project`;
 }
@@ -63,7 +72,7 @@ export function projectImageObject(
 }
 
 export function teamImageObject(member: TeamMember, pageUrl: string) {
-  const url = seoAvatarUrl(member.avatarUrl);
+  const url = teamAvatarUrl(member);
   return {
     "@type": "ImageObject" as const,
     "@id": `${pageUrl}#${member.login}-image`,
@@ -108,7 +117,7 @@ export function projectSitemapImages(): SitemapImageEntry[] {
 
 export function teamSitemapImages(members: TeamMember[]): SitemapImageEntry[] {
   return members.map((member) => ({
-    loc: seoAvatarUrl(member.avatarUrl),
+    loc: teamAvatarUrl(member),
     title: teamImageTitle(member),
     caption: teamImageCaption(member),
   }));

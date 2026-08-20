@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 export default function ImageLogo() {
   return (
@@ -8,6 +8,7 @@ export default function ImageLogo() {
       <Image
         src={siteConfig.brand.alt}
         alt="Cipher Unit (CipherUnit) logo"
+        overrideSrc={absoluteUrl(siteConfig.brand.alt)}
         width={25}
         height={25}
         className="w-6 h-auto"
