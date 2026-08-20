@@ -91,14 +91,14 @@ export default function MemberCard({
           </Link>
         </p>
 
-        {!compact && bio ? (
+        {/* {!compact && bio ? (
           <p
             itemProp="description"
             className="mt-2 line-clamp-3 text-sm leading-6 text-(--color-stroke)"
           >
             {bio}
           </p>
-        ) : null}
+        ) : null} */}
 
         <meta itemProp="jobTitle" content="Open Source Engineer" />
         <meta itemProp="worksFor" content={siteConfig.name} />
@@ -113,7 +113,7 @@ export default function MemberCard({
           className="mt-auto rounded-md px-2 py-1 text-sm text-(--color-stroke) transition hover:bg-(--color-surface) hover:text-white"
           aria-label={`Visit ${name} on GitHub`}
         >
-          github.com/{login} →
+          {login} →
         </Link>
       ) : null}
 
