@@ -1,96 +1,45 @@
-# Routes & Pages
+# 3 — Routes
 
-## `/` — Home
+| Path | File | Notes |
+|------|------|--------|
+| `/` | `src/app/page.tsx` | Landing sections |
+| `/projects` | `projects/page.tsx` | Full grid |
+| `/projects/[slug]` | `projects/[slug]/page.tsx` | Detail + optional README |
+| `/team` | `team/page.tsx` | GitHub members |
+| `/contact` | `contact/page.tsx` | Contact |
+| `/github` | redirect | Org GitHub |
+| `/avatars/[login]` | route handler | Avatar proxy |
+| `/sitemap.xml` | `sitemap.ts` | |
+| `/image-sitemap.xml` | `image-sitemap.xml/route.ts` | |
+| `/robots.txt` | `robots.ts` | |
+| `/llms.txt` | `public/llms.txt` | |
 
-**File:** `src/app/page.tsx`
+## Project detail
 
-Landing composition: Hero → Overview → Projects → Skills → Team (preview) → AboutMe → Faq → Contact.
-
+- `generateStaticParams` from `projects`
+- `dynamicParams = false`
 - `revalidate = 3600`
-- Page metadata overrides title/OG/Twitter for the home absolute title
-- JSON-LD: `HomePageJsonLd`, `BreadcrumbJsonLdHome`, `FAQJsonLd`
+- Metadata + `buildProjectPageJsonLd(project)`
+- README via `getProjectReadme` → `ProjectReadmeView` or omit
 
-## `/projects`
+Slugs: `fusion-framework`, `cipher-token`, `cipher-scope`, `npm-mirror`.
 
-**File:** `src/app/projects/page.tsx`
+## Sitemap priorities
 
-Full projects listing via `<Projects view={false} />`.
+| URL | Priority |
+|-----|----------|
+| `/` | 1.0 |
+| `/projects` | 0.9 |
+| `/projects/[slug]` | 0.88 |
+| `/team` | 0.85 |
+| `/contact` | 0.8 |
 
-- Canonical `/projects`
-- JSON-LD: `buildProjectsGraphJsonLd()`
-
-## `/team`
-
-**File:** `src/app/team/page.tsx`
-
-Public GitHub organization members.
-
-- `revalidate = 3600`
-- Loads members with `getTeamMembers()` from `src/lib/team.ts`
-- Renders `<Team preview={false} />`
-- JSON-LD: `buildTeamGraphJsonLd(members)`
-- Header copy via `NamePage` + `SubNamePage`
-
-## `/contact`
-
-**File:** `src/app/contact/page.tsx`
-
-Dedicated contact page:
-
-- `NamePage` — path-derived heading
-- `ContactText` — intro
-- `ContactBox` — GitHub + email
-- `ContactMedia` — social row
-
-Metadata and contact-page JSON-LD are defined on the route.
-
-## `/github`
-
-**File:** `src/app/github/page.tsx`
-
-- `robots: { index: false, follow: false }`
-- Server `redirect()` to `https://github.com/cipherunits`
-- Disallowed in `src/app/robots.ts`
-
-## Not found
-
-**File:** `src/app/not-found.tsx`
-
-Custom 404 with CTA back to `/`.
-
-## Sitemap
-
-**File:** `src/app/sitemap.ts`
-
-| Path | changeFrequency | priority |
-|------|-----------------|----------|
-| `/` | weekly | 1.0 |
-| `/projects` | weekly | 0.9 |
-| `/team` | weekly | 0.85 |
-| `/contact` | monthly | 0.8 |
-
-`lastModified` is `new Date()` at build/request time. `/github` is intentionally omitted.
-
-Page entries also embed related image URLs (brand, project screenshots, team avatars). A dedicated Google image sitemap with titles/captions is served at `/image-sitemap.xml`.
+Each project URL includes its image. Image sitemap lists home, `/projects`, each slug page, `/team`, `/contact`.
 
 ## Robots
 
-**File:** `src/app/robots.ts` (dynamic; no static `public/robots.txt`)
+Allow: `/`, `/images/`, `/avatars/`, `/_next/static/`, `/_next/image/` (+ `/llms.txt` for AI bots).
 
-- Default UA: allow `/`, disallow `/api/`, `/_next/`, `/private/`, `/_vercel/`, `/github`
-- AI crawlers (GPTBot, ClaudeBot, etc.): allow `/` and `/llms.txt`
-- `sitemap` (`/sitemap.xml`, `/image-sitemap.xml`) + `host` from `siteConfig`
+Disallow: `/api/`, `/_next/data/`, `/private/`, `/_vercel/`, `/github`.
 
-## Navigation
-
-**File:** `src/components/shared/header/Item.ts`
-
-```ts
-[
-  { name: "home", link: "/" },
-  { name: "projects", link: "/projects" },
-  { name: "team", link: "/team" },
-  { name: "contact", link: "/contact" },
-  { name: "docs", link: "https://cipherunits.github.io/CipherPortfolio/" },
-]
-```
+Sitemaps: `/sitemap.xml`, `/image-sitemap.xml`.

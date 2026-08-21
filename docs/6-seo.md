@@ -1,77 +1,29 @@
-# SEO & Metadata
+# 6 — SEO
 
-## Global metadata
+## Surfaces
 
-**File:** `src/app/layout.tsx`
+| Surface | Where |
+|---------|--------|
+| Global metadata | `src/app/layout.tsx` |
+| Per-route metadata | Each `page.tsx` / `generateMetadata` |
+| Project page | Title, description, keywords, OG image 1200×675 |
+| JSON-LD | `JsonLd.tsx` (+ project page graph) |
+| Sitemap | `src/app/sitemap.ts` |
+| Image sitemap | `src/app/image-sitemap.xml/route.ts` |
+| Robots | `src/app/robots.ts` |
+| LLM summary | `public/llms.txt` |
+| IndexNow | `scripts/seo-notify.mjs` |
 
-Driven by `siteConfig` (`src/lib/site.ts`):
+## Project images
 
-| Concern | Behavior |
-|---------|----------|
-| `metadataBase` | `siteConfig.url` |
-| Title | Template `%s \| Cipher Unit`; default absolute brand title |
-| Description / keywords | Collective + developer-tools focused |
-| Open Graph | `website`, en_US, `brandOgImages()` |
-| Twitter | `summary_large_image` |
-| Robots | index/follow + googleBot preview/snippet limits |
-| Icons | Brand logo / Apple touch from `siteConfig.brand` |
-| Verification | `GOOGLE_PUBLIC_KEY` when set |
+- Assets under `public/images/` (cards are 1200×675 PNG)
+- Helpers: `projectImageTitle`, `projectImageCaption`, `projectOgImage`, `projectImageObject`
+- Microdata `ImageObject` on cards and detail pages
+- Listed in sitemap + image sitemap per project URL
 
-Root layout injects **Organization** and **WebSite** JSON-LD only. Page-level schemas are on each route.
+## After content/URL changes
 
-## Per-route metadata & JSON-LD
-
-| Route | Notes |
-|-------|-------|
-| `/` | Absolute home title; `HomePageJsonLd`, breadcrumb, `FAQJsonLd` |
-| `/projects` | Projects keywords/OG (includes project screenshots); `buildProjectsGraphJsonLd()` with ImageObject nodes |
-| `/team` | Team keywords/OG (includes member avatars); `buildTeamGraphJsonLd(members)` with Person + ImageObject |
-| `/contact` | Contact metadata + contact JSON-LD / breadcrumb |
-| `/github` | `noindex, nofollow`; redirect only |
-
-## Sitemap
-
-`src/app/sitemap.ts` — `/`, `/projects`, `/team`, `/contact` with weekly/monthly frequencies and priorities `1.0` / `0.9` / `0.85` / `0.8`.
-
-Each URL also lists related **images** for Google Images discovery:
-
-- Home: brand + project screenshots + team avatars
-- `/projects`: Cipher Token + NPM Mirror images
-- `/team`: each public member avatar (GitHub, `s=460`)
-- `/contact`: brand images
-
-**Image sitemap (titles + captions):** `src/app/image-sitemap.xml/route.ts` → `/image-sitemap.xml`
-
-Helpers live in `src/lib/seo-images.ts`.
-
-Cache-Control for `/sitemap.xml` and `/image-sitemap.xml` is set in `next.config.ts` (1 hour).
-
-## Robots
-
-`src/app/robots.ts` — dynamic `MetadataRoute.Robots`.
-
-- Blocks `/github` and internal paths
-- Explicit allows for major AI crawlers on `/` and `/llms.txt`
-- Host + sitemaps: `/sitemap.xml` and `/image-sitemap.xml`
-
-## `llms.txt`
-
-`public/llms.txt` — concise brand/project summary for LLM crawlers. Keep in sync when routes or flagship projects change.
-
-## Security & cache headers
-
-`next.config.ts`:
-
-- `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `X-XSS-Protection`
-- `Permissions-Policy`, `X-DNS-Prefetch-Control`
-- Cache headers for sitemap, robots, `llms.txt`
-- `poweredByHeader: false`, `compress: true`
-
-## Manifest
-
-`public/manifest.json` — PWA name/short name, theme `#22c55e`, background `#0a0a0a`, icons under `/images/`.
-
-## IndexNow
-
-- Key file: `public/cipherunit-indexnow-2026.txt`
-- Notify script: `scripts/seo-notify.mjs` (home, projects, team, contact, sitemap, image sitemap)
+1. Update `projects.ts` / `llms.txt` as needed  
+2. Rebuild  
+3. Optionally `pnpm seo:notify`  
+4. Submit sitemaps in Google Search Console if new  

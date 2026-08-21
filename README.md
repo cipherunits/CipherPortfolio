@@ -22,13 +22,14 @@ Built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS v4**
 
 ## Features
 
-- Responsive landing page with hero, projects, skills, team, FAQ, and contact
-- Dedicated `/projects`, `/team`, and `/contact` routes
-- Interactive client-side terminal overlay
-- SEO: metadata, Open Graph, Twitter Cards, JSON-LD, sitemap, robots, `llms.txt`
-- Team members loaded from the GitHub organization API
-- Docker multi-stage production image
-- Docs site via [Zensical](https://zensical.org) → GitHub Pages
+- Landing: hero, projects, skills, team, FAQ, contact
+- Routes: `/projects`, `/projects/[slug]`, `/team`, `/contact`
+- Project pages render GitHub README when available
+- Interactive terminal overlay
+- SEO: metadata, JSON-LD, sitemap, image sitemap, robots, `llms.txt`
+- Team from GitHub org API
+- Docker production image
+- Docs via Zensical → GitHub Pages
 
 ---
 
@@ -39,14 +40,12 @@ Built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS v4**
 ```bash
 git clone https://github.com/cipherunits/CipherPortfolio.git
 cd CipherPortfolio
-cp .env.example .env.local
+# create .env / .env.local — see docs/10-configuration.md
 pnpm install
 pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
-
-Via Make:
 
 ```bash
 make install
@@ -105,9 +104,9 @@ zensical serve
 
 ```
 src/
-  app/           # App Router pages, layout, sitemap, robots
+  app/           # App Router, sitemap, robots, image-sitemap, avatars
   components/    # Landing, contact, terminal, shared UI
-  lib/           # site config, projects, team, FAQ data
+  lib/           # site, projects, project-readme, team, FAQ, SEO helpers
 docs/            # Zensical documentation
 public/          # Static assets, fonts, manifest, llms.txt
 ```

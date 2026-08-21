@@ -1,108 +1,30 @@
-# Component Guide
+# 4 — Components
 
-Components live under `src/components/`, split into `landing/`, `contacts/`, `terminal/`, and `shared/`.
+## Landing
 
-## Landing (homepage sections)
+| Component | Path | Notes |
+|-----------|------|--------|
+| Hero | `landing/hero/Hero.tsx` | |
+| Overview | `landing/overview/Overview.tsx` | Stats |
+| Projects | `landing/projects/components/Projects.tsx` | Grid from `projects` |
+| ProjectBox | `.../ProjectBox.tsx` | Card → `/projects/[slug]` |
+| ProjectReadmeView | `.../ProjectReadmeView.tsx` | Markdown + GFM + sanitized HTML |
+| Skills | `landing/skills/` | |
+| Team / MemberCard | `landing/team/` | |
+| AboutMe | `landing/about-me/` | |
+| Faq | `landing/faq/` | Uses `lib/faq.ts` |
+| Contact teaser | `landing/contact/` | |
 
-Composed in `src/app/page.tsx`.
+## Contact page
 
-### `Hero`
-
-`src/components/landing/hero/Hero.tsx`
-
-Headline, supporting copy, Contact CTA (`/contact`), hero image, status strip.
-
-### `Overview`
-
-`src/components/landing/overview/Overview.tsx`
-
-Async server component. Stats: projects built, people (from `getTeamMembers()` length, fallback `8+`), commands (`∞`).
-
-### `Projects`
-
-`src/components/landing/projects/components/Projects.tsx`
-
-- Data from `src/lib/projects.ts`
-- `view={true}` shows “View all projects →” linking to `/projects`
-- Cards rendered with `ProjectBox`
-
-### `ProjectBox`
-
-`src/components/landing/projects/components/ProjectBox.tsx`
-
-Props match `Project` in `src/lib/projects.ts` (`imageUrl`, `tech`, `title`, `description`, links/buttons). Microdata + Live/Docs actions.
-
-Type re-export: `src/components/landing/projects/types/projects.type.ts`.
-
-### `Skills` / `SkillBox`
-
-`src/components/landing/skills/`
-
-Categorized skill rows beside `/images/Skills.png`.
-
-### `Team` / `MemberCard`
-
-`src/components/landing/team/`
-
-- `Team` — async; fetches members; `preview` shows 4 + “View all team →”
-- `MemberCard` — avatar, name, bio, GitHub link
-- Returns `null` when the API yields no members
-
-### `AboutMe`
-
-`src/components/landing/about-me/AboutMe.tsx`
-
-Brand blurb, CTA, `/images/AboutMe.png`.
-
-### `Faq`
-
-`src/components/landing/faq/Faq.tsx`
-
-Renders entries from `src/lib/faq.ts` (shared with FAQ JSON-LD).
-
-### `Contact` (landing)
-
-`src/components/landing/contact/Contact.tsx`
-
-Homepage contact teaser using `siteConfig` for email/GitHub.
-
-## Contact page (`/contact`)
-
-| Component | Path | Role |
-|-----------|------|------|
-| `ContactText` | `contacts/ContactText.tsx` | Intro |
-| `ContactBox` | `contacts/ContactBox.tsx` | GitHub + mailto |
-| `ContactMedia` | `contacts/ContactMedia.tsx` | Social links |
+`contacts/ContactText.tsx`, `ContactBox.tsx`, `ContactMedia.tsx`.
 
 ## Shared
 
-| Component | Notes |
-|-----------|-------|
-| `Button` | `Theme`: `primary` \| `stroke` |
-| `Fields` | Section heading (`#` + label + accent rule) |
-| `NamePage` | Client; last path segment as title |
-| `SubNamePage` | Supporting subtitle under `NamePage` |
-| `ImageLogo` | Logo + wordmark → `/` |
-| `Header` / `NavItem` | Desktop nav + mobile overlay from `Item.ts` |
-| `Footer` | Email, media links, attribution |
-| `JsonLd` | Script injector + schema builders/constants |
+Header (`header/`), Footer, Button, NamePage, SubNamePage, ImageLogo, JsonLd.
 
-### JSON-LD exports (`JsonLd.tsx`)
-
-- `OrganizationJsonLd`, `WebSiteJsonLd`, `FAQJsonLd`, `HomePageJsonLd`
-- Breadcrumbs: Home, Contact, Projects, Team
-- `ContactPageJsonLd`
-- `buildProjectsGraphJsonLd()`, `buildTeamGraphJsonLd(members)`
+JSON-LD builders in `shared/JsonLd.tsx`: org/website, projects graph, project page, team, contact, FAQ.
 
 ## Terminal
 
-| Component | Role |
-|-----------|------|
-| `TerminalManager` | Visibility toggle |
-| `OpenTerminal` | Fixed FAB (`left-4 bottom-4`) |
-| `LayerTerminal` | Drag; fullscreen ≤768px |
-| `Terminal` | Shell UI + history |
-| `Commands.ts` | Command → string map |
-| `Type.ts` | `HistoryItem` |
-
-Supported commands include: `help`, `ls`, `pwd`, `whoami`, `about`, `skills`, `projects`, `contact`, `social`, `github`, `date`, `neofetch`, `cat`, `clear`.
+`terminal/TerminalManager.tsx`, `OpenTerminal.tsx`, `Commands.ts`.
