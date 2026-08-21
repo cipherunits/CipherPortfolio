@@ -36,13 +36,11 @@
   "packageManager": "pnpm@11.5.2",
   "sideEffects": false,
   "scripts": {
-    "banner": "printf '\n██████╗██╗██████╗ ██╗  ██╗███████╗██████╗ ██╗   ██╗███╗   ██╗██╗████████╗\n██╔════╝██║██╔══██╗██║  ██║██╔════╝██╔══██╗██║   ██║████╗  ██║██║╚══██╔══╝\n██║     ██║██████╔╝███████║█████╗  ██████╔╝██║   ██║██╔██╗ ██║██║   ██║\n██║     ██║██╔═══╝ ██╔══██║██╔══╝  ██╔══██╗██║   ██║██║╚██╗██║██║   ██║\n╚██████╗██║██║     ██║  ██║███████╗██║  ██║╚██████╔╝██║ ╚████║██║   ██║\n ╚═════╝╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝   ╚═╝\n\n'",
-    "predev": "pnpm --silent banner",
+    "cipherscope": "cipher-scope banner",
     "dev": "next dev",
-    "prebuild": "pnpm --silent banner && pnpm --silent check",
-    "build": "next build",
-    "prestart": "pnpm --silent banner",
-    "start": "next start",
+    "prebuild": "pnpm cipherscope && pnpm check",
+    "build": "pnpm cipherscope && next build",
+    "start": "pnpm cipherscope && next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "check": "pnpm typecheck && pnpm lint",
@@ -51,6 +49,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "cipher-scope": "^0.1.0",
     "next": "16.2.12",
     "react": "19.2.8",
     "react-dom": "19.2.8",
