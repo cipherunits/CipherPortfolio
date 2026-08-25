@@ -91,14 +91,19 @@ export default function MemberCard({
           </Link>
         </p>
 
-        {/* {!compact && bio ? (
+        {!compact && bio ? (
           <p
             itemProp="description"
-            className="mt-2 line-clamp-3 text-sm leading-6 text-(--color-stroke)"
+            className="mt-2 line-clamp-4 text-sm leading-6 text-(--color-stroke)"
           >
             {bio}
           </p>
-        ) : null} */}
+        ) : (
+          <meta
+            itemProp="description"
+            content={`${name} is a public GitHub member of ${siteConfig.name} (@${login}).`}
+          />
+        )}
 
         <meta itemProp="jobTitle" content="Open Source Engineer" />
         <meta itemProp="worksFor" content={siteConfig.name} />

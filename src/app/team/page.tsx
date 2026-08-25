@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import NamePage from "@/components/shared/NamePage";
 import SubNamePage from "@/components/shared/SubNamePage";
@@ -7,7 +8,8 @@ import {
   buildTeamGraphJsonLd,
   JsonLd,
 } from "@/components/shared/JsonLd";
-import { teamAvatarUrl, teamImageTitle } from "@/lib/seo-images";
+import { projects } from "@/lib/projects";
+import { projectPagePath, teamAvatarUrl, teamImageTitle } from "@/lib/seo-images";
 import { absoluteUrl, brandOgImages, siteConfig } from "@/lib/site";
 import { getTeamMembers } from "@/lib/team";
 
@@ -21,6 +23,10 @@ export async function generateMetadata(): Promise<Metadata> {
     url: teamAvatarUrl(member),
     alt: teamImageTitle(member),
   }));
+  const memberNames = members
+    .slice(0, 8)
+    .map((member) => member.name)
+    .join(", ");
 
   return {
     title: {
@@ -28,7 +34,9 @@ export async function generateMetadata(): Promise<Metadata> {
         "GitHub Team & Contributors | Cipher Unit Open-Source Engineering Collective",
     },
     description:
-      "Meet the public GitHub members of Cipher Unit (cipherunits): engineers and open-source contributors with profiles, avatars, and GitHub links building developer tools.",
+      members.length > 0
+        ? `Meet the ${members.length} public GitHub members of Cipher Unit (cipherunits), including ${memberNames}. Engineers and open-source contributors building developer tools, Rust/Python libraries, and infrastructure.`
+        : "Meet the public GitHub members of Cipher Unit (cipherunits): engineers and open-source contributors with profiles, avatars, and GitHub links building developer tools.",
     keywords: [
       "Cipher Unit team",
       "CipherUnit team",
@@ -74,7 +82,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: siteConfig.name,
       title: "Cipher Unit GitHub Team & Contributors",
       description:
-        "Public GitHub members of the Cipher Unit open-source engineering collective — names, avatars, and profiles.",
+        "Public GitHub members of the Cipher Unit open-source engineering collective — names, avatars, bios, and profiles.",
       images: [
         ...brandOgImages("Cipher Unit GitHub Team & Contributors"),
         ...memberOgImages,
@@ -110,13 +118,81 @@ export default async function TeamPage() {
           >
             @{siteConfig.githubOrg}
           </a>{" "}
-          GitHub organization. Browse profiles, avatars, and open-source
-          contributions from engineers shipping developer tools, Rust/Python
-          libraries, and infrastructure projects.
+          GitHub organization
+          {members.length > 0 ? ` — currently ${members.length} public profiles` : ""}
+          . Browse names, avatars, bios, and open-source contributions from
+          engineers shipping developer tools, Rust/Python libraries, and
+          infrastructure projects.
+        </p>
+        <p className="max-w-3xl text-sm leading-7 text-(--color-stroke)">
+          Explore what the team ships on the{" "}
+          <Link
+            href="/projects"
+            className="text-white underline-offset-2 hover:underline"
+          >
+            open-source projects
+          </Link>{" "}
+          page
+          {projects.length > 0 ? (
+            <>
+              , including{" "}
+              {projects.map((project, index) => (
+                <span key={project.slug}>
+                  {index > 0 ? (index === projects.length - 1 ? ", and " : ", ") : null}
+                  <Link
+                    href={projectPagePath(project)}
+                    className="text-white underline-offset-2 hover:underline"
+                  >
+                    {project.title}
+                  </Link>
+                </span>
+              ))}
+            </>
+          ) : null}
+          . For collaborations or contributions, visit{" "}
+          <Link
+            href="/contact"
+            className="text-white underline-offset-2 hover:underline"
+          >
+            Contact CipherUnit
+          </Link>
+          .
         </p>
       </header>
 
       <Team preview={false} />
+
+      <section className="mt-14 max-w-3xl space-y-3" aria-labelledby="team-how-heading">
+        <h2 id="team-how-heading" className="text-lg font-semibold text-white">
+          How Cipher Unit works as a collective
+        </h2>
+        <p className="text-sm leading-7 text-(--color-stroke)">
+          Cipher Unit is an open-source engineering collective. Public GitHub
+          membership is the source of truth for this page: profiles sync from
+          the @{siteConfig.githubOrg} organization so search engines and
+          visitors see real contributors, not a static marketing roster.
+        </p>
+        <p className="text-sm leading-7 text-(--color-stroke)">
+          Want to contribute? Open an issue or pull request on a project
+          repository, or reach the team through the{" "}
+          <Link
+            href="/contact"
+            className="text-white underline-offset-2 hover:underline"
+          >
+            contact page
+          </Link>{" "}
+          and{" "}
+          <a
+            href={siteConfig.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white underline-offset-2 hover:underline"
+          >
+            GitHub organization
+          </a>
+          .
+        </p>
+      </section>
     </main>
   );
 }

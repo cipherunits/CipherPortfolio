@@ -97,6 +97,12 @@ export default function ProjectsPage() {
       <header className="mb-10 space-y-2">
         <NamePage title="Open Source Projects" />
         <SubNamePage text="Explore all open-source projects developed by Cipher Unit." />
+        <p className="max-w-3xl text-sm leading-7 text-(--color-stroke)">
+          Cipher Unit publishes open-source developer tools across Rust, Python,
+          TypeScript, and Docker. Each project page includes overview copy,
+          repository links, documentation, and README content when available —
+          including Fusion Framework, Cipher Token, Cipher Scope, and NPM Mirror.
+        </p>
       </header>
 
       <Projects view={false} />

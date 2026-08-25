@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+
+import ProjectDetailHeader from "@/components/landing/projects/components/ProjectDetailHeader";
 import ProjectReadmeView from "@/components/landing/projects/components/ProjectReadmeView";
 import {
   buildProjectPageJsonLd,
@@ -44,6 +46,9 @@ export async function generateMetadata({
   const imageUrl = absoluteUrl(project.imageUrl);
   const imageTitle = projectImageTitle(project);
   const title = `${project.title} | Cipher Unit Open Source Project`;
+  const description = project.overview
+    ? `${project.description} ${project.overview.split("\n\n")[0]}`
+    : project.description;
   const techKeywords = project.tech
     .split("•")
     .map((part) => part.trim())
@@ -51,11 +56,12 @@ export async function generateMetadata({
 
   return {
     title: { absolute: title },
-    description: project.description,
+    description: description.slice(0, 300),
     keywords: [
       project.title,
       "Cipher Unit",
       "CipherUnit",
+      "cipherunits",
       "open source",
       "open source project",
       "developer tools",
@@ -88,7 +94,10 @@ export async function generateMetadata({
       siteName: siteConfig.name,
       title: `${project.title} — Cipher Unit`,
       description: project.description,
-      images: [projectOgImage(project), ...brandOgImages(`${project.title} by Cipher Unit`)],
+      images: [
+        projectOgImage(project),
+        ...brandOgImages(`${project.title} by Cipher Unit`),
+      ],
     },
     twitter: {
       card: "summary_large_image",
@@ -98,7 +107,7 @@ export async function generateMetadata({
     },
     other: {
       "og:image:alt": imageTitle,
-      "image": imageUrl,
+      image: imageUrl,
     },
   };
 }
@@ -127,6 +136,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <NamePage title={project.title} />
         <SubNamePage text={project.description} />
       </header>
+
+      <ProjectDetailHeader project={project} />
 
       {readme ? (
         <ProjectReadmeView readme={readme} projectTitle={project.title} />

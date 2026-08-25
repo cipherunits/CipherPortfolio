@@ -208,6 +208,9 @@ export function buildProjectPageJsonLd(project: Project) {
     { name: "Projects", path: "/projects" },
     { name: project.title, path: projectPagePath(project) },
   ]);
+  const richDescription = project.overview
+    ? `${project.description} ${project.overview.split("\n\n")[0]}`
+    : project.description;
 
   return {
     "@context": "https://schema.org",
@@ -217,7 +220,7 @@ export function buildProjectPageJsonLd(project: Project) {
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
         name: `${project.title} | Cipher Unit Open Source Project`,
-        description: project.description,
+        description: richDescription,
         inLanguage: "en-US",
         isPartOf: { "@id": websiteId },
         about: { "@id": orgId },
@@ -234,7 +237,7 @@ export function buildProjectPageJsonLd(project: Project) {
         "@type": "SoftwareSourceCode",
         "@id": pageUrl,
         name: project.title,
-        description: project.description,
+        description: richDescription,
         url: pageUrl,
         codeRepository: project.linkLive,
         programmingLanguage: project.programmingLanguages,
@@ -252,17 +255,62 @@ export function buildProjectPageJsonLd(project: Project) {
 
 export const ContactPageJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ContactPage",
-  "@id": `${absoluteUrl("/contact")}#webpage`,
-  url: absoluteUrl("/contact"),
-  name: "Contact CipherUnit",
-  description:
-    "Contact CipherUnit for open-source software development, engineering collaborations, and technical inquiries.",
-  inLanguage: "en-US",
-  isPartOf: { "@id": websiteId },
-  about: { "@id": orgId },
-  mainEntity: { "@id": orgId },
-  breadcrumb: BreadcrumbJsonLdContact,
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": `${absoluteUrl("/contact")}#webpage`,
+      url: absoluteUrl("/contact"),
+      name: "Contact CipherUnit | Open Source Engineering Collective",
+      description:
+        "Contact Cipher Unit (CipherUnit) for open-source collaborations, GitHub contributions, consulting, partnerships, and technical inquiries.",
+      inLanguage: "en-US",
+      isPartOf: { "@id": websiteId },
+      about: { "@id": orgId },
+      mainEntity: { "@id": orgId },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: absoluteUrl(siteConfig.brand.main),
+      },
+      breadcrumb: { "@id": `${absoluteUrl("/contact")}#breadcrumb` },
+      significantLink: [
+        absoluteUrl("/team"),
+        absoluteUrl("/projects"),
+        siteConfig.github,
+        `mailto:${siteConfig.email}`,
+      ],
+    },
+    {
+      ...BreadcrumbJsonLdContact,
+      "@id": `${absoluteUrl("/contact")}#breadcrumb`,
+    },
+    {
+      "@type": "Organization",
+      "@id": orgId,
+      name: siteConfig.name,
+      alternateName: ["CipherUnit", "Cipher Unit"],
+      url: siteUrl,
+      email: siteConfig.email,
+      sameAs: [
+        siteConfig.github,
+        ...(siteConfig.instagram ? [siteConfig.instagram] : []),
+      ],
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          email: siteConfig.email,
+          contactType: "customer support",
+          availableLanguage: ["English"],
+          url: absoluteUrl("/contact"),
+        },
+        {
+          "@type": "ContactPoint",
+          contactType: "technical support",
+          url: siteConfig.github,
+          availableLanguage: ["English"],
+        },
+      ],
+    },
+  ],
 };
 
 export function buildTeamGraphJsonLd(members: TeamMember[]) {
@@ -297,7 +345,7 @@ export function buildTeamGraphJsonLd(members: TeamMember[]) {
         url: pageUrl,
         name: "Cipher Unit GitHub Team & Contributors",
         description:
-          "Public GitHub members of the Cipher Unit open-source engineering collective.",
+          "Public GitHub members of the Cipher Unit open-source engineering collective — profiles, avatars, and contributor bios synced from GitHub.",
         inLanguage: "en-US",
         isPartOf: { "@id": websiteId },
         about: { "@id": orgId },
@@ -307,6 +355,11 @@ export function buildTeamGraphJsonLd(members: TeamMember[]) {
           : undefined,
         image: imageNodes.map((image) => ({ "@id": image["@id"] })),
         breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+        significantLink: [
+          absoluteUrl("/projects"),
+          absoluteUrl("/contact"),
+          siteConfig.github,
+        ],
       },
       {
         ...BreadcrumbJsonLdTeam,
@@ -324,6 +377,13 @@ export function buildTeamGraphJsonLd(members: TeamMember[]) {
           position: index + 1,
           item: { "@id": person["@id"] },
         })),
+      },
+      {
+        "@type": "Organization",
+        "@id": orgId,
+        name: siteConfig.name,
+        url: siteUrl,
+        member: personNodes.map((person) => ({ "@id": person["@id"] })),
       },
       ...personNodes,
       ...imageNodes,

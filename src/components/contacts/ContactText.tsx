@@ -1,8 +1,9 @@
 export default function ContactText() {
   return (
-    <p className="font-medium text-(--color-stroke) max-w-sm [word-spacing:2px]">
-      Get in touch with CipherUnit for collaborations, contributions, or any
-      technical inquiries. We’re always open to new ideas and partnerships.
+    <p className="max-w-sm font-medium text-(--color-stroke) [word-spacing:2px]">
+      Get in touch with Cipher Unit (CipherUnit) for open-source collaborations,
+      repository contributions, consulting, or technical inquiries. We welcome
+      partnership ideas and developer questions related to our public projects.
     </p>
   );
 }
